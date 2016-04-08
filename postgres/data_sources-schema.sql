@@ -1,3 +1,11 @@
+--
+-- PostgreSQL database for loading sources into staging area
+--
+
+--
+-- Name base_contracts; TYPE: TABLE; Description: keep track of loaded contracts
+--
+
 CREATE TABLE base_contracts (
 unique_transaction_id text,
 transaction_status text,
@@ -226,6 +234,10 @@ interagencycontractingauthority text,
 last_modified_date date
 );
 
+--
+-- Name base_grants; TYPE: TABLE; Description: keep track of loaded grants
+--
+
 CREATE TABLE base_grants(
 unique_transaction_id text,
 transaction_status text,
@@ -296,6 +308,10 @@ exec5_amount numeric,
 last_modified_date date
 );
 
+--
+-- Name base_loans; TYPE: TABLE; Description: keep track of loaded loans
+--
+
 CREATE TABLE base_loans(
 unique_transaction_id text,
 transaction_status text,
@@ -365,6 +381,10 @@ exec5_fullname text,
 exec5_amount numeric,
 last_modified_date date
 );
+
+--
+-- Name base_fin; TYPE: TABLE; Description: keep track of loaded other financial assistance
+--
 
 CREATE TABLE base_fin(
 unique_transaction_id text,
