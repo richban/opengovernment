@@ -8,8 +8,10 @@ for file in csv_files:
     source = open(file, 'r')
     source_name = os.path.basename(file).split('_')
     cleaned_csv = open(path_cleaned+source_name[0]+'_cleaned.csv', 'w')
-    reader = csv.reader(file)
+    reader = csv.reader(source)
     writer = csv.writer(cleaned_csv)
-
     for row in reader:
         writer.writerow(row)
+    source.close()
+    cleaned_csv.close()
+
