@@ -460,26 +460,26 @@ last_modified_date date
 -- Data for Name: base_contracts; Type: TABLE DATA
 --
 
-COPY base_contracts FROM '/Users/richardbanyi/Developer/Environments/Data/dw/contracts_cleaned.csv'
+COPY base_contracts FROM '/Users/richardbanyi/Developer/Environments/Data/dw/cleaned_data/contracts_cleaned.csv'
 WITH DELIMITER ',' CSV HEADER QUOTE '"';
 
 -- Data for Name: base_grants; Type: TABLE DATA;
 --
 
-COPY base_grants FROM '/Users/richardbanyi/Developer/Environments/Data/dw/grants_cleaned.csv'
+COPY base_grants FROM '/Users/richardbanyi/Developer/Environments/Data/dw/cleaned_data/grants_cleaned.csv'
 WITH DELIMITER ',' CSV HEADER QUOTE '"';
 
 --
 -- Data for Name: base_loans; Type: TABLE DATA
 --
 
-COPY base_grants FROM '/Users/richardbanyi/Developer/Environments/Data/dw/loans_cleaned.csv'
+COPY base_grants FROM '/Users/richardbanyi/Developer/Environments/Data/dw/cleaned_data/loans_cleaned.csv'
 WITH DELIMITER ',' CSV HEADER QUOTE '"';
 
 --
 -- Data for Name: base_fin; Type: TABLE DATA
 --
 
-COPY base_grants FROM '/Users/richardbanyi/Developer/Environments/Data/dw/fin_cleaned.csv'
+COPY base_grants FROM '/Users/richardbanyi/Developer/Environments/Data/dw/cleaned_data/fin_cleaned.csv'
 WITH DELIMITER ',' CSV HEADER QUOTE '"';
 
