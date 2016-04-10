@@ -127,7 +127,7 @@ ALTER TABLE opg.dim_transaction_type OWNER TO richban;
 
 --
 -- Name: ft_transaction; Type: Fact Table; Schema: opg; Owner: richban;
---
+-
 
 CREATE TABLE ft_transaction (
     id integer SERIAL PRIMARY KEY,

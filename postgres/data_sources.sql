@@ -463,6 +463,7 @@ last_modified_date date
 COPY base_contracts FROM '/Users/richardbanyi/Developer/Environments/Data/dw/cleaned_data/contracts_cleaned.csv'
 WITH DELIMITER ',' CSV HEADER QUOTE '"';
 
+--
 -- Data for Name: base_grants; Type: TABLE DATA;
 --
 
