@@ -473,13 +473,13 @@ WITH DELIMITER ',' CSV HEADER QUOTE '"';
 -- Data for Name: base_loans; Type: TABLE DATA
 --
 
-COPY base_grants FROM '/Users/richardbanyi/Developer/Environments/Data/dw/cleaned_data/loans_cleaned.csv'
+COPY base_loans FROM '/Users/richardbanyi/Developer/Environments/Data/dw/cleaned_data/loans_cleaned.csv'
 WITH DELIMITER ',' CSV HEADER QUOTE '"';
 
 --
 -- Data for Name: base_fin; Type: TABLE DATA
 --
 
-COPY base_grants FROM '/Users/richardbanyi/Developer/Environments/Data/dw/cleaned_data/fin_cleaned.csv'
+COPY base_fin FROM '/Users/richardbanyi/Developer/Environments/Data/dw/cleaned_data/fin_cleaned.csv'
 WITH DELIMITER ',' CSV HEADER QUOTE '"';
 
