@@ -30,10 +30,7 @@ SEET default_with_oids = false;
 
 CREATE TABLE dim_product (
     id integer SERIAL PRIMARY KEY,
-    product_detail text,
-    claimant_code text,
-    it_commercial_item text,
-    placeof_manufacture text
+    product_name text,
 );
 
 ALTER TABLE opg.dim_product OWNER TO richban;
@@ -46,7 +43,6 @@ CREATE TABLE dim_geography (
     id integer SERIAL PRIMARY KEY,
     state text,
     city text,
-    cd text,
     zip text,
     country text
 );
@@ -60,11 +56,8 @@ ALTER TABLE opg.dim_geography OWNER TO richban;
 CREATE TABLE dim_agency (
     id integer SERIAL PRIMARY KEY,
     agency_name text,
-    agency_office_id text,
-    funding_bureau_cat text,
-    funding_bureau_id text,
-    funding_bureau text,
-    funding_bureau_office_id text
+    funding_bureau_cate text,
+    funding_bureau
 );
 
 ALTER TABLE opg.dim_agency OWNER TO richban;
@@ -76,20 +69,14 @@ ALTER TABLE opg.dim_agency OWNER TO richban;
 CREATE TABLE dim_recipient (
     id integer SERIAL PRIMARY KEY,
     name text,
-    legal_name text,
     streetaddress text,
     streetaddress2 text,
     state text,
     city text,
     zip text,
-    cd text,
     country text,
     duns text,
-    parent_name text,
-    parent_duns text,
     phoneno text,
-    faxno text,
-    registration_date date,
     organization_type text
 );
 
@@ -119,8 +106,10 @@ CREATE TABLE dim_date (
     month integer,
     month_name text,
     day integer,
-    day_name text,
-    week_day integer
+    day_year integer,
+    week_day_name text,
+    calendar_week integer,
+    quartal text
 );
 
 ALTER TABLE opg.dim_transaction_type OWNER TO richban;
@@ -154,3 +143,78 @@ CREATE TABLE ft_transaction (
 );
 
 ALTER TABLE opg.ft_transaction OWNER TO richban;
+
+--
+-- Data for Name: dim_date; Type: Table Data; Schema: opg; Owner: richban;
+--
+
+INSERT INTO dim_date (
+    full_date,
+    year,
+    month,
+    month_name,
+    day,
+    day_year,
+    weekday_name,
+    calendara_week,
+    quartal
+)
+SELECT
+	  date AS DATE,
+	  EXTRACT(YEAR FROM date) AS YEAR,
+	  EXTRACT(MONTH FROM date) AS MONTH,
+	  to_char(date, 'TMMonth') AS MonthName,
+	  EXTRACT(DAY FROM date) AS DAY,
+	  EXTRACT(doy FROM date) AS DayOfYear,
+	  to_char(date, 'TMDay') AS WeekdayName,
+	  EXTRACT(week FROM date) AS CalendarWeek,
+	  'Q' || to_char(date, 'Q') AS Quartal
+FROM (
+		SELECT '2000-01-01'::DATE + SEQUENCE.DAY AS date
+	  FROM generate_series(0,10000) AS SEQUENCE(DAY)
+	  GROUP BY SEQUENCE.DAY
+    ) DQ
+ORDER BY 1;
+
+
+--
+-- Data for Name: dim_agency; Type: Table Data; Schema: opg; Owner: richban;
+--
+
+INSERT INTO dim_agency(
+    awarding_agency,
+    funding_bureau,
+    bureau
+)
+SELECT DISTINCT
+    agency_name,
+    funding_bureau_cat,
+    funding_burea
+FROM geo
+EXCEPT
+SELECT
+    agency_name,
+    funding_bureau_cat,
+    funding_bureau
+FROM dim_agency;
+
+--
+-- Data for Name: dim_transaction_type; Type: Table Data; Schema: opg; Owner: richban;
+--
+
+INSERT INTO dim_transaction_type(
+    status,
+    category_type,
+    category_desc
+)
+SELECT DISTINCT
+    transaction_status,
+    transaction_category,
+    transaction_desc
+FROM load_data
+EXCEPT
+SELECT
+    transaction_status,
+    transaction_category,
+    transaction_desc
+FROM dim_transaction_type;
