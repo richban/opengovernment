@@ -1,93 +1,86 @@
---replace null values for foreign entities
+-- replace values for foreign entities
 
-update geo set
-	state = 'FORGN',
-	city = 'FORGN',
-	zip = 'FORGN'
-where country != 'USA';
+-- Update #1 Geography
+
+update load_data_2 set
+	geography_country = 'usa'
+	where geography_country = 'united states of america';
+
+-- Update #2
+
+update load_data_2 set
+	geography_state = 'forgn',
+	geography_city = 'forgn',
+	geography_zip = 'forgn'
+where geography_country != 'usa' or geography_country = 'N\A';
+
+-- Update #3
+
+update load_data_2 set
+	geography_city = 'N\A'
+where geography_city ~ '(\d+)';
 
 
--- correct USA states
+-- Update #4
 
-update geo
-set state =
-	case state
-  	when 'FL' then 'Florida'
-	when 'LA' then 'Louisiana'
-	when 'OR' then 'Oregon'
-	when 'MS' then 'Mississippi'
-	when 'IL' then 'Illinois'
-	when 'IN' then 'Indiana'
-	when 'UT' then 'Utah'
-	when 'MI' then 'Michigan'
-	when 'KS' then 'Kansas'
-	when 'MN' then 'Minnesota'
-	when 'NE' then 'Nebraska'
-	when 'CT' then 'Connecticut'
-	when 'AL' then 'Alabama'
-	when 'CA' then 'California'
-	when 'ND' then 'North Dakota'
-	when 'WA' then 'Washington'
-	when 'KY' then 'Kentucky'
-	when 'RI' then 'Rhode Island'
-	when 'VA' then 'Virginia'
-	when 'IA' then 'Iowa'
-	when 'NY' then 'New York'
-	when 'MA' then 'Massachusetts'
-	when 'TX' then 'Texas'
-	when 'PA' then 'Pennsylvania'
-	when 'AZ' then 'Arizona'
-	when 'MT' then 'Montana'
-	when 'NM' then 'New Mexico'
-	when 'AK' then 'Alaska'
-	when 'NC' then 'North Carolina'
-	when 'VT' then 'Vermont'
-	when 'AR' then 'Arkansas'
-	when 'MO' then 'Missouri'
-	when 'WY' then 'Wyoming'
-	when 'MD' then 'Maryland'
-	when 'VI' then 'Virginia'
-	when 'GA' then 'Georgia'
-	when 'WI' then 'Wisconsin'
-	when 'DC' then 'District of Columbia'
-	when 'OH' then 'Ohio'
-	when 'NV' then 'Nevada'
-	when 'OK' then 'Oklahoma'
-	when 'CO' then 'Colorado'
-	when 'WV' then 'West Virginia'
-	when 'DE' then 'Delaware'
-	when 'ME' then 'Maine'
-	when 'TN' then 'Tennessee'
-	when 'SD' then 'South Dakota	'
-	when 'NH' then 'New Hampshire'
-	when 'SC' then 'South Carolina'
-	when 'ID' then 'Idaho'
-	when 'NJ' then 'New Jersey'
+update load_data_2
+set geography_state =
+	case geography_state
+  	when 'fl' then 'florida'
+	when 'la' then 'louisiana'
+	when 'or' then 'oregon'
+	when 'ms' then 'mississippi'
+	when 'il' then 'illinois'
+	when 'in' then 'indiana'
+	when 'ut' then 'utah'
+	when 'mi' then 'michigan'
+	when 'ks' then 'kansas'
+	when 'mn' then 'minnesota'
+	when 'ne' then 'nebraska'
+	when 'ct' then 'connecticut'
+	when 'al' then 'alabama'
+	when 'ca' then 'california'
+	when 'nd' then 'north dakota'
+	when 'wa' then 'washington'
+	when 'ky' then 'kentucky'
+	when 'ri' then 'rhode island'
+	when 'va' then 'virginia'
+	when 'ia' then 'iowa'
+	when 'ny' then 'new york'
+	when 'ma' then 'massachusetts'
+	when 'tx' then 'texas'
+	when 'pa' then 'pennsylvania'
+	when 'az' then 'arizona'
+	when 'mt' then 'montana'
+	when 'nm' then 'new mexico'
+	when 'ak' then 'alaska'
+	when 'nc' then 'north carolina'
+	when 'vt' then 'vermont'
+	when 'ar' then 'arkansas'
+	when 'mo' then 'missouri'
+	when 'wy' then 'wyoming'
+	when 'md' then 'maryland'
+	when 'vi' then 'virginia'
+	when 'ga' then 'georgia'
+	when 'wi' then 'wisconsin'
+	when 'dc' then 'district of columbia'
+	when 'oh' then 'ohio'
+	when 'nv' then 'nevada'
+	when 'ok' then 'oklahoma'
+	when 'co' then 'colorado'
+	when 'wv' then 'west virginia'
+	when 'de' then 'delaware'
+	when 'me' then 'maine'
+	when 'tn' then 'tennessee'
+	when 'sd' then 'south dakota	'
+	when 'nh' then 'new hampshire'
+	when 'sc' then 'south carolina'
+	when 'id' then 'idaho'
+	when 'nj' then 'new rersey'
 	else
-		state
+		lower(geography_state)
 	end
-where length(state) <3;
-
--- substring zip 5 digit
-update geo set
-	zip = substring(zip from 1 for 5);
-
--- Add USA value where is null
-update geo set
-	country = coalesce(country, 'USA');
-
--- default null value UNKW
-update geo set
-	state = 'UNKW',
-	city = 'UNKW',
-	zip = 'UNKW'
-where state is null or city is null or zip is null;
-
--- incorect fieled default UNKW
-update geo set
-	city = 'UNKW'
-where city ~ '(\d+)';
-
+where length(geography_state) <3;
 
 select
 lower(state),
@@ -96,3 +89,23 @@ max(lower(zip)),
 lower(country),
 count(*)
 from geo group by 1,2,4;
+
+--
+-- Replace Emty cells Agency
+--
+
+update load_data set
+	funding_bureau =
+	case trim(lower(funding_bureau))
+		when '' then 'N\A'
+	else
+		trim(lower(funding_bureau))
+	end,
+	funding_bureau_id =
+	case trim(lower(funding_bureau_id))
+		when '' then 'N\A'
+	else
+		trim(lower(funding_bureau_id))
+	end
+where trim(lower(funding_bureau_id)) = '';
+
