@@ -181,4 +181,31 @@ from dim_transaction_type;
 
 DROP TABLE IF EXISTS dim_place;
 
-CREATE TABLE dim_place
+CREATE TABLE dim_place(
+    id SERIAL PRIMARY KEY,
+    state text,
+    city text,
+    zip text,
+    country text
+);
+
+INSERT INTO dim_place(
+    state,
+    city,
+    zip,
+    country
+)
+SELECT DISTINCT
+    state,
+    city,
+    zip,
+    country
+from load_data
+except
+SELECT
+    state,
+    city,
+    zip,
+    country,
+from dim_place;
+
