@@ -88,7 +88,7 @@ create table dim_date(
     day_year numeric,
     weekday_name text,
     calendar_week numeric,
-    quartal text
+    quarter text
 );
 
 
@@ -101,7 +101,7 @@ insert into dim_date (
     day_year,
     weekday_name,
     calendara_week,
-    quartal
+    quarter
 )
 SELECT
 	  date AS DATE,
