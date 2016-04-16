@@ -20,7 +20,7 @@
           ],
           "dimensions":  [
                             "date",
-                            "place",
+                            "geography",
                             "product",
                             "recipient",
                             "agency",
