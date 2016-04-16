@@ -9,8 +9,9 @@
           "aggregates":  [
             {
                 "name": "award_sum",
+                "label": "Total Award Amount",
                 "function": "sum",
-                "measure": "amount"
+                "measure": "award_amount"
             },
             {
                 "name": "transaction_count",
@@ -53,16 +54,85 @@
           ]
       }
     ],
-    "dimensions":  [
-        { "name": "date", "attributes": ["full_date", "year",
-          "month", "month_name", "day", "day_year", "weekday_name",
-          "calendar_week", "quartal"] },
-        { "name": "place", "attributes": ["state"] },
-        { "name": "product", "attributes": ["prodcut_name"] },
-        { "name": "recipient", "attributes": ["name"] },
-        { "name": "agency", "attributes": ["awarding_agency"] },
-        { "name": "transaction_type", "attributes": ["status",
-          "category_type", "category_desc"] }
+    "dimensions":  {
+        "date": {
+            "name": "date",
+            "label": "Date",
+            "role": "time",
 
-    ]
+            "levels":  [
+                {
+                    "name": "full_date",
+                    "label": "YYYY-MM-DD",
+                    "attributes":  [
+                        { "name": "full_date" }
+                    ]
+                },
+                {
+                    "name": "year",
+                    "label": "Year",
+                    "attributes":  [
+                        { "name": "year" }
+                    ]
+                },
+                {
+                    "name": "month",
+                    "label": "Month",
+                    "attributes":  [
+                        { "name": "month" },
+                        { "name": "month_name" }
+                    ]
+                },
+                {
+                    "name": "day_year",
+                    "label": "Day in the year",
+                    "attributes":  [
+                        { "name": "day_year" }
+                    ]
+                },
+                {
+                    "name": "day",
+                    "label": "Day",
+                    "attributes": [
+                        { "name": "day" }
+                    ]
+                },
+                {
+                    "name": "weekday_name",
+                    "label": "Day of the Week",
+                    "attributes":  [
+                        { "name": "weekday_name" }
+                    ]
+                },
+                {
+                    "name": "calendar_week",
+                    "label": "Week in the year",
+                    "attributes":  [
+                        { "name": "calendar_week"}
+                    ]
+                },
+                {
+                    "name": "quarter",
+                    "label": "QUarter",
+                    "attributes":  [
+                        { "name": "quarter" }
+                    ]
+                }
+            ],
+            "hierarchies":  [
+                {
+                    "name": "ymd",
+                    "levels": ["year", "month", "day"]
+                },
+                {
+                    "name": "yqmd",
+                    "levels": ["year", "quarter", "month", "day"]
+                },
+                {
+                    "name": "ym",
+                    "levels": ["year", "month"]
+                }
+            ]
+        }
+    }
 }
