@@ -133,6 +133,109 @@
                     "levels": ["year", "month"]
                 }
             ]
+        },
+        "geography": {
+            "label": "Place of Performance",
+            "levels":  [
+                {
+                    "name": "state",
+                    "label": "State",
+                    "attributes": [
+                        { "name": "state" }
+                    ]
+                },
+                {
+                    "name": "city",
+                    "label": "City",
+                    "attributes": [
+                        { "name": "city" }
+                    ]
+                },
+                {
+                    "name": "zip",
+                    "lalel": "Zip Code",
+                    "attributes": [
+                        { "name": "zip" }
+                    ]
+                },
+                {
+                    "name": "country",
+                    "label": "Country",
+                    "attributes": [
+                        { "name": "country" }
+                    ]
+                }
+            ],
+            "hierarchy": ["country", "state", "city", "zip"]
+        },
+        "product": {
+            "label": "Product",
+            "levels": [
+                {
+                    "name": "product",
+                    "label": "Product",
+                    "attributes": [
+                        { "name": "product_name" }
+                      ]
+                }
+            ]
+        },
+        "transaction_type": {
+            "label": "Type of Transaction",
+            "levels": [
+                {
+                    "name": "transaction_type",
+                    "label": "Type of Transaction",
+                    "attributes": [
+                        { "name": "id" },
+                        { "name": "status" },
+                        { "name": "category_type" },
+                        { "name": "category_desc" }
+                    ]
+                }
+            ]
+        },
+        "agency": {
+            "label": "Awarding Agency",
+            "levels": [
+                {
+                    "name": "agency",
+                    "label": "Awarding Agency",
+                    "attributes": [
+                        { "name": "awarding_agency" }
+                    ]
+                },
+                {
+                    "name": "funding_agency",
+                    "label": "Funding Agency",
+                    "attributes": [
+                        { "name": "funding_agency" }
+                    ]
+                },
+                {
+                    "name": "bureau",
+                    "label": "Bureau",
+                    "attributes": [
+                        { "name": "bureau" }
+                    ]
+                }
+            ],
+            "hierarchy": ["awarding_agency", "funding_agency", "bureau"]
+        },
+        "recipient": {
+            "label": "Recipient",
+            "levels": [
+                {
+                    "name": "recipient",
+                    "key": "id",
+                    "label": "Recient",
+                    "attributes": [
+                        { "name": "name" },
+                        { "name": "streetaddress" },
+                        { "name": "duns" }
+                    ]
+                }
+            ]
         }
     }
 }
