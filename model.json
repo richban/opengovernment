@@ -32,8 +32,8 @@
                   "detail": "dim_date.id"
               },
               {
-                  "master": "place_id",
-                  "detail": "dim_place.id"
+                  "master": "geography_id",
+                  "detail": "dim_geography.id"
               },
               {
                   "master": "product_id",
@@ -54,8 +54,8 @@
           ]
       }
     ],
-    "dimensions":  {
-        "date": {
+    "dimensions":  [
+        {
             "name": "date",
             "label": "Date",
             "role": "time",
@@ -134,7 +134,8 @@
                 }
             ]
         },
-        "geography": {
+        {
+            "name": "geography",
             "label": "Place of Performance",
             "levels":  [
                 {
@@ -153,7 +154,7 @@
                 },
                 {
                     "name": "zip",
-                    "lalel": "Zip Code",
+                    "label": "Zip Code",
                     "attributes": [
                         { "name": "zip" }
                     ]
@@ -166,9 +167,15 @@
                     ]
                 }
             ],
-            "hierarchy": ["country", "state", "city", "zip"]
+            "hierarchies": [
+                {
+                    "name": "cscz",
+                    "levels": ["country", "state", "city", "zip"]
+                }
+            ]
         },
-        "product": {
+        {
+            "name": "product",
             "label": "Product",
             "levels": [
                 {
@@ -180,14 +187,14 @@
                 }
             ]
         },
-        "transaction_type": {
+        {
+            "name": "transaction_type",
             "label": "Type of Transaction",
             "levels": [
                 {
                     "name": "transaction_type",
                     "label": "Type of Transaction",
                     "attributes": [
-                        { "name": "id" },
                         { "name": "status" },
                         { "name": "category_type" },
                         { "name": "category_desc" }
@@ -195,11 +202,12 @@
                 }
             ]
         },
-        "agency": {
+        {
+            "name": "agency",
             "label": "Awarding Agency",
             "levels": [
                 {
-                    "name": "agency",
+                    "name": "awarding_agency",
                     "label": "Awarding Agency",
                     "attributes": [
                         { "name": "awarding_agency" }
@@ -220,14 +228,19 @@
                     ]
                 }
             ],
-            "hierarchy": ["awarding_agency", "funding_agency", "bureau"]
+            "hierarchies": [
+                {
+                    "name": "afb",
+                    "levels": ["awarding_agency", "funding_agency", "bureau"]
+                }
+            ]
         },
-        "recipient": {
+        {
+            "name": "recipient",
             "label": "Recipient",
             "levels": [
                 {
                     "name": "recipient",
-                    "key": "id",
                     "label": "Recient",
                     "attributes": [
                         { "name": "name" },
@@ -237,5 +250,5 @@
                 }
             ]
         }
-    }
+    ]
 }
