@@ -1,0 +1,68 @@
+{
+    "cubes":  [
+      {
+          "name": "spending",
+          "name": "spending",
+          "measures": [
+            { "name": "award_amount" ,"label": "Award amount"}
+          ],
+          "aggregates":  [
+            {
+                "name": "award_sum",
+                "function": "sum",
+                "measure": "amount"
+            },
+            {
+                "name": "transaction_count",
+                "function": "count"
+            }
+          ],
+          "dimensions":  [
+                            "date",
+                            "place",
+                            "product",
+                            "recipient",
+                            "agency",
+                            "transaction_type"
+                         ],
+          "joins":  [
+              {
+                  "master": "date_id",
+                  "detail": "dim_date.id"
+              },
+              {
+                  "master": "place_id",
+                  "detail": "dim_place.id"
+              },
+              {
+                  "master": "product_id",
+                  "detail": "dim_product.id"
+              },
+              {
+                  "master": "recipient_id",
+                  "detail": "dim_recipient.id"
+              },
+              {
+                  "master": "agency_id",
+                  "detail": "dim_agency.id"
+              },
+              {
+                  "master": "transaction_type_id",
+                  "detail": "dim_transaction_type.id"
+              }
+          ]
+      }
+    ],
+    "dimensions":  [
+        { "name": "date", "attributes": ["full_date", "year",
+          "month", "month_name", "day", "day_year", "weekday_name",
+          "calendar_week", "quartal"] },
+        { "name": "place", "attributes": ["state"] },
+        { "name": "product", "attributes": ["prodcut_name"] },
+        { "name": "recipient", "attributes": ["name"] },
+        { "name": "agency", "attributes": ["awarding_agency"] },
+        { "name": "transaction_type", "attributes": ["status",
+          "category_type", "category_desc"] }
+
+    ]
+}
