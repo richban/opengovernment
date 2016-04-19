@@ -1,4 +1,5 @@
 from flask import Flask, render_template, url_for, request, make_response
+from flask.ext.paginate import Pagination
 import cubes
 import os.path
 from cubes.server import slicer, workspace
@@ -22,7 +23,8 @@ def template_test():
 
 @app.route("/drilldown")
 @app.route("/drilldown/<dim_name>")
-def drilldown(dim_name=None):
+@app.route("/drilldown/<dim_name>/<int:page>")
+def drilldown(dim_name=None, page=1):
     cube = workspace.cube(CUBE_NAME)
     browser = workspace.browser(cube)
     result = browser.aggregate()
@@ -45,10 +47,10 @@ def drilldown(dim_name=None):
         path = []
 
     # print("AGGREGATE %s DD: %s" % (cell, dim_name))
-    result = browser.aggregate(cell, drilldown=[dim_name])
+    result = browser.aggregate(cell, drilldown=[dim_name], page=page, page_size=10)
 
     if path:
-        details = browser.cell_details(cell, dimension[0])
+        details = browser.cell_details(cell, dimension)[0]
     else:
         details = []
 
@@ -60,6 +62,11 @@ def drilldown(dim_name=None):
 
     is_last = hierarchy.is_last(next_level)
 
+    labels = [detail["_label"] for detail in details]
+
+
+    pagination = Pagination(page=page, css_framework='foundation', total=result.total_cell_count)
+
     return render_template('drilldown.html',
                             dimensions=cube.dimensions,
                             dimension=dimension,
@@ -68,9 +75,9 @@ def drilldown(dim_name=None):
                             result=result,
                             cell=cell,
                             is_last=is_last,
-                            details=details)
-
-
+                            details=details,
+                            pagination=pagination,
+                            labels=labels)
 
 
 if __name__ == '__main__':
