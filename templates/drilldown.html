@@ -1,8 +1,9 @@
 {% extends "template.html" %}
 {% block content %}
+<br>
 <div class="btn-group">
     {% for dimension in dimensions %}
-        <button class="btn">
+        <button class="btn btn-default">
         <a href="{{ url_for('drilldown', dim_name=dimension.name )}}">{{dimension.label or dimension.name}}</a>
         </button>
     {% endfor %}
@@ -35,16 +36,14 @@
         {% if loop.last %}
             {{level.label}}: {{details[loop.index0]._label}}
         {% else %}
-        
-        <!-- 
+        <!--
         Create a link to upper levels. The link construction is similar as
         above for the root, just `level` is passed to state concrete
         level to be rolled up to.
         -->
-        
         <a href="?cut={{cell.rollup_dim(dimension,level).to_str()}}">
-            {{level.label}}: {{details[loop.index0]._label}} 
-        </a> 
+            {{level.label}}: {{details[loop.index0]._label}}
+        </a>
         <span class="divider">::</span>
         {% endif %}
          </li>
@@ -53,7 +52,8 @@
 </div>
 
 <!-- Display the data -->
-
+{{ pagination.info }}
+<br>
 <table class="table table-striped table-bordered">
     <thead>
     <tr><th>{{next_level.label or next_level.name}}</th><th>Count</th><th>Amount</th></tr>
@@ -66,7 +66,7 @@
             {{row.label}}
         {% else %}
         <a href="?cut={{cell.drilldown(dimension, row.key)}}">
-            {{row.label}}
+          {{row.label}}
         </a>
         {% endif %}
         </td>
@@ -77,9 +77,9 @@
     <tr><th>Total</th>
         <th>{{result.summary.transaction_count}}</th>
         <th>{{result.summary.award_sum}}</th></tr>
-        
     </tbody>
 </table>
 
+{{ pagination.links }}
 {% endif %} <!-- if dim -->
 {% endblock %}
