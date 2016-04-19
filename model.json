@@ -113,7 +113,7 @@
                 },
                 {
                     "name": "quarter",
-                    "label": "QUarter",
+                    "label": "Quarter",
                     "attributes":  [
                         { "name": "quarter" }
                     ]
@@ -131,6 +131,10 @@
                 {
                     "name": "ym",
                     "levels": ["year", "month"]
+                },
+                {
+                    "name": "dn",
+                    "levels": ["day", "weekday_name"]
                 }
             ]
         },
@@ -247,6 +251,21 @@
                         { "name": "streetaddress" },
                         { "name": "duns" }
                     ]
+                }
+            ]
+        }
+    ],
+    "cuts": [
+        {
+            "type": "point",
+            "dimension": "geography",
+            "level_depth": 1,
+            "path": ["usa"],
+            "details": [
+                {
+                    "geography.country": "usa",
+                    "_key": "usa",
+                    "_label": "United States of America"
                 }
             ]
         }
