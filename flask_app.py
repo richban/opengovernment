@@ -5,6 +5,7 @@ import cubes
 import os.path
 from cubes.server import slicer, workspace
 import sqlalchemy
+from cubes import PointCut
 
 #
 # The Flask Application
@@ -23,13 +24,73 @@ def template_test():
     return render_template('template.html', my_string="Hello World")
 
 
+@app.route("/spending/all", methods=['GET', 'POST'])
+def all():
+    cube = workspace.cube(CUBE_NAME)
+    browser = workspace.browser(cube)
+    result = browser.aggregate()
+
+    geo_cut = PointCut("geography", ["usa"])
+    cell = cubes.Cell(browser.cube, [geo_cut])
+
+    page = int(request.args.get('page', 0))
+
+    result = browser.aggregate(cell, drilldown=["recipient"], page=page, page_size=10)
+
+    pagination = Pagination(page=page, css_framework='foundation', total=result.total_cell_count, per_page=10)
+
+    return render_template('all.html', result=result,
+                                        pagination=pagination)
+
 @app.route("/spending")
 def spending():
     cube = workspace.cube(CUBE_NAME)
     browser = workspace.browser(cube)
     result = browser.aggregate()
 
-    return render_template('spending.html', dimensions=cube.dimensions)
+    states = []
+    cities = []
+    agencies = []
+    years = []
+    months = []
+
+    geography_cut = PointCut("geography", ["usa"])
+
+    geo_cell = cubes.Cell(browser.cube, [geography_cut])
+    cell = cubes.Cell(browser.cube)
+
+    geo_members = browser.members(geo_cell, "geography")
+    ag_members = browser.members(cell, "agency")
+    date_members = browser.members(cell, "date")
+
+    for member in date_members:
+        if(member["date.year"] != "N\A"):
+            years.append(member["date.year"])
+        if(member["date.month"] != "N\A"):
+            months.append(member["date.month"])
+
+    for member in ag_members:
+        if(member["agency.awarding_agency"] != "N\A"):
+            agencies.append(member["agency.awarding_agency"])
+
+    for member in geo_members:
+        if(member["geography.state"] != "N\A"):
+            states.append(member["geography.state"])
+        if(member["geography.city"] != "N\A"):
+            cities.append(member["geography.city"])
+
+    states = sorted(set(states))
+    cities = sorted(set(cities))
+    agencies = sorted(set(agencies))
+    years = sorted(set(years))
+    months = sorted(set(months))
+
+    return render_template('spending.html', states=states,
+                            cities=cities,
+                            agencies=agencies,
+                            years=years,
+                            months=months)
+
 
 
 @app.route("/drilldown")
