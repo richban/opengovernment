@@ -1,5 +1,19 @@
 {% extends "template.html" %}
 {% block content %}
+
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+        Dashboard <small> Report Overview</small>
+      </h1>
+    </div>
+  </div>
+  <!-- /.row -->
+
+
 <br>
 <div class="btn-group">
     {% for dimension in dimensions %}
@@ -71,15 +85,19 @@
         {% endif %}
         </td>
         <td>{{row.record.transaction_count}}</td>
-        <td>{{row.record.award_sum}}</td>
+        <td>$ {{row.record.award_sum}}</td>
     </tr>
     {% endfor %}
     <tr><th>Total</th>
         <th>{{result.summary.transaction_count}}</th>
-        <th>{{result.summary.award_sum}}</th></tr>
+        <th>$ {{result.summary.award_sum}}</th></tr>
     </tbody>
 </table>
 
 {{ pagination.links }}
 {% endif %} <!-- if dim -->
 {% endblock %}
+
+</div>
+<!-- /.container-fluid -->
+
