@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, request, make_response
 from flask.ext.paginate import Pagination
+from flask import Blueprint
 import cubes
 import os.path
 from cubes.server import slicer, workspace
@@ -17,14 +18,23 @@ DB_URL = "postgresql://richardbanyi:dpcu923@localhost:5432/usaspending"
 CUBE_NAME = "spending"
 
 
-@app.route('/')
+@app.route("/")
 def template_test():
     return render_template('template.html', my_string="Hello World")
 
+
+@app.route("/spending")
+def spending():
+    cube = workspace.cube(CUBE_NAME)
+    browser = workspace.browser(cube)
+    result = browser.aggregate()
+
+    return render_template('spending.html', dimensions=cube.dimensions)
+
+
 @app.route("/drilldown")
 @app.route("/drilldown/<dim_name>")
-@app.route("/drilldown/<dim_name>/<int:page>")
-def drilldown(dim_name=None, page=1):
+def drilldown(dim_name=None):
     cube = workspace.cube(CUBE_NAME)
     browser = workspace.browser(cube)
     result = browser.aggregate()
@@ -37,6 +47,7 @@ def drilldown(dim_name=None, page=1):
     hierarchy = dimension.hierarchy()
 
     cutstr = request.args.get("cut")
+    page = int(request.args.get('page', 0))
     cell = cubes.Cell(browser.cube, cubes.cuts_from_string(cube, cutstr))
 
     cut = cell.cut_for_dimension(dimension)
@@ -46,7 +57,6 @@ def drilldown(dim_name=None, page=1):
     else:
         path = []
 
-    # print("AGGREGATE %s DD: %s" % (cell, dim_name))
     result = browser.aggregate(cell, drilldown=[dim_name], page=page, page_size=10)
 
     if path:
@@ -62,10 +72,7 @@ def drilldown(dim_name=None, page=1):
 
     is_last = hierarchy.is_last(next_level)
 
-    labels = [detail["_label"] for detail in details]
-
-
-    pagination = Pagination(page=page, css_framework='foundation', total=result.total_cell_count)
+    pagination = Pagination(page=page, css_framework='foundation', total=result.total_cell_count, per_page=10)
 
     return render_template('drilldown.html',
                             dimensions=cube.dimensions,
@@ -76,8 +83,8 @@ def drilldown(dim_name=None, page=1):
                             cell=cell,
                             is_last=is_last,
                             details=details,
-                            pagination=pagination,
-                            labels=labels)
+                            pagination=pagination
+                            )
 
 
 if __name__ == '__main__':
