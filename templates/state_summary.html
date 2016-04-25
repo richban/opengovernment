@@ -1,0 +1,74 @@
+{% extends "charts.html" %}
+{% block chart3 %}
+  <!-- chart1 -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">State/Territory Summaries</h3>
+        </div>
+        <div class="panel-body">
+          <div class=row>
+            <div class="col-md-4 col-md-offset-10">
+              <button id="drillUp" class="btn btn-default">Roll up</button>
+            </div>
+          </div>
+          <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto;"></div>
+        </div>
+        <!-- /.panel-body-->
+      </div>
+    </div>
+  </div> <!-- /.chart1-->
+
+<script type=text/javascript>
+  var chart1; // globally available
+
+  Highcharts.setOptions({
+      lang: {
+        drillUpText: '◁ Back to ' + this.name
+      }
+  });
+
+  var options = {
+    chart: {
+       renderTo: 'container'
+     },
+    credits: {
+      enabled: false
+    },
+    rangeSelector: {
+        selected: 1
+     },
+    title: {
+      text: "FUNDING AWARDED BY STATE/TERRITORY"
+    },
+    tooltip: {
+      shadow: false,
+      enabled: true
+    },
+    plotOptions: {
+      bar: {
+        size: '100%',
+        cursor: 'pointer',
+        datalabels: {
+          enabled: true
+        },
+        allowPointSelect: false
+      }
+    },
+    series: [{
+      type: 'bar'
+    },
+      data: [
+      {% for row in result %}
+           { y: {{row.record.award_sum}}},
+      {% endfor%}
+      ]
+     }]
+  };
+
+  var chart1 = new Highcharts.Chart(options);
+</script>
+{% endblock %}
+
+
