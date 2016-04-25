@@ -1,6 +1,5 @@
 {% extends "template.html" %}
 {% block content %}
-
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -27,8 +26,7 @@
               <div class="col-lg-4">
                 <div class="form-group">
                   <label>Fiscal Year</label>
-                  <select class="form-control">
-                    <option>View All</option>
+                  <select class="form-control" name="year">
                     {% for year in years %}
                     <option>{{year}}</option>
                     {% endfor %}
@@ -39,7 +37,7 @@
               <div class="col-lg-4">
                 <div class="form-group">
                   <label>Fiscal Month</label>
-                  <select class="form-control">
+                  <select class="form-control" name="month">
                     <option>View All</option>
                     {% for month in months %}
                     <option>{{month}}</option>
@@ -61,7 +59,7 @@
               <div class="col-lg-3">
                 <div class="form-group">
                   <label>State</label>
-                  <select class="form-control">
+                  <select class="form-control" name="state">
                     <option>View All</option>
                     {% for state in states %}
                     <option>{{state}}</option>
@@ -70,7 +68,7 @@
                 </div>
                 <div class="form-group">
                   <label>City</label>
-                  <select class="form-control">
+                  <select class="form-control" name="city">
                     <option>View All</option>
                     {% for city in cities %}
                     <option>{{city}}</option>
@@ -82,7 +80,7 @@
               <div class="col-lg-3">
                 <div class="form-group">
                   <label>Zipcode</label>
-                  <input class="form-control"></textarea>
+                  <input class="form-control" name="zip"></textarea>
                   <span class="input-group-btn"><i class="fa fa-search"></i></span>
                 </div>
               </div>
@@ -114,8 +112,8 @@
                 <div class="col-lg-9">
                   <br>
                   <br>
-                  <button type="submit" class="btn btn-success btn-lg btn-block">Go!</button>
-                  <button type="submit" class="btn btn-warning btn-lg btn-block">Reset</button>
+                  <button type="submit" class="btn btn-success btn-lg btn-block" name="submit" value="go">Go!</button>
+                  <button type="submit" class="btn btn-warning btn-lg btn-block" name="submit" value="reset">Reset</button>
                 </div><!-- /.button-->
               </div>
             </div><!-- /.row-->
@@ -124,7 +122,7 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <label>Agency</label>
-                  <select class="form-control">
+                  <select class="form-control" name="agency">
                     <option>View All</option>
                     {% for agency in agencies %}
                     <option>{{agency}}</option>
