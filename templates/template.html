@@ -43,8 +43,13 @@
   <script type=text/javascript src="{{ url_for('static', filename='js/morris-data.js') }}"></script>
 
   <!-- Custom Theme JavaScript -->
-  <script src="{{ url_for('static', filename='dist/js/sb-admin-2.js') }}"></script>
+  <script type=text/javascript src="{{ url_for('static', filename='dist/js/sb-admin-2.js') }}"></script>
 
+  <!-- Graphs -->
+  <script type=text/javascript src="https://code.highcharts.com/highcharts.js"></script>
+  <script type=text/javascript src="https://code.highcharts.com/modules/data.js"></script>
+  <script type=text/javascript src="https://code.highcharts.com/modules/drilldown.js"></script>
+  <script type=text/javascript src="https://code.jquery.com/jquery-2.2.3.js"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -84,7 +89,7 @@
                           <a href="{{ url_for('spending') }}"><i class="fa fa-fw fa-edit"></i> Spending</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts</a>
+                          <a href="{{ url_for('charts') }}"><i class="fa fa-bar-chart-o fa-fw"></i> Charts</a>
                         <li>
                             <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
                         </li>
