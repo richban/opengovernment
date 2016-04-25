@@ -175,6 +175,10 @@
                 {
                     "name": "cscz",
                     "levels": ["country", "state", "city", "zip"]
+                },
+                {
+                    "name": "cz",
+                    "levels": ["country", "zip"]
                 }
             ]
         },
