@@ -1,0 +1,157 @@
+{% extends "template.html" %}
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">
+          {{chart}} <small>Overview</small>
+        </h1>
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Drilldown Charts</h3>
+        </div>
+        <div class="panel-body">
+          <div class=row>
+            <div class="col-lg-6 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-signal fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">Geography</div>
+                                <div>Drilldown!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{{ url_for('drilldown_charts', dim_name="geography") }}">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-bar-chart-o fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">Agency</div>
+                                <div>Drilldown!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{{ url_for('drilldown_charts', dim_name="agency") }}">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+          </div><!-- ./row -->
+        </div>
+        <!-- /.panel-body-->
+  </div> <!-- /.chart1-->
+
+    <!-- Filters -->
+  <div class="row">
+
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Agency Profile</h3>
+        </div>
+        <div class="panel-body">
+          <form role="form" action="{{ url_for('charts') }}" method="post">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="form-group">
+                  {{ form.agency.label }}
+                  <div>
+                    {{ form.agency(class="form-control")}}
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  {{ form.year.label }}
+                  <div>
+                    {{ form.year(class="form-control")}}
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <br>
+                <button type="submit" class="btn btn-primary btn-lg" name="submit" value="sub_agency">Go!</button>
+              </div>
+            </div><!--./row-->
+          </form>
+        </div> <!-- ./panel-body-->
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">State Summary</h3>
+        </div>
+        <div class="panel-body">
+          <form role="form" action="{{ url_for('charts') }}" method="post">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="form-group">
+                  {{ form.state.label }}
+                  <div>
+                    {{ form.state(class="form-control")}}
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  {{ form.year.label }}
+                  <div>
+                    {{ form.year(class="form-control")}}
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <br>
+                <button type="submit" class="btn btn-primary btn-lg" name="submit" value="sub_state">Go!</button>
+              </div>
+              </div>
+            </div>
+          </form>
+        </div> <!-- ./panel-body-->
+      </div>
+    </div>
+  </div> <!-- ./Filter-->
+
+{% block chart1 %}
+{% endblock %}
+
+{% block chart2 %}
+{% endblock%}
+
+{% block chart3 %}
+{% endblock %}
+
+{% block chart4 %}
+{% endblock %}
+
+{% endblock %}
