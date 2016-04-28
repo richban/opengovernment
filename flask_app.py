@@ -55,11 +55,11 @@ def charts():
 
     geography_cut = PointCut("geography", ["usa"])
     geo_cell = cubes.Cell(browser.cube, [geography_cut])
-    cell = cubes.Cell(browser.cube)
+    cell_ = cubes.Cell(browser.cube)
 
     geo_members = browser.members(geo_cell, "geography")
-    ag_members = browser.members(cell, "agency")
-    date_members = browser.members(cell, "date")
+    ag_members = browser.members(cell_, "agency")
+    date_members = browser.members(cell_, "date")
 
     for member in date_members:
         if(member["date.year"] != "N\A"):
@@ -90,18 +90,19 @@ def charts():
                     ]
 
             cell = cubes.Cell(browser.cube, cut)
-            result = browser.aggregate(cell)
+            result = browser.aggregate(cell, drilldown=["transaction_type"])
 
             return render_template('agency_summary.html', result=result, form=form)
 
         if request.form['submit'] == 'sub_state':
             cut = [
                     PointCut("date", [int(form.year.data)]),
-                    PointCut("geography", ["usa", form.state.data])
+                    PointCut("geography", ["usa", form.state.data],
+                                hierarchy="cscz")
                     ]
 
             cell = cubes.Cell(browser.cube, cut)
-            result = browser.aggregate(cell)
+            result = browser.aggregate(cell, drilldown=["geography"])
 
             return render_template('state_summary.html', result=result, form=form)
     else:
@@ -230,12 +231,12 @@ def all():
 
     # states, cities, agencies, years, months = spending()
 
+    page = int(request.args.get('page', 0))
+
     if request.method == 'POST':
         if request.form['submit'] == 'reset':
             geo_cut = PointCut("geography", ["usa"])
             cell = cubes.Cell(browser.cube, [geo_cut])
-
-            page = int(request.args.get('page', 0))
 
             result = browser.aggregate(cell, drilldown=["recipient"], page=page, page_size=10)
 
@@ -267,7 +268,7 @@ def all():
 
             cell = cubes.Cell(browser.cube, cuts)
 
-            page = int(request.args.get('page', 0))
+            # page = int(request.args.get('page', 0))
 
             result = browser.aggregate(cell, drilldown=["recipient"], page=page, page_size=10)
 
