@@ -9,17 +9,42 @@
         </div>
         <div class="panel-body">
           <div class=row>
-            <div class="col-md-4 col-md-offset-10">
-              <button id="drillUp" class="btn btn-default">Roll up</button>
-            </div>
+          <div class="col-md-6">
+            <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto;"></div>
           </div>
-          <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto;"></div>
+
+          <div class="col-md-6">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-xs-9 text-left">
+                            <div class="huge">$ {{ result.summary.award_sum }}</div>
+                            <div>Total Funds Awarded</div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div> <!-- Panel Transaction Sumt -->
+
+          <div class="col-md-6">
+              <div class="panel panel-warning">
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-xs-9 text-left">
+                            <div class="huge">{{ result.summary.transaction_count }}</div>
+                            <div><div>Total Number of Transaction</div></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div> <!-- Panel Transaction Count -->
+
+
         </div>
         <!-- /.panel-body-->
       </div>
     </div>
   </div> <!-- /.chart1-->
-
 <script type=text/javascript>
   var chart1; // globally available
   var options = {
@@ -33,14 +58,14 @@
         selected: 1
      },
     title: {
-      text: "FUNDING AWARDED BY AGENCY"
+      text: "TOTAL FUNDS AWARDED BY TYPE"
     },
     tooltip: {
       shadow: false,
       enabled: true,
     },
     plotOptions: {
-      bar: {
+      pie: {
         size: '100%',
         cursor: 'pointer',
         datalabels: {
@@ -50,10 +75,14 @@
       }
     },
     series: [{
-      type: 'bar',
+      type: 'pie',
       data: [
       {% for row in result %}
-      { y: {{row["award_sum"]}}}
+        {% if loop.last %}
+          { name: '{{row["transaction_type.category_type"]}}', y: {{row["award_sum"]}}}
+        {% else %}
+          { name: '{{row["transaction_type.category_type"]}}', y: {{row["award_sum"]}}},
+        {% endif %}
       {% endfor%}
       ]
      }]

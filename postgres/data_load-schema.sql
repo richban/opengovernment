@@ -3,7 +3,7 @@
 --
 
 CREATE TABLE load_data(
-    id BIGSERIAL PRIMARY KEY,
+    id BIGSERIaL PRIMaRY KEY,
     transaction_id text,
     transaction_status text,
     transaction_cat text default null,
@@ -75,28 +75,31 @@ select
     'contracts',
     signeddate,
     cast(fiscal_year as int) fiscal_year,
-    nullif(coalesce(lower(substring(contractactiontype from 4)), 'N\A'), ''),
-    'N\A',
-    coalesce(nullif(lower(substring(typeofcontractpricing from 4)), ''), 'N\A'),
-    piid,
-    coalesce(nullif(lower(descriptionofcontractrequirement), ''), 'N\A'),
+    nullif(coalesce(lower(substring(contractactiontype from 4)), 'n\a'), ''),
+    'n\a',
+    coalesce(nullif(lower(substring(typeofcontractpricing from 4)), ''), 'n\a'),
+    case
+      when idvpiid is not null then trim(idvpiid)
+      else trim(piid)
+    end as award_id,
+    coalesce(nullif(lower(descriptionofcontractrequirement), ''), 'n\a'),
     dollarsobligated,
     modnumber,
-    coalesce(nullif(trim(lower(substring(reasonformodification from 4))), ''), 'N\A'),
-    coalesce(nullif(trim(lower(substring(maj_agency_cat from 7))), ''), 'N\A'),
-    coalesce(nullif(trim(lower(substring(maj_fund_agency_cat from 7))), ''), 'N\A'),
-    coalesce(nullif(trim(lower(substring(contractingofficeagencyid from 7))), ''), 'N\A'),
-    coalesce(nullif(trim(lower(vendorname)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(streetaddress)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(city)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(state)), ''), 'N\A'),
-    coalesce(nullif(trim(substring(zipcode from 1 for 5)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(substring(vendorcountrycode from 6))), ''), 'N\A'),
-    coalesce(nullif(trim(lower(dunsnumber)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(substring(productorservicecode from 7))), ''), 'N\A'),
-    coalesce(nullif(trim(lower(placeofperformancecity)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(substring(pop_state_code from 5))), ''), 'N\A'),
-    coalesce(nullif(trim(lower(substring(placeofperformancezipcode from 1 for 5))), ''), 'N\A'),
+    coalesce(nullif(trim(lower(substring(reasonformodification from 4))), ''), 'n\a'),
+    coalesce(nullif(trim(lower(substring(maj_agency_cat from 7))), ''), 'n\a'),
+    coalesce(nullif(trim(lower(substring(maj_fund_agency_cat from 7))), ''), 'n\a'),
+    coalesce(nullif(trim(lower(substring(contractingofficeagencyid from 7))), ''), 'n\a'),
+    coalesce(nullif(trim(lower(vendorname)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(streetaddress)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(city)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(state)), ''), 'n\a'),
+    coalesce(nullif(trim(substring(zipcode from 1 for 5)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(substring(vendorcountrycode from 6))), ''), 'n\a'),
+    coalesce(nullif(trim(lower(dunsnumber)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(substring(productorservicecode from 7))), ''), 'n\a'),
+    coalesce(nullif(trim(lower(placeofperformancecity)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(substring(pop_state_code from 5))), ''), 'n\a'),
+    coalesce(nullif(trim(lower(substring(placeofperformancezipcode from 1 for 5))), ''), 'n\a'),
     coalesce(nullif(trim(lower(substring(placeofperformancecountrycode from 6))), ''), 'usa'),
     last_modified_date
   from
@@ -142,32 +145,40 @@ select
     'grants',
     obligation_action_date,
     cast(fiscal_year as int) fiscal_year,
-    coalesce(nullif(lower(substring(action_type from 4)), ''), 'N\A'),
-    coalesce(nullif(lower(substring(assistance_type from 5)), ''), 'N\A'),
-    'N\A',
-    federal_award_id,
-    coalesce(nullif(lower(project_description), ''), 'N\A'),
+    coalesce(nullif(lower(substring(action_type from 4)), ''), 'n\a'),
+    coalesce(nullif(lower(substring(assistance_type from 5)), ''), 'n\a'),
+    'n\a',
+    trim(federal_award_id),
+    coalesce(nullif(lower(project_description), ''), 'n\a'),
     fed_funding_amount,
     coalesce(federal_award_mod, '0'),
-    'N\A',
-    coalesce(nullif(trim(lower(substring(maj_agency_cat from 7))), ''), 'N\A'),
-    coalesce(nullif(trim(lower(substring(agency_code from 7))), ''), 'N\A'),
-    'N\A',
-    coalesce(nullif(trim(lower(recipient_name)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(receip_addr1)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(recipient_city_name)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(principal_place_state)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(substring(recipient_zip from 1 for 5))), ''), 'N\A'),
-    coalesce(nullif(trim(lower(recipient_country_code)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(duns_no)), ''), 'N\A'),
-    'N\A',
-    coalesce(nullif(trim(lower(principal_place_cc)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(principal_place_state)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(substring(principal_place_zip from 1 for 5))), ''), 'N\A'),
-    coalesce(nullif(trim(lower(principal_place_country_code)), ''), 'usa'),
+    'n\a',
+    coalesce(nullif(trim(lower(substring(maj_agency_cat from 7))), ''), 'n\a'),
+    coalesce(nullif(trim(lower(substring(agency_code from 7))), ''), 'n\a'),
+    'n\a',
+    coalesce(nullif(trim(lower(recipient_name)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(receip_addr1)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(recipient_city_name)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(principal_place_state)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(substring(recipient_zip from 1 for 5))), ''), 'n\a'),
+    case
+    	when a.recipient_country_code = b.country_code then lower(trim(b.country_name))
+    	else coalesce(nullif(trim(lower(recipient_country_code)), ''), 'n\a')
+    end,
+    coalesce(nullif(trim(lower(duns_no)), ''), 'n\a'),
+    'n\a',
+    coalesce(nullif(trim(lower(principal_place_cc)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(principal_place_state)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(substring(principal_place_zip from 1 for 5))), ''), 'n\a'),
+    case
+    	when a.principal_place_country_code = b.country_code then lower(trim(b.country_name))
+    	else coalesce(nullif(trim(lower(principal_place_country_code)), ''), 'united states of america')
+    end,
     last_modified_date
   from
-    base_grants;
+    base_grants a left join country_codes_names b
+    on a.recipient_country_code = b.country_code or a.principal_place_country_code = b.country_code
+    where federal_award_id is not null;
 
 insert into load_data(
 	  transaction_id,
@@ -208,32 +219,40 @@ select
     'loans',
     obligation_action_date,
     cast(fiscal_year as int) fiscal_year,
-    coalesce(nullif(lower(substring(action_type from 4)), ''), 'N\A'),
-    coalesce(nullif(lower(substring(assistance_type from 5)), ''), 'N\A'),
-    'N\A',
-    federal_award_id,
-    coalesce(nullif(lower(project_description), ''), 'N\A'),
+    coalesce(nullif(lower(substring(action_type from 4)), ''), 'n\a'),
+    coalesce(nullif(lower(substring(assistance_type from 5)), ''), 'n\a'),
+    'n\a',
+    trim(federal_award_id),
+    coalesce(nullif(lower(project_description), ''), 'n\a'),
     fed_funding_amount,
     coalesce(federal_award_mod, '0'),
-    'N\A',
-    coalesce(nullif(trim(lower(substring(maj_agency_cat from 7))), ''), 'N\A'),
-    coalesce(nullif(trim(lower(substring(agency_code from 7))), ''), 'N\A'),
-    'N\A',
-    coalesce(nullif(trim(lower(recipient_name)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(receip_addr1)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(recipient_city_name)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(principal_place_state)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(substring(recipient_zip from 1 for 5))), ''), 'N\A'),
-    coalesce(nullif(trim(lower(recipient_country_code)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(duns_no)), ''), 'N\A'),
-    'N\A',
-    coalesce(nullif(trim(lower(principal_place_cc)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(principal_place_state)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(substring(principal_place_zip from 1 for 5))), ''), 'N\A'),
-    coalesce(nullif(trim(lower(principal_place_country_code)), ''), 'usa'),
+    'n\a',
+    coalesce(nullif(trim(lower(substring(maj_agency_cat from 7))), ''), 'n\a'),
+    coalesce(nullif(trim(lower(substring(agency_code from 7))), ''), 'n\a'),
+    'n\a',
+    coalesce(nullif(trim(lower(recipient_name)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(receip_addr1)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(recipient_city_name)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(principal_place_state)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(substring(recipient_zip from 1 for 5))), ''), 'n\a'),
+    case
+    	when a.recipient_country_code = b.country_code then lower(trim(b.country_name))
+    	else coalesce(nullif(trim(lower(recipient_country_code)), ''), 'n\a')
+    end,
+    coalesce(nullif(trim(lower(duns_no)), ''), 'n\a'),
+    'n\a',
+    coalesce(nullif(trim(lower(principal_place_cc)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(principal_place_state)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(substring(principal_place_zip from 1 for 5))), ''), 'n\a'),
+    case
+    	when a.principal_place_country_code = b.country_code then lower(trim(b.country_name))
+    	else coalesce(nullif(trim(lower(principal_place_country_code)), ''), 'united states of america')
+    end,
     last_modified_date
   from
-    base_loans;
+    base_loans a left join country_codes_names b
+    on a.recipient_country_code = b.country_code or a.principal_place_country_code = b.country_code
+    where federal_award_id is not null;
 
 
 insert into load_data(
@@ -275,29 +294,37 @@ select
     'other financial assistance',
     obligation_action_date,
     cast(fiscal_year as int) fiscal_year,
-    coalesce(nullif(lower(substring(action_type from 4)), ''), 'N\A'),
-    coalesce(nullif(lower(substring(assistance_type from 5)), ''), 'N\A'),
-    'N\A',
-    federal_award_id,
-    coalesce(nullif(lower(project_description), ''), 'N\A'),
+    coalesce(nullif(lower(substring(action_type from 4)), ''), 'n\a'),
+    coalesce(nullif(lower(substring(assistance_type from 5)), ''), 'n\a'),
+    'n\a',
+    trim(federal_award_id),
+    coalesce(nullif(lower(project_description), ''), 'n\a'),
     fed_funding_amount,
     coalesce(federal_award_mod, '0'),
-    'N\A',
-    coalesce(nullif(trim(lower(substring(maj_agency_cat from 7))), ''), 'N\A'),
-    coalesce(nullif(trim(lower(substring(agency_code from 7))), ''), 'N\A'),
-    'N\A',
-    coalesce(nullif(trim(lower(recipient_name)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(receip_addr1)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(recipient_city_name)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(principal_place_state)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(substring(recipient_zip from 1 for 5))), ''), 'N\A'),
-    coalesce(nullif(trim(lower(recipient_country_code)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(duns_no)), ''), 'N\A'),
-    'N\A',
-    coalesce(nullif(trim(lower(principal_place_cc)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(principal_place_state)), ''), 'N\A'),
-    coalesce(nullif(trim(lower(substring(principal_place_zip from 1 for 5))), ''), 'N\A'),
-    coalesce(nullif(trim(lower(principal_place_country_code)), ''), 'usa'),
+    'n\a',
+    coalesce(nullif(trim(lower(substring(maj_agency_cat from 7))), ''), 'n\a'),
+    coalesce(nullif(trim(lower(substring(agency_code from 7))), ''), 'n\a'),
+    'n\a',
+    coalesce(nullif(trim(lower(recipient_name)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(receip_addr1)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(recipient_city_name)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(principal_place_state)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(substring(recipient_zip from 1 for 5))), ''), 'n\a'),
+    case
+    	when a.recipient_country_code = b.country_code then lower(trim(b.country_name))
+    	else coalesce(nullif(trim(lower(recipient_country_code)), ''), 'n\a')
+    end,
+    coalesce(nullif(trim(lower(duns_no)), ''), 'n\a'),
+    'n\a',
+    coalesce(nullif(trim(lower(principal_place_cc)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(principal_place_state)), ''), 'n\a'),
+    coalesce(nullif(trim(lower(substring(principal_place_zip from 1 for 5))), ''), 'n\a'),
+    case
+    	when a.principal_place_country_code = b.country_code then lower(trim(b.country_name))
+    	else coalesce(nullif(trim(lower(principal_place_country_code)), ''), 'united states of america')
+    end,
     last_modified_date
   from
-    base_fin;
+    base_fin a left join country_codes_names b
+    on a.recipient_country_code = b.country_code or a.principal_place_country_code = b.country_code
+    where federal_award_id is not null
