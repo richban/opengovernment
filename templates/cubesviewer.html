@@ -1,0 +1,38 @@
+{% extends "spending.html" %}
+{% block content %}
+<script type="text/javascript">
+
+	// Initialize CubesViewer when document is ready
+	$(document).ready(function() {
+
+		cubesviewer.init({
+            //cubesUrl: "{{ cubesviewer_cubes_url }}"
+            cubesUrl: "{{ cubesviewer_cubes_url }}/cubes"
+        });
+		cubesviewer.gui.init({
+            container: $('#cubesviewer').get(0),
+            //backendUrl: "{{ cubesviewer_backend_url }}"
+        });
+
+	    // Start Cubesviewer system
+        cubesviewer.refresh();
+
+        $('.cv-gui-panel').sticky({topSpacing:0});
+
+	});
+
+</script>
+
+<div class="container-fluid">
+  <div id="cubesviewer">
+
+      <div class="cv-gui-panel" >
+      </div>
+
+      <div class="cv-gui-workspace">
+      </div>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -20,6 +20,9 @@ app.secret_key = 'development key'
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
+CUBESVIEWER_CUBES_URL = "http://localhost:5000"
+CUBESVIEWER_BACKEND_URL = "http://localhost:8000/cubesviewer"
+
 MODEL_PATH = os.path.join(APP_ROOT, "model.json")
 DB_URL = "postgresql://richardbanyi:dpcu923@localhost:5432/usaspending"
 CUBE_NAME = "spending"
@@ -40,9 +43,17 @@ class FilterForm(Form):
     recipient = StringField('Recipient')
     award_type = MultiCheckboxField('Award Type', choices= [('1', 'Contract')])
 
+
 @app.route("/")
 def template_test():
     return render_template('template.html', my_string="Hello World")
+
+@app.route("/cubesviewer")
+def cubesviewer():
+    return render_template('cubesviewer.html',
+            cubesviewer_backend_url=CUBESVIEWER_BACKEND_URL,
+            cubesviewer_cubes_url= CUBESVIEWER_CUBES_URL)
+
 
 @app.route("/charts", methods=['GET', 'POST'])
 def charts():
@@ -452,4 +463,4 @@ if __name__ == '__main__':
 
     # Create a Slicer and register it at http://localhost:5000/slicer
     app.register_blueprint(slicer, url_prefix="/slicer", config="slicer.ini")
-    app.run(debug=True)
+    app.run(host="localhost", port=8000, debug=True)

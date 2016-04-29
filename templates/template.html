@@ -21,9 +21,6 @@
   <!-- Custom CSS -->
   <link href="{{ url_for('static', filename='dist/css/sb-admin-2.css') }}" rel=stylesheet>
 
-  <!-- Morris Charts CSS -->
-  <link href="{{ url_for('static', filename='bower_components/morrisjs/morris.css') }}" rel=stylesheet>
-
   <!-- Custom Fonts -->
   <link href="{{ url_for('static', filename='bower_components/font-awesome/css/font-awesome.min.css') }}" rel=stylesheet type=text/css>
 
@@ -40,7 +37,7 @@
   <!-- Morris Charts JavaScript -->
   <script type=text/javascript src="{{ url_for('static', filename='bower_components/raphael/raphael-min.js') }}"></script>
   <script type=text/javascript src="{{ url_for('static', filename='bower_components/morrisjs/morris.min.js') }}"></script>
-  <script type=text/javascript src="{{ url_for('static', filename='js/morris-data.js') }}"></script>
+
 
   <!-- Custom Theme JavaScript -->
   <script type=text/javascript src="{{ url_for('static', filename='dist/js/sb-admin-2.js') }}"></script>
@@ -50,6 +47,46 @@
   <script type=text/javascript src="https://code.highcharts.com/modules/data.js"></script>
   <script type=text/javascript src="https://code.highcharts.com/modules/drilldown.js"></script>
   <script type=text/javascript src="https://code.jquery.com/jquery-2.2.3.js"></script>
+
+  <!-- CubesViewer CSS resources -->
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/jqgrid/ui.jqgrid.css') }}" />
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='js/qtip/jquery.qtip.css') }}" />
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='js/wiky/wiky.math.css') }}" />
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='js/nvd3/nv.d3.min.css') }}" />
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/cubesviewer/cubesviewer.css') }}" />
+
+  <!-- CubesViewer JS dependencies -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery/jquery.sticky.js') }}"></script> <!-- for CubesViewer GUI -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery/jquery.blockUI.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/wiky/wiky.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/wiky/wiky.math.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/flotr2/flotr2.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/d3js/d3.v3.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/nvd3/nv.d3.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/qtip/jquery.qtip.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jqgrid/i18n/grid.locale-en.js') }}" ></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jqgrid/migrate-jquery-browser.js') }}" ></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jqgrid/jquery.jqGrid.min.js') }}" ></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubes/cubes.js') }}"></script>
+
+  <!-- Cubesviewer modules -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubesviewer/cubesviewer.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubesviewer/cubesviewer.cache.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubesviewer/cubesviewer.views.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubesviewer/cubesviewer.views.cube.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubesviewer/cubesviewer.views.cube.explore.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubesviewer/cubesviewer.views.cube.datefilter.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubesviewer/cubesviewer.views.cube.rangefilter.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubesviewer/cubesviewer.views.cube.series.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubesviewer/cubesviewer.views.cube.chart.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubesviewer/cubesviewer.views.cube.facts.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubesviewer/cubesviewer.views.cube.dimensionfilter.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubesviewer/cubesviewer.views.cube.columns.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubesviewer/cubesviewer.views.cube.export.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubesviewer/cubesviewer.views.undo.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubesviewer/cubesviewer.gui.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubesviewer/cubesviewer.gui.reststore.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/cubesviewer/cubesviewer.gui.serializing.js') }}"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -91,7 +128,7 @@
                         <li>
                           <a href="{{ url_for('charts') }}"><i class="fa fa-bar-chart-o fa-fw"></i> Charts</a>
                         <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                            <a href="{{ url_for('cubesviewer') }}"><i class="fa fa-table fa-fw"></i> Tables</a>
                         </li>
                     </ul>
                 </div>
