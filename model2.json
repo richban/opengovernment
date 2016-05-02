@@ -1,0 +1,280 @@
+{
+    "cubes":  [
+      {
+          "name": "spending",
+          "measures": [
+            { "name": "award_amount" ,"label": "Award amount"}
+          ],
+          "aggregates":  [
+            {
+                "name": "award_sum",
+                "label": "Total Award Amount",
+                "function": "sum",
+                "measure": "award_amount"
+            },
+            {
+                "name": "transaction_count",
+                "label": "Total Transactions",
+                "function": "count"
+            }
+          ],
+          "dimensions":  [
+                            "date",
+                            "geography",
+                            "product",
+                            "recipient",
+                            "agency",
+                            "transaction_type"
+                         ],
+          "joins":  [
+              {
+                  "master": "date_id",
+                  "detail": "dm_date.id"
+              },
+              {
+                  "master": "geography_id",
+                  "detail": "dm_geography.id"
+              },
+              {
+                  "master": "product_id",
+                  "detail": "dm_product.id"
+              },
+              {
+                  "master": "recipient_id",
+                  "detail": "dm_recipient.id"
+              },
+              {
+                  "master": "agency_id",
+                  "detail": "dm_agency.id"
+              },
+              {
+                  "master": "transaction_type_id",
+                  "detail": "dm_transaction_type.id"
+              },
+              {
+                  "master": "award_id",
+                  "detail": "dm_award.id"
+              }
+          ]
+      }
+    ],
+    "dimensions":  [
+        {
+            "name": "date",
+            "label": "Signed Date",
+            "role": "time",
+            "info": {
+                "cv-datefilter-hierarchy": "ym",
+                "cv-rangefilter": true,
+                "cv-rangefilter-slider": {
+                    "min": 2008,
+                    "max": 2016,
+                    "step": 1
+              }
+            },
+            "levels":  [
+                {
+                    "name": "full_date",
+                    "label": "YYYY-MM-DD",
+                    "attributes":  [
+                        { "name": "full_date" }
+                    ]
+                },
+                {
+                    "name": "year",
+                    "label": "Year",
+                    "attributes":  [
+                        { "name": "year" }
+                    ]
+                },
+                {
+                    "name": "month",
+                    "label": "Month",
+                    "attributes":  [
+                        { "name": "month" },
+                        { "name": "month_name" }
+                    ]
+                },
+                {
+                    "name": "day_year",
+                    "label": "Day in the year",
+                    "attributes":  [
+                        { "name": "day_year" }
+                    ]
+                },
+                {
+                    "name": "day",
+                    "label": "Day",
+                    "attributes": [
+                        { "name": "day" }
+                    ]
+                },
+                {
+                    "name": "weekday_name",
+                    "label": "Day of the Week",
+                    "attributes":  [
+                        { "name": "weekday_name" }
+                    ]
+                },
+                {
+                    "name": "calendar_week",
+                    "label": "Week in the year",
+                    "attributes":  [
+                        { "name": "calendar_week"}
+                    ]
+                },
+                {
+                    "name": "quarter",
+                    "label": "Quarter",
+                    "attributes":  [
+                        { "name": "quarter" }
+                    ]
+                }
+            ],
+            "hierarchies":  [
+                {
+                    "name": "ymd",
+                    "label": "Y-M-D",
+                    "levels": ["year", "month", "day"]
+                },
+                {
+                    "name": "yqmd",
+                    "label": "Y-Q-M-D",
+                    "levels": ["year", "quarter", "month", "day"]
+                },
+                {
+                    "name": "ym",
+                    "label": "Monthly",
+                    "levels": ["year", "month"]
+                },
+                {
+                    "name": "dn",
+                    "label": "Weekday name",
+                    "levels": ["day", "weekday_name"]
+                }
+            ]
+        },
+        {
+            "name": "geography",
+            "label": "Place of Performance",
+            "levels":  [
+                {
+                    "name": "state",
+                    "label": "State",
+                    "attributes": [
+                        { "name": "state" }
+                    ]
+                },
+                {
+                    "name": "city",
+                    "label": "City",
+                    "attributes": [
+                        { "name": "city" }
+                    ]
+                },
+                {
+                    "name": "zip",
+                    "label": "Zip Code",
+                    "attributes": [
+                        { "name": "zip" }
+                    ]
+                },
+                {
+                    "name": "country",
+                    "label": "Country",
+                    "attributes": [
+                        { "name": "country" }
+                    ]
+                }
+            ],
+            "hierarchies": [
+                {
+                    "name": "cscz",
+                    "label": "Geography Detailed",
+                    "levels": ["country", "state", "city", "zip"]
+                },
+                {
+                    "name": "cz",
+                    "label": "Country/Zip",
+                    "levels": ["country", "zip"]
+                }
+            ]
+        },
+        {
+            "name": "product",
+            "label": "Product",
+            "levels": [
+                {
+                    "name": "product",
+                    "label": "Product",
+                    "attributes": [
+                        { "name": "product_name" }
+                      ]
+                }
+            ],
+            "mappings": [
+                {
+                    "product.product_name": "product_name"
+                }
+            ]
+        },
+        {
+            "name": "transaction_type",
+            "label": "Type of Transaction",
+            "levels": [
+                {
+                    "name": "transaction_type",
+                    "label": "Type of Transaction",
+                    "attributes": [
+                        { "name": "status" },
+                        { "name": "category_type" },
+                        { "name": "category_desc" }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "agency",
+            "label": "Awarding Agency",
+            "levels": [
+                {
+                    "name": "awarding_agency",
+                    "label": "Awarding Agency",
+                    "attributes": [
+                        { "name": "awarding_agency" }
+                    ]
+                },
+                {
+                    "name": "funding_agency",
+                    "label": "Funding Agency",
+                    "attributes": [
+                        { "name": "funding_agency" }
+                    ]
+                }
+            ],
+            "hierarchies": [
+                {
+                    "name": "afb",
+                    "label": "Agencies",
+                    "levels": ["awarding_agency", "funding_agency"]
+                }
+            ]
+        },
+        {
+            "name": "recipient",
+            "label": "Recipient",
+            "levels": [
+                {
+                    "name": "recipient",
+                    "label": "Recient",
+                    "attributes": [
+                        { "name": "name" },
+                        { "name": "streetaddress" },
+                        { "name": "duns" }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
