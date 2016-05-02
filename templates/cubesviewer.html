@@ -1,23 +1,26 @@
 {% extends "spending.html" %}
 {% block content %}
 <script type="text/javascript">
-
 	// Initialize CubesViewer when document is ready
 	$(document).ready(function() {
 
 		cubesviewer.init({
             //cubesUrl: "{{ cubesviewer_cubes_url }}"
-            cubesUrl: "{{ cubesviewer_cubes_url }}/cubes"
+            cubesUrl: "{{ cubesviewer_cubes_url }}"
         });
 		cubesviewer.gui.init({
             container: $('#cubesviewer').get(0),
-            //backendUrl: "{{ cubesviewer_backend_url }}"
+            backendUrl: "{{ cubesviewer_backend_url }}"
         });
 
-	    // Start Cubesviewer system
-        cubesviewer.refresh();
+    var serializedView = {"cubename":"spending","name":"Cube spending","mode":"chart","drilldown":["date@ymd:month"],"cuts":[],"datefilters":[],"rangefilters":[],"xaxis":null,"yaxis":"award_sum","charttype":"bars-vertical","chartoptions":{"showLegend":true},"columnHide":{},"columnWidths":{},"columnSort":{}}
 
-        $('.cv-gui-panel').sticky({topSpacing:0});
+    view1 = cubesviewer.views.createView("olapview1", $('#cv-view1'), "cube", serializedView);
+
+	  // Start Cubesviewer system
+    cubesviewer.refresh();
+
+    $('.cv-gui-panel').sticky({topSpacing:0});
 
 	});
 
@@ -30,6 +33,9 @@
       </div>
 
       <div class="cv-gui-workspace">
+        <div style="border: none; margin-top: 22px; margin-bottom: 22px;">
+          <div id="cv-view1" class="olapview">The view should appear here...</div>
+        </div>
       </div>
 
   </div>
