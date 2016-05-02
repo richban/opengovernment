@@ -322,3 +322,59 @@ SELECT
     award_pricing_type,
     award_desc
 FROM dm_award;
+
+
+--
+-- Data for Name: ft_spending Type: Fact Table; Schema: opg; Owner: richban;
+--
+
+INSERT INTO ft_spending (
+	transaction_type_id,
+	date_id,
+	product_id,
+	geography_id,
+	agency_id,
+	recipient_id,
+	award_id,
+	transaction_id,
+	award_amount,
+	transactions,
+	last_modified_date,
+	date_added)
+SELECT
+ coalesce(dt.id, 0) transaction_type_id
+,coalesce(dd.id, 0) date_id
+,coalesce(dp.id, 0) product_id
+,coalesce(dg.id, 0) geography_id
+,coalesce(da.id, 0) agency_id
+,coalesce(dr.id, 0) recipient_id
+,coalesce(dw.id, 0) award_id
+,transaction_id
+,sum(award_amount) award_amount
+,count(*) transactions
+,last_modified_date
+,current_date date_added
+FROM load_data_2 oo
+LEFT JOIN dm_recipient dr
+	ON oo.recipient_name = dr.name
+	AND oo.recipient_streetaddress = dr.streetaddress
+	AND oo.recipient_duns = dr.duns
+LEFT JOIN dm_product dp
+	ON oo.product_code = dp.product_name
+LEFT JOIN dm_date dd
+	ON oo.signed_date = dd.full_date
+LEFT JOIN dm_geography dg
+	ON oo.geography_state = dg.state
+	AND oo.geography_city = dg.city
+	AND oo.geography_zip = dg.zip
+	AND oo.geography_country = dg.country
+LEFT JOIN dm_agency da
+	ON oo.agency_name = da.awarding_agency
+	AND oo.funding_bureau_cat = da.funding_agency
+LEFT JOIN dm_transaction_type dt
+	ON oo.transaction_cat = dt.category_type
+LEFT JOIN dm_award dw
+	ON oo.award_id = dw.award_id
+	AND oo.award_mod = dw.award_mod
+	AND oo.award_desc = dw.award_desc
+GROUP BY 1, 2, 3, 4, 5, 6, 7, 8, 11;
