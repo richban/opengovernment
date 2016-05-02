@@ -1,0 +1,153 @@
+{% extends "template.html" %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+        OpenGovernment
+      </h1>
+    </div>
+  </div>
+  <!-- /.row -->
+  <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto;"></div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="page-header">
+        What You Can Do
+      </h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <dl>
+        <dt>Spending</dt>
+          <dd>A good place to start to find information about federal funding is right in your own neighborhood.  Input your zip code on the Spending Page and see all the federal transactions in your backyard.
+              You can also see the transactions throughout your state, county, as well as by federal agency and award type. 
+          </dd>
+      </dl>
+    </div>
+        <div class="col-lg-6">
+      <dl>
+        <dt>Dashboard</dt>
+          <dd>Another good place to start to find information about federal funding is right in your own neighborhood.
+              Go on Dashboard Page where you can drill down from one place to another, information to detailed data by focusing in on something.
+              To drill down through a series of place where the work was/is performed.
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <dl>
+        <dt>Reports</dt>
+          <dd>
+            On Reports pages you can explore example reports/views created by Richard Banyi. Or you can use this visual, web-based tool application
+            for exploring and analyzing data. It can be used for data exploration and data auditory, generation of reports, chart desing and embedding, and as a (simple) analytics application.
+          </dd>
+      </dl>
+    </div>
+
+    <div class="col-lg-6">
+      <dl>
+        <dt>Agency Charts</dt>
+          <dd> Go on Charts Page where you can drill down (roll up) charts trough a series of Awarding Federal Agencies who are resposible for the federal awards and
+          Funding Federal Agencies who are resposible for the funding of the federal awards.
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="col-lg-6">
+      <dl>
+        <dt>Agencies Profile</dt>
+          <dd> See the total amount of money an agency awarded in a fiscal year, and the total contracts, grants, loans, and other financial assistance transactions, as well the top prime recipient receiving the most funds.
+          </dd>
+      </dl>
+    </div>
+        <div class="col-lg-6">
+      <dl>
+        <dt>State Summary</dt>
+          <dd>Take a look at your state’s summary page to find out the total dollar amount for the federal transactions
+          for cities where the money was distributed.
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <dl>
+        <dt>Geography Charts</dt>
+          <dd>Go on Charts Page where you can drill down (roll up) charts trough a series of place where the work was/is performed.
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->
+
+<script type=text/javascript>
+  var chart1; // globally available
+  var options = {
+    chart: {
+       renderTo: 'container',
+       type: 'bar'
+     },
+    credits: {
+      enabled: false
+    },
+    title: {
+      text: "OVERVIEW OF AWARDS - FY 2016"
+    },
+    subtitle: {
+      text: "The federal agencies distribute funding through federal contracts, grants, loans, and other financial assistance"
+    },
+    tooltip: {
+      shadow: true,
+      enabled: true,
+      valueSuffix: '$ '
+    },
+    xAxis: {
+        type: 'category',
+        labels: {
+            overflow: 'justify'
+        },
+        categories: ['Type of Transaction']
+    },
+    yAxis: {
+       min: 0,
+        title: {
+            text: 'Total Funding Awarded',
+            align: 'high'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    plotOptions: {
+       bar: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    series: [
+      {% for row in result.table_rows(dimension) %}
+        {% if is_last %}
+           { name: "{{row.label}}", data: [{{row.record.award_sum}}] },
+        {% else %}
+        { name: "{{row.label}}", data: [{{row.record.award_sum}}] },
+        {% endif %}
+      {% endfor %}
+      ]
+  };
+  var chart1 = new Highcharts.Chart(options);
+</script>
+{% endblock %}
+
+
