@@ -15,6 +15,7 @@
             },
             {
                 "name": "transaction_count",
+                "label": "Total Transactions",
                 "function": "count"
             }
           ],
@@ -57,9 +58,17 @@
     "dimensions":  [
         {
             "name": "date",
-            "label": "Date",
+            "label": "Signed Date",
             "role": "time",
-
+            "info": {
+                "cv-datefilter-hierarchy": "ym",
+                "cv-rangefilter": true,
+                "cv-rangefilter-slider": {
+                    "min": 2008,
+                    "max": 2016,
+                    "step": 1
+              }
+            },
             "levels":  [
                 {
                     "name": "full_date",
@@ -122,18 +131,22 @@
             "hierarchies":  [
                 {
                     "name": "ymd",
+                    "label": "Y-M-D",
                     "levels": ["year", "month", "day"]
                 },
                 {
                     "name": "yqmd",
+                    "label": "Y-Q-M-D",
                     "levels": ["year", "quarter", "month", "day"]
                 },
                 {
                     "name": "ym",
+                    "label": "Monthly",
                     "levels": ["year", "month"]
                 },
                 {
                     "name": "dn",
+                    "label": "Weekday name",
                     "levels": ["day", "weekday_name"]
                 }
             ]
@@ -174,10 +187,12 @@
             "hierarchies": [
                 {
                     "name": "cscz",
+                    "label": "Geography Detailed",
                     "levels": ["country", "state", "city", "zip"]
                 },
                 {
                     "name": "cz",
+                    "label": "Country/Zip",
                     "levels": ["country", "zip"]
                 }
             ]
@@ -244,6 +259,7 @@
             "hierarchies": [
                 {
                     "name": "afb",
+                    "label": "Agencies",
                     "levels": ["awarding_agency", "funding_agency", "bureau"]
                 }
             ]
@@ -260,21 +276,6 @@
                         { "name": "streetaddress" },
                         { "name": "duns" }
                     ]
-                }
-            ]
-        }
-    ],
-    "cuts": [
-        {
-            "type": "point",
-            "dimension": "geography",
-            "level_depth": 1,
-            "path": ["usa"],
-            "details": [
-                {
-                    "geography.country": "usa",
-                    "_key": "usa",
-                    "_label": "United States of America"
                 }
             ]
         }
