@@ -3,3 +3,7 @@
 *.ipynb
 
 cubesviewer/
+
+web/cvapp/cvapp/settings.py
+
+web/cvapp/cvapp/__pycache__/wsgi.cpython-34.pyc
