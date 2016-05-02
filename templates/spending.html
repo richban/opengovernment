@@ -25,24 +25,19 @@
 
               <div class="col-lg-4">
                 <div class="form-group">
-                  <label>Fiscal Year</label>
-                  <select class="form-control" name="year">
-                    {% for year in years %}
-                    <option>{{year}}</option>
-                    {% endfor %}
-                  </select>
+                  {{ form.year.label }}
+                  <div>
+                    {{ form.year(class="form-control") }}
+                  </div>
                 </div>
               </div>
 
               <div class="col-lg-4">
                 <div class="form-group">
-                  <label>Fiscal Month</label>
-                  <select class="form-control" name="month">
-                    <option>View All</option>
-                    {% for month in months %}
-                    <option>{{month}}</option>
-                    {% endfor %}
-                  </select>
+                  {{ form.month.label }}
+                  <div>
+                    {{ form.month(class="form-control") }}
+                  </div>
                 </div>
               </div>
 
@@ -58,22 +53,16 @@
 
               <div class="col-lg-3">
                 <div class="form-group">
-                  <label>State</label>
-                  <select class="form-control" name="state">
-                    <option>View All</option>
-                    {% for state in states %}
-                    <option>{{state}}</option>
-                    {% endfor %}
-                  </select>
+                  {{ form.state.label }}
+                  <div>
+                    {{ form.state(class="form-control") }}
+                  </div>
                 </div>
                 <div class="form-group">
-                  <label>City</label>
-                  <select class="form-control" name="city">
-                    <option>View All</option>
-                    {% for city in cities %}
-                    <option>{{city}}</option>
-                    {% endfor %}
-                  </select>
+                  {{ form.city.label }}
+                  <div>
+                    {{ form.city(class="form-control") }}
+                  </div>
                 </div>
               </div>
 
@@ -88,25 +77,8 @@
               <div class="col-lg-6">
                 <div class="col-lg-3">
                   <div class="form-group">
-                    <label>Award Type</label>
-                    <div class="checkbox">
-
-                        <label class="checkbox">
-                          <input type="checkbox" checked>Contracts
-                        </label>
-
-                        <label class="checkbox">
-                          <input type="checkbox" checked>Grants
-                        </label>
-
-                        <label class="checkbox">
-                          <input type="checkbox" checked>Loans
-                        </label>
-
-                        <label class="checkbox">
-                          <input type="checkbox" checked>Other Financial Assistance
-                        </label>
-                    </div> <!-- /.checkbox-->
+                    {{ form.award_type.label}}
+                    {{ form.award_type(class="list-unstyled") }}
                   </div>
                 </div>
                 <div class="col-lg-9">
@@ -121,13 +93,10 @@
             <div class="row">
               <div class="col-lg-6">
                 <div class="form-group">
-                  <label>Agency</label>
-                  <select class="form-control" name="agency">
-                    <option>View All</option>
-                    {% for agency in agencies %}
-                    <option>{{agency}}</option>
-                    {% endfor %}
-                  </select>
+                  {{ form.agency.label }}
+                  <div>
+                    {{ form.agency(class="form-control") }}
+                  </div>
                 </div>
               </div>
               </div><!-- /.row-->
