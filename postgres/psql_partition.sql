@@ -220,7 +220,7 @@ LANGUAGE plpgsql;
 
 CREATE TRIGGER insert_ft_spending_2
 	BEFORE INSERT ON ft_spending_2
-		FOR EACH ROW EXECUTE PROCEDURE ft_partition_trigger();
+		FOR EACH ROW EXECUTE PROCEDURE ft_partition_trigger_2();
 
 SET constraint_exclusion = on;
 

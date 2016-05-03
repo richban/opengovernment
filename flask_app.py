@@ -33,12 +33,12 @@ class MultiCheckboxField(SelectMultipleField):
 
 
 class FilterForm(Form):
-    state = SelectField("View All", default=("View All", "View All"))
+    state = SelectField("State", default=("View All", "View All"))
     city = SelectField('City', default=("View All", "View All"))
     agency = SelectField('Agency', default=("View All", "View All"))
     year = SelectField('Year')
     month = SelectField('Month', default=("View All", "View All"))
-    zip_code = StringField('Zip', [validators.Regexp(r'\b\d{5}\b', message="Zip 5 digits")])
+    zip = StringField('Zip')
     recipient = StringField('Recipient')
     award_type = MultiCheckboxField('Award Type', default="checked")
 
@@ -198,30 +198,31 @@ def all():
             return render_template('all.html', result=result,
                                                 pagination=pagination,
                                                 form=form)
-        if request.form['submit'] == 'go' and form.validate_on_submit():
+        if request.form['submit'] == 'go':
             cuts = []
             if request.form['year']:
                 if request.form['month'] != "View All":
-                    cuts.append(PointCut("date", [int(form.year.data),
-                                                    int(form.month.data)]))
+                    cuts.append(PointCut("date", [int(request.form["year"]),
+                                                    int(request.form["month"])]))
                 else:
-                    cuts.append(PointCut("date", [int(form.year.data)]))
+                    cuts.append(PointCut("date", [int(request.form["year"])]))
 
             if request.form["state"] != "View All":
                 if request.form["city"] != "View All":
-                    cuts.append(PointCut("geography", ["united states of america",form.state.data,
-                                                    form.city.data], hierarchy="cscz"))
+                    if request.form["zip"] != "View All":
+                        cuts.append(PointCut("geography", ["united states of america",request.form["state"],
+                                                        request.form["city"], request.form["zip"]], hierarchy="cscz"))
+                    else:
+                        cuts.append(PointCut("geography", ["united states of america",request.form["state"],
+                                                        request.form["city"]], hierarchy="cscz"))
                 else:
-                    cuts.append(PointCut("geography", ["united states of america", form.state.data]))
-
-            if form.recipient.data:
-                cuts.append(PointCut("recipient", [form.recipient.data]))
+                    cuts.append(PointCut("geography", ["united states of america", request.form["state"]]))
 
             if request.form["agency"] != "View All":
                 cuts.append(PointCut("agency", [request.form["agency"]]))
 
-            if request.form["zip"]:
-                cuts.append(PointCut("geography", ["united states of america", form.zip.data], hierarchy="cz"))
+            # if request.form["zip"]:
+            #   cuts.append(PointCut("geography", ["united states of america", request.form["zip"]], hierarchy="cz"))
 
             cell = cubes.Cell(browser.cube, cuts)
 
@@ -279,16 +280,23 @@ def forms_data():
         award_type.append(member["transaction_type.category_type"])
 
     states = sorted(set(states))
+    states.append("View All")
     cities = sorted(set(cities))
+    cities.append("View All")
     agencies = sorted(set(agencies))
+    agencies.append("View All")
     years = sorted(set(years))
     months = sorted(set(months))
+    months.append("View All")
     award_type = sorted(set(award_type))
 
     form = FilterForm(request.form)
     form.agency.choices = [(v, v) for v in agencies]
+    form.agency.default = "View All"
     form.state.choices = [(v, v) for v in states]
+    form.state.default = "View All"
     form.city.choices = [(v, v) for v in cities]
+    form.city.default = "View All"
     form.year.choices = [(v, v) for v in years]
     form.month.choices = [(v, v) for v in months]
     form.award_type.choices = [(v, v) for v in award_type]
