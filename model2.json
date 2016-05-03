@@ -1,9 +1,9 @@
 {
     "cubes":  [
       {
-          "name": "spending",
+          "name": "spending_2",
           "measures": [
-            { "name": "award_amount" ,"label": "Award amount"}
+            { "name": "award_amount" , "label": "Award amount"}
           ],
           "aggregates":  [
             {
@@ -16,6 +16,18 @@
                 "name": "transaction_count",
                 "label": "Total Transactions",
                 "function": "count"
+            },
+            {
+                "name": "award_min",
+                "label": "Min Amount",
+                "measure": "award_amount",
+                "function": "min"
+            },
+            {
+                "name": "award_max",
+                "label": "Max Amount",
+                "measure": "award_amount",
+                "function": "max"
             }
           ],
           "dimensions":  [
@@ -24,7 +36,8 @@
                             "product",
                             "recipient",
                             "agency",
-                            "transaction_type"
+                            "transaction_type",
+                            "award"
                          ],
           "joins":  [
               {
@@ -64,13 +77,8 @@
             "label": "Signed Date",
             "role": "time",
             "info": {
-                "cv-datefilter-hierarchy": "ym",
-                "cv-rangefilter": true,
-                "cv-rangefilter-slider": {
-                    "min": 2008,
-                    "max": 2016,
-                    "step": 1
-              }
+                "cv-datefilter": true,
+                "cv-datefilter-hierarchy": "yqmd"
             },
             "levels":  [
                 {
@@ -85,7 +93,16 @@
                     "label": "Year",
                     "attributes":  [
                         { "name": "year" }
-                    ]
+                    ],
+                    "info": {
+                        "cv-datefilter-field": "year",
+                        "cv-rangefilter": true,
+                        "cv-rangefilter-slider": {
+                            "min": 2008,
+                            "max": 2016,
+                            "step": 1
+                        }
+                    }
                 },
                 {
                     "name": "month",
@@ -93,7 +110,16 @@
                     "attributes":  [
                         { "name": "month" },
                         { "name": "month_name" }
-                    ]
+                    ],
+                    "info": {
+                        "cv-datefilter-field": "month",
+                        "cv-rangefilter": true,
+                        "cv-rangefilter-slider": {
+                            "min": 1,
+                            "max": 12,
+                            "step": 1
+                        }
+                      }
                 },
                 {
                     "name": "day_year",
@@ -107,7 +133,8 @@
                     "label": "Day",
                     "attributes": [
                         { "name": "day" }
-                    ]
+                    ],
+                    "info": { "cv-datefilter-field": "day" }
                 },
                 {
                     "name": "weekday_name",
@@ -128,7 +155,8 @@
                     "label": "Quarter",
                     "attributes":  [
                         { "name": "quarter" }
-                    ]
+                    ],
+                    "info": { "cv-datefilter-field": "quarter" }
                 }
             ],
             "hierarchies":  [
@@ -205,16 +233,12 @@
             "label": "Product",
             "levels": [
                 {
-                    "name": "product",
-                    "label": "Product",
+                    "name": "product_name",
+                    "label": "Product Name",
                     "attributes": [
+                        { "name": "id" },
                         { "name": "product_name" }
-                      ]
-                }
-            ],
-            "mappings": [
-                {
-                    "product.product_name": "product_name"
+                    ]
                 }
             ]
         },
@@ -225,7 +249,9 @@
                 {
                     "name": "transaction_type",
                     "label": "Type of Transaction",
+                    "label_attribute": "category_type",
                     "attributes": [
+                        { "name": "id" },
                         { "name": "status" },
                         { "name": "category_type" },
                         { "name": "category_desc" }
@@ -266,12 +292,46 @@
             "levels": [
                 {
                     "name": "recipient",
-                    "label": "Recient",
+                    "label": "Recipient",
+                    "key": "id",
+                    "label_attribute": "name",
                     "attributes": [
+                        { "name": "id" },
                         { "name": "name" },
                         { "name": "streetaddress" },
+                        { "name": "state" },
+                        { "name": "city" },
+                        { "name": "zip" },
+                        { "name": "country" },
                         { "name": "duns" }
                     ]
+                }
+            ]
+        },
+        {
+            "name": "award",
+            "label": "Award",
+            "levels": [
+              {
+                  "name": "award_id",
+                  "label": "Award ID",
+                  "attributes": [
+                      { "name": "award_id" }
+                  ]
+              },
+              {
+                  "name": "award_mod",
+                  "label": "Award Mod Number",
+                  "attributes": [
+                      { "name": "award_mod" }
+                  ]
+              }
+            ],
+            "hierarchies": [
+                {
+                    "name": "am",
+                    "label": "Award",
+                    "levels": ["award_id", "award_mod"]
                 }
             ]
         }
