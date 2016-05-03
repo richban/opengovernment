@@ -101,7 +101,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href={{ url_for('template_test') }}>Open Government</a>
+                <a class="navbar-brand" href={{ url_for('home') }}>Open Government</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -121,6 +121,9 @@
                             <!-- /input-group -->
                         </li>
                         <li>
+                          <a href="{{ url_for('home') }}"><i class="fa fa-home fa-fw"></i> Home</a>
+                        </li>
+                        <li>
                           <a href="{{ url_for('drilldown') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
@@ -129,7 +132,7 @@
                         <li>
                           <a href="{{ url_for('charts') }}"><i class="fa fa-bar-chart-o fa-fw"></i> Charts</a>
                         <li>
-                            <a href="{{ url_for('cubesviewer') }}"><i class="fa fa-table fa-fw"></i> Tables</a>
+                            <a href="{{ url_for('cubesviewer') }}"><i class="fa fa-table fa-fw"></i> Reports</a>
                         </li>
                     </ul>
                 </div>
