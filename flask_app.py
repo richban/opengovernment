@@ -7,7 +7,7 @@ from cubes.server import slicer, workspace
 import sqlalchemy
 from cubes import PointCut
 from flask.ext.wtf import Form
-from wtforms import StringField, SubmitField, SelectMultipleField, SelectField, widgets
+from wtforms import StringField, SubmitField, SelectMultipleField, SelectField, widgets, validators
 from wtforms.validators import Required
 from flask.ext.wtf import Form, widgets
 from wtforms import SelectMultipleField, widgets
@@ -15,17 +15,16 @@ from wtforms import SelectMultipleField, widgets
 #
 # The Flask Application
 #
+
 app = Flask(__name__)
 app.secret_key = 'development key'
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-
 CUBESVIEWER_CUBES_URL = "http://localhost:5000"
 CUBESVIEWER_BACKEND_URL = "http://localhost:8000/cubesviewer"
-
 MODEL_PATH = os.path.join(APP_ROOT, "model.json")
 DB_URL = "postgresql://richardbanyi:dpcu923@localhost:5432/usaspending"
-CUBE_NAME = "spending"
+CUBE_NAME = "spending_2"
 
 
 class MultiCheckboxField(SelectMultipleField):
@@ -34,18 +33,18 @@ class MultiCheckboxField(SelectMultipleField):
 
 
 class FilterForm(Form):
-    state = SelectField('State', default=("View All", "View All"))
+    state = SelectField("View All", default=("View All", "View All"))
     city = SelectField('City', default=("View All", "View All"))
     agency = SelectField('Agency', default=("View All", "View All"))
     year = SelectField('Year')
     month = SelectField('Month', default=("View All", "View All"))
-    zip_code = StringField('Zip')
+    zip_code = StringField('Zip', [validators.Regexp(r'\b\d{5}\b', message="Zip 5 digits")])
     recipient = StringField('Recipient')
-    award_type = MultiCheckboxField('Award Type')
+    award_type = MultiCheckboxField('Award Type', default="checked")
 
 
 @app.route("/")
-def template_test():
+def home():
     cube = workspace.cube(CUBE_NAME)
     browser = workspace.browser(cube)
     cell = cubes.Cell(browser.cube, [PointCut("date", ["2016"])])
@@ -64,45 +63,8 @@ def cubesviewer():
 
 @app.route("/charts", methods=['GET', 'POST'])
 def charts():
-
-
     cube = workspace.cube(CUBE_NAME)
     browser = workspace.browser(cube)
-
-    '''
-    states = []
-    agencies = []
-    years = []
-
-    geography_cut = PointCut("geography", ["united states of america"])
-    geo_cell = cubes.Cell(browser.cube, [geography_cut])
-    cell_ = cubes.Cell(browser.cube)
-
-    geo_members = browser.members(geo_cell, "geography")
-    ag_members = browser.members(cell_, "agency")
-    date_members = browser.members(cell_, "date")
-
-    for member in date_members:
-        if(member["date.year"] != "'n\a"):
-            years.append(member["date.year"])
-
-    for member in ag_members:
-        if(member["agency.awarding_agency"] != "n\a"):
-            agencies.append(member["agency.awarding_agency"])
-
-    for member in geo_members:
-        if(member["geography.state"] != "n\a"):
-            states.append(member["geography.state"])
-
-    states = sorted(set(states))
-    agencies = sorted(set(agencies))
-    years = sorted(set(years))
-
-    form = FilterForm(request.form)
-    form.agency.choices = [(v, v) for v in agencies]
-    form.state.choices = [(v, v) for v in states]
-    form.year.choices = [(v, v) for v in years]
-    '''
 
     form = forms_data()
 
@@ -168,42 +130,6 @@ def summary():
 def drilldown_charts(dim_name=None):
     cube = workspace.cube(CUBE_NAME)
     browser = workspace.browser(cube)
-
-    '''
-    states = []
-    agencies = []
-    years = []
-
-    geography_cut = PointCut("geography", ["usa"])
-    geo_cell = cubes.Cell(browser.cube, [geography_cut])
-    cell_ = cubes.Cell(browser.cube)
-
-    geo_members = browser.members(geo_cell, "geography")
-    ag_members = browser.members(cell_, "agency")
-    date_members = browser.members(cell_, "date")
-
-    for member in date_members:
-        if(member["date.year"] != "N\A"):
-            years.append(member["date.year"])
-
-    for member in ag_members:
-        if(member["agency.awarding_agency"] != "N\A"):
-            agencies.append(member["agency.awarding_agency"])
-
-    for member in geo_members:
-        if(member["geography.state"] != "N\A"):
-            states.append(member["geography.state"])
-
-    states = sorted(set(states))
-    agencies = sorted(set(agencies))
-    years = sorted(set(years))
-
-    form = FilterForm(request.form)
-    form.agency.choices = [(v, v) for v in agencies]
-    form.state.choices = [(v, v) for v in states]
-    form.year.choices = [(v, v) for v in years]
-
-    '''
     form = forms_data()
 
     if not dim_name:
@@ -272,27 +198,30 @@ def all():
             return render_template('all.html', result=result,
                                                 pagination=pagination,
                                                 form=form)
-        if request.form['submit'] == 'go':
+        if request.form['submit'] == 'go' and form.validate_on_submit():
             cuts = []
             if request.form['year']:
                 if request.form['month'] != "View All":
-                    cuts.append(PointCut("date", [int(request.form["year"]),
-                                                    int(request.form["month"])]))
+                    cuts.append(PointCut("date", [int(form.year.data),
+                                                    int(form.month.data)]))
                 else:
-                    cuts.append(PointCut("date", [int(request.form["year"])]))
+                    cuts.append(PointCut("date", [int(form.year.data)]))
 
             if request.form["state"] != "View All":
                 if request.form["city"] != "View All":
-                    cuts.append(PointCut("geography", ["united states of america",form.state,
+                    cuts.append(PointCut("geography", ["united states of america",form.state.data,
                                                     form.city.data], hierarchy="cscz"))
                 else:
-                    cuts.append(PointCut("geography", ["united states of america", request.form["state"]]))
+                    cuts.append(PointCut("geography", ["united states of america", form.state.data]))
+
+            if form.recipient.data:
+                cuts.append(PointCut("recipient", [form.recipient.data]))
 
             if request.form["agency"] != "View All":
                 cuts.append(PointCut("agency", [request.form["agency"]]))
 
             if request.form["zip"]:
-                cuts.append(PointCut("geography", ["united states of america", request.form["zip"]], hierarchy="cz"))
+                cuts.append(PointCut("geography", ["united states of america", form.zip.data], hierarchy="cz"))
 
             cell = cubes.Cell(browser.cube, cuts)
 
@@ -367,69 +296,6 @@ def forms_data():
     return form
 
 
-@app.route("/spending_copy", methods=['GET', 'POST'])
-def spending_copy():
-    cube = workspace.cube(CUBE_NAME)
-    browser = workspace.browser(cube)
-    result = browser.aggregate()
-
-    states = []
-    cities = []
-    agencies = []
-    years = []
-    months = []
-
-    geography_cut = PointCut("geography", ["usa"])
-
-    geo_cell = cubes.Cell(browser.cube, [geography_cut])
-    cell = cubes.Cell(browser.cube)
-
-    geo_members = browser.members(geo_cell, "geography")
-    ag_members = browser.members(cell, "agency")
-    date_members = browser.members(cell, "date")
-
-    for member in date_members:
-        if(member["date.year"] != "N\A"):
-            years.append(member["date.year"])
-        if(member["date.month"] != "N\A"):
-            months.append(member["date.month"])
-
-    for member in ag_members:
-        if(member["agency.awarding_agency"] != "N\A"):
-            agencies.append(member["agency.awarding_agency"])
-
-    for member in geo_members:
-        if(member["geography.state"] != "N\A"):
-            states.append(member["geography.state"])
-        if(member["geography.city"] != "N\A"):
-            cities.append(member["geography.city"])
-
-    states = sorted(set(states))
-    cities = sorted(set(cities))
-    agencies = sorted(set(agencies))
-    years = sorted(set(years))
-    months = sorted(set(months))
-
-    form = FilterForm(request.form)
-    form.agency.choices = [(k, v) for k, v in enumerate(agencies)]
-    form.state.choices = [(k, v) for k, v in enumerate(states)]
-    form.city.choices = []
-
-    if request.method == 'GET':
-        if form.state.data:
-            cities2 = []
-            cut = PointCut("geography", ["usa", form.state.data[1]])
-            cell = cubes.Cell(browser.cube, [cut])
-            city_mem = browser.members(cell, "geography")
-            for member in city_mem:
-                if(member["geography.city"] != "N\A"):
-                    cities2.append(member["geography.city"])
-            cities2 = sorted(set(cities2))
-            form.city.choices = [(k, v) for k, v in enumerate(cities2)]
-    # return [states, cities, agencies, years, months]
-    return render_template('spending_copy.html', form=form)
-
-
 @app.route("/spending")
 def spending():
     cube = workspace.cube(CUBE_NAME)
@@ -437,44 +303,6 @@ def spending():
     result = browser.aggregate()
 
     form = forms_data()
-    '''
-    states = []
-    cities = []
-    agencies = []
-    years = []
-    months = []
-
-    geography_cut = PointCut("geography", ["usa"])
-
-    geo_cell = cubes.Cell(browser.cube, [geography_cut])
-    cell = cubes.Cell(browser.cube)
-
-    geo_members = browser.members(geo_cell, "geography")
-    ag_members = browser.members(cell, "agency")
-    date_members = browser.members(cell, "date")
-
-    for member in date_members:
-        if(member["date.year"] != "N\A"):
-            years.append(member["date.year"])
-        if(member["date.month"] != "N\A"):
-            months.append(member["date.month"])
-
-    for member in ag_members:
-        if(member["agency.awarding_agency"] != "N\A"):
-            agencies.append(member["agency.awarding_agency"])
-
-    for member in geo_members:
-        if(member["geography.state"] != "N\A"):
-            states.append(member["geography.state"])
-        if(member["geography.city"] != "N\A"):
-            cities.append(member["geography.city"])
-
-    states = sorted(set(states))
-    cities = sorted(set(cities))
-    agencies = sorted(set(agencies))
-    years = sorted(set(years))
-    months = sorted(set(months))
-    '''
     return render_template('spending.html', form=form)
 
 
