@@ -1,0 +1,7 @@
+.. _ bibliography:
+
+References
+==========
+
+_`[1]` Authors: School of Data, Organization: School of Data Date: Sep 02, 2013 Available from: `Data Fundamentals <http://schoolofdata.org/handbook/courses/what-is-data/>`_
+

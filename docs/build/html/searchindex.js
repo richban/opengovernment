@@ -1,0 +1,1 @@
+Search.setIndex({envversion:48,filenames:["index"],objects:{},objnames:{},objtypes:{},terms:{content:0,index:0,modul:0,page:0,search:0},titles:["Welcome to Design and implementation of open-data data warehouse&#8217;s documentation!"],titleterms:{data:0,design:0,document:0,implement:0,indic:0,open:0,tabl:0,warehous:0,welcom:0}})
