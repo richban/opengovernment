@@ -2,6 +2,25 @@
 {% block content %}
 <div class="container-fluid">
 
+  <script type=text/javascript>
+  $("#state").bind('select', function(){
+    console.log("OK sme tu");
+  });
+  $("#state").bind('click', function(){
+    console.log("OK sme tu");
+  });
+  console.log("OK");
+  $( "#state" ).change(function() {
+    console.log( "Handler for .select() called." );
+  });
+
+  $(function() { console.info("ok jquery loaded.") });
+
+  $("#state").on('change', function(){
+    console.info("CHODZ UZ");
+  });
+  </script>
+
     <!-- Page Heading -->
     <div class="row">
       <div class="col-lg-12">
