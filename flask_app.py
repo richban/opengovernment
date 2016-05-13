@@ -292,7 +292,6 @@ def forms_data():
 
     form = FilterForm(request.form)
     form.agency.choices = [(v, v) for v in agencies]
-    form.agency.default = "View All"
     form.state.choices = [(v, v) for v in states]
     form.state.default = "View All"
     form.city.choices = [(v, v) for v in cities]
