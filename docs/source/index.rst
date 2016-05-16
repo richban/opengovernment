@@ -12,4 +12,8 @@ Welcome to Design and implementation of open-data data warehouse's documentation
    abstract
    introduction
    datawarehouse
+   olap
+   conclusion
+   resume
    references
+   apendixa

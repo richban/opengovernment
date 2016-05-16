@@ -31,4 +31,36 @@
 \BOOKMARK [2][-]{subsection.2.4.4}{Identify Facts}{section.2.4}% 31
 \BOOKMARK [2][-]{subsection.2.4.5}{Suroggate Keys}{section.2.4}% 32
 \BOOKMARK [1][-]{section.2.5}{Dimensional Table Attributes}{chapter.2}% 33
-\BOOKMARK [0][-]{chapter.3}{References}{}% 34
+\BOOKMARK [2][-]{subsection.2.5.1}{Date Dimension}{section.2.5}% 34
+\BOOKMARK [2][-]{subsection.2.5.2}{Product Dimension}{section.2.5}% 35
+\BOOKMARK [2][-]{subsection.2.5.3}{Geography Dimension}{section.2.5}% 36
+\BOOKMARK [2][-]{subsection.2.5.4}{Recipient Dimension}{section.2.5}% 37
+\BOOKMARK [2][-]{subsection.2.5.5}{Transaction Type Dimension}{section.2.5}% 38
+\BOOKMARK [2][-]{subsection.2.5.6}{Award Dimension}{section.2.5}% 39
+\BOOKMARK [2][-]{subsection.2.5.7}{Federal Award Transactions}{section.2.5}% 40
+\BOOKMARK [0][-]{chapter.3}{OLAP}{}% 41
+\BOOKMARK [1][-]{section.3.1}{Cubes - OLAP Framework}{chapter.3}% 42
+\BOOKMARK [1][-]{section.3.2}{Analytical Workspace}{chapter.3}% 43
+\BOOKMARK [1][-]{section.3.3}{Logical Model and Metadata}{chapter.3}% 44
+\BOOKMARK [1][-]{section.3.4}{Model}{chapter.3}% 45
+\BOOKMARK [2][-]{subsection.3.4.1}{Cubes}{section.3.4}% 46
+\BOOKMARK [2][-]{subsection.3.4.2}{Measures and Aggregates}{section.3.4}% 47
+\BOOKMARK [2][-]{subsection.3.4.3}{Mappings}{section.3.4}% 48
+\BOOKMARK [2][-]{subsection.3.4.4}{Facts}{section.3.4}% 49
+\BOOKMARK [2][-]{subsection.3.4.5}{Dimensions}{section.3.4}% 50
+\BOOKMARK [2][-]{subsection.3.4.6}{Joins}{section.3.4}% 51
+\BOOKMARK [2][-]{subsection.3.4.7}{Hierarchies and Levels}{section.3.4}% 52
+\BOOKMARK [2][-]{subsection.3.4.8}{User-oriented Metadata}{section.3.4}% 53
+\BOOKMARK [1][-]{section.3.5}{Slicing and Dicing}{chapter.3}% 54
+\BOOKMARK [2][-]{subsection.3.5.1}{Browser}{section.3.5}% 55
+\BOOKMARK [2][-]{subsection.3.5.2}{Cells and Cuts}{section.3.5}% 56
+\BOOKMARK [2][-]{subsection.3.5.3}{Aggregate}{section.3.5}% 57
+\BOOKMARK [2][-]{subsection.3.5.4}{Drilldown}{section.3.5}% 58
+\BOOKMARK [1][-]{section.3.6}{Drill Down Tree}{chapter.3}% 59
+\BOOKMARK [0][-]{chapter.4}{Web Application}{}% 60
+\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 61
+\BOOKMARK [0][-]{chapter.6}{Resume in Slovak language}{}% 62
+\BOOKMARK [0][-]{chapter.7}{References}{}% 63
+\BOOKMARK [0][-]{chapter.8}{Appendix A}{}% 64
+\BOOKMARK [1][-]{section.8.1}{Instalation Manual}{chapter.8}% 65
+\BOOKMARK [0][-]{chapter*.12}{Bibliography}{}% 66

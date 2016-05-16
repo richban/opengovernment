@@ -4,8 +4,8 @@ Introduction
 Data
 ----
 
-**What is Data?**
-"""""""""""""""""
+What is Data?
+"""""""""""""
 
 Data is all around us. But what exactly is? Data is a value assigned to a thing.
 What can we say about the balls in the picture? They are
@@ -42,8 +42,8 @@ Data that can be observed but not measured.
 **Continues** data is a numerical data with a continues range: e.g. size of a tennis balls can be any size (86.02mm), or the size of your foot (as opposed to your shoe size, which is discrete). In continues data, all values are possible with no gaps between .
 
 
-**From Data to information knowledge**
-""""""""""""""""""""""""""""""""""""""
+From Data to information knowledge
+""""""""""""""""""""""""""""""""""
 Data, when collected and structured suddenly becomes a lot more useful.
 
 +--------------+----------+
@@ -69,8 +69,8 @@ So explain what you are showing – explain how it is read, explain where the da
 If you give the proper context the conclusion should come right out of the data.
 
 
-**Finding Data**
-""""""""""""""""
+Finding Data
+""""""""""""
 
 +----------------+-----------------------------+
 |**Data Source** | **Description**             |
@@ -83,6 +83,7 @@ If you give the proper context the conclusion should come right out of the data.
 +----------------+-----------------------------+
 |mongodb         |MongoDB database             |
 +----------------+-----------------------------+
+
 
 There are three basic ways of getting hold of data:
 

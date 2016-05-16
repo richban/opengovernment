@@ -28,7 +28,7 @@
 
 
 \title{Design and implementation of open-data data warehouse Documentation}
-\date{May 09, 2016}
+\date{May 17, 2016}
 \release{0.0.1}
 \author{Richard Banyi}
 \newcommand{\sphinxlogo}{}
@@ -46,69 +46,69 @@
     \PYG@it{\PYG@bf{\PYG@ff{#1}}}}}}}
 \def\PYG#1#2{\PYG@reset\PYG@toks#1+\relax+\PYG@do{#2}}
 
-\expandafter\def\csname PYG@tok@s2\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
-\expandafter\def\csname PYG@tok@si\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.44,0.63,0.82}{##1}}}
-\expandafter\def\csname PYG@tok@gh\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
-\expandafter\def\csname PYG@tok@c1\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
-\expandafter\def\csname PYG@tok@kd\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@gs\endcsname{\let\PYG@bf=\textbf}
-\expandafter\def\csname PYG@tok@ch\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
-\expandafter\def\csname PYG@tok@k\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@kr\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@nl\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.13,0.44}{##1}}}
-\expandafter\def\csname PYG@tok@cm\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
-\expandafter\def\csname PYG@tok@gi\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
-\expandafter\def\csname PYG@tok@kp\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@gu\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
-\expandafter\def\csname PYG@tok@err\endcsname{\def\PYG@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
-\expandafter\def\csname PYG@tok@cp\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@ne\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@ow\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@gp\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.78,0.36,0.04}{##1}}}
-\expandafter\def\csname PYG@tok@mb\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
-\expandafter\def\csname PYG@tok@s1\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
-\expandafter\def\csname PYG@tok@kt\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.56,0.13,0.00}{##1}}}
-\expandafter\def\csname PYG@tok@cpf\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
-\expandafter\def\csname PYG@tok@sd\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
-\expandafter\def\csname PYG@tok@gt\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
-\expandafter\def\csname PYG@tok@ni\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.84,0.33,0.22}{##1}}}
-\expandafter\def\csname PYG@tok@mo\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
-\expandafter\def\csname PYG@tok@gd\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
-\expandafter\def\csname PYG@tok@nt\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.02,0.16,0.45}{##1}}}
-\expandafter\def\csname PYG@tok@nc\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.05,0.52,0.71}{##1}}}
-\expandafter\def\csname PYG@tok@mh\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
-\expandafter\def\csname PYG@tok@cs\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}\def\PYG@bc##1{\setlength{\fboxsep}{0pt}\colorbox[rgb]{1.00,0.94,0.94}{\strut ##1}}}
-\expandafter\def\csname PYG@tok@vc\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
-\expandafter\def\csname PYG@tok@se\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
-\expandafter\def\csname PYG@tok@mi\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
-\expandafter\def\csname PYG@tok@s\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
-\expandafter\def\csname PYG@tok@sh\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
-\expandafter\def\csname PYG@tok@bp\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@nn\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.05,0.52,0.71}{##1}}}
 \expandafter\def\csname PYG@tok@no\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.38,0.68,0.84}{##1}}}
-\expandafter\def\csname PYG@tok@o\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PYG@tok@sx\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.78,0.36,0.04}{##1}}}
-\expandafter\def\csname PYG@tok@nb\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@il\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
-\expandafter\def\csname PYG@tok@sc\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
-\expandafter\def\csname PYG@tok@mf\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
-\expandafter\def\csname PYG@tok@nv\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
-\expandafter\def\csname PYG@tok@kc\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@sr\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.14,0.33,0.53}{##1}}}
-\expandafter\def\csname PYG@tok@gr\endcsname{\def\PYG@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
-\expandafter\def\csname PYG@tok@vg\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
-\expandafter\def\csname PYG@tok@w\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
-\expandafter\def\csname PYG@tok@vi\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
-\expandafter\def\csname PYG@tok@sb\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
-\expandafter\def\csname PYG@tok@kn\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@nf\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.02,0.16,0.49}{##1}}}
-\expandafter\def\csname PYG@tok@na\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PYG@tok@gt\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
 \expandafter\def\csname PYG@tok@ss\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.32,0.47,0.09}{##1}}}
-\expandafter\def\csname PYG@tok@ge\endcsname{\let\PYG@it=\textit}
-\expandafter\def\csname PYG@tok@m\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
-\expandafter\def\csname PYG@tok@go\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.20,0.20,0.20}{##1}}}
 \expandafter\def\csname PYG@tok@c\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
+\expandafter\def\csname PYG@tok@cs\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}\def\PYG@bc##1{\setlength{\fboxsep}{0pt}\colorbox[rgb]{1.00,0.94,0.94}{\strut ##1}}}
+\expandafter\def\csname PYG@tok@il\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
+\expandafter\def\csname PYG@tok@gd\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PYG@tok@w\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
 \expandafter\def\csname PYG@tok@nd\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.33,0.33,0.33}{##1}}}
+\expandafter\def\csname PYG@tok@vi\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
+\expandafter\def\csname PYG@tok@nc\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.05,0.52,0.71}{##1}}}
+\expandafter\def\csname PYG@tok@sh\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PYG@tok@c1\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
+\expandafter\def\csname PYG@tok@go\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.20,0.20,0.20}{##1}}}
+\expandafter\def\csname PYG@tok@nt\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.02,0.16,0.45}{##1}}}
+\expandafter\def\csname PYG@tok@k\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@sx\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.78,0.36,0.04}{##1}}}
+\expandafter\def\csname PYG@tok@kr\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@s2\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PYG@tok@s\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PYG@tok@nl\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.13,0.44}{##1}}}
+\expandafter\def\csname PYG@tok@sc\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PYG@tok@kc\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@na\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PYG@tok@gr\endcsname{\def\PYG@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYG@tok@ch\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
+\expandafter\def\csname PYG@tok@sd\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PYG@tok@vc\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
+\expandafter\def\csname PYG@tok@ge\endcsname{\let\PYG@it=\textit}
+\expandafter\def\csname PYG@tok@gh\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PYG@tok@err\endcsname{\def\PYG@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PYG@tok@mo\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
+\expandafter\def\csname PYG@tok@sr\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.14,0.33,0.53}{##1}}}
+\expandafter\def\csname PYG@tok@si\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.44,0.63,0.82}{##1}}}
+\expandafter\def\csname PYG@tok@gs\endcsname{\let\PYG@bf=\textbf}
+\expandafter\def\csname PYG@tok@kn\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@sb\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PYG@tok@ow\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@nf\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.02,0.16,0.49}{##1}}}
+\expandafter\def\csname PYG@tok@mi\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
+\expandafter\def\csname PYG@tok@gp\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.78,0.36,0.04}{##1}}}
+\expandafter\def\csname PYG@tok@cm\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
+\expandafter\def\csname PYG@tok@kp\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@mh\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
+\expandafter\def\csname PYG@tok@o\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PYG@tok@se\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PYG@tok@m\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
+\expandafter\def\csname PYG@tok@nv\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
+\expandafter\def\csname PYG@tok@cpf\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
+\expandafter\def\csname PYG@tok@mf\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
+\expandafter\def\csname PYG@tok@cp\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@bp\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@kd\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@kt\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.56,0.13,0.00}{##1}}}
+\expandafter\def\csname PYG@tok@ne\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@ni\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.84,0.33,0.22}{##1}}}
+\expandafter\def\csname PYG@tok@nb\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@mb\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
+\expandafter\def\csname PYG@tok@gu\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PYG@tok@s1\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PYG@tok@vg\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
+\expandafter\def\csname PYG@tok@nn\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.05,0.52,0.71}{##1}}}
+\expandafter\def\csname PYG@tok@gi\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
 
 \def\PYGZbs{\char`\\}
 \def\PYGZus{\char`\_}
@@ -163,12 +163,12 @@ Ing. Štefan Urbánek
 
 
 \chapter{Introduction}
-\label{introduction:introduction}\label{introduction:welcome-to-design-and-implementation-of-open-data-data-warehouse-s-documentation}\label{introduction::doc}
+\label{introduction:welcome-to-design-and-implementation-of-open-data-data-warehouse-s-documentation}\label{introduction::doc}\label{introduction:introduction}
 
 \section{Data}
 \label{introduction:data}
 
-\subsection{\textbf{What is Data?}}
+\subsection{What is Data?}
 \label{introduction:what-is-data}
 Data is all around us. But what exactly is? Data is a value assigned to a thing.
 What can we say about the balls in the picture? They are
@@ -203,7 +203,7 @@ Data that can be observed but not measured.
 \textbf{Continues} data is a numerical data with a continues range: e.g. size of a tennis balls can be any size (86.02mm), or the size of your foot (as opposed to your shoe size, which is discrete). In continues data, all values are possible with no gaps between .
 
 
-\subsection{\textbf{From Data to information knowledge}}
+\subsection{From Data to information knowledge}
 \label{introduction:from-data-to-information-knowledge}
 Data, when collected and structured suddenly becomes a lot more useful.
 
@@ -245,7 +245,7 @@ So explain what you are showing – explain how it is read, explain where the da
 If you give the proper context the conclusion should come right out of the data.
 
 
-\subsection{\textbf{Finding Data}}
+\subsection{Finding Data}
 \label{introduction:finding-data}
 \begin{tabulary}{\linewidth}{|L|L|}
 \hline
@@ -858,9 +858,997 @@ support handling changes to dimension table attributes.
 \section{Dimensional Table Attributes}
 \label{datawarehouse:dimensional-table-attributes}
 
+\subsection{Date Dimension}
+\label{datawarehouse:date-dimension}
+We have started with the date dimension, which is nearly guaranteed to be in every data warehouse.
+Unlike other dimensions, we could have build the date dimension in advance. We have put 10 - 20 years of rows representing
+days in the table so that we can cover the history we have stored, as well as several years in the future.
+From our data we know that first public awards come from the year 2008, so even 10 years worth of days is only about 3650 rows,
+which is relatively small dimension table.
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{0.800000}{\includegraphics{{date_dim}.png}}
+\caption{Date Dimension}\label{datawarehouse:id8}\end{figure}
+
+Each column in the date dimension table is defined by the particular day that the row represents.
+The full day columns represents the full date when the award have been signed in format YYYY-MM-DD it data type is date.
+The year columns represents the fiscal year of the award and it is a singe integer type. This column is useful for slicing,
+when we want filter a particular year, for example we want to show all the transactions made in the year of 2015.
+The month column represents the month number in the year (1, 2, …, 12). The month name columns represents the name of the month
+(January, February etc.). Similarly, as month we have a day column, which represents the day number in calendar month columns
+starts with 1 at the beginning of each month an it is depending on the particular month. The day in the year columns is a single
+integer which is representing the day number in the year, it starts from 1 and runs to 365, depending on what year is.
+The weekday name column represents the name of the day when the award have been signed, such as Wednesday. It has string data type.
+We have also included calendar week column. We have included quarter number (Q1,…, Q4). Columns like year, quarter, month, calendar week,
+day all these integers support as simple date filters. Figure 2.5 illustrates several rows from a partial date dimension table.
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{0.800000}{\includegraphics{{date_dim_detail}.png}}
+\caption{Sample of Date Dimension}\label{datawarehouse:id9}\end{figure}
+
+
+\subsection{Product Dimension}
+\label{datawarehouse:product-dimension}\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{0.800000}{\includegraphics{{product_dim}.png}}
+\caption{Product Dimension}\label{datawarehouse:id10}\end{figure}
+
+The product dimension describes every product or service for a particular award.
+While a typical reasonable product dimension table would have 50 or more descriptive attributes, in our data warehouse
+we have only one product name attribute column. It is sourced from the operational system as a single attribute column with no hierarchy.
+The only function of the product dimension is to give a descriptive attribute of each award. In our case there is only
+2492 different values in the product dimension table. Viewed in this manner, we can only drill down on one level of the product
+dimension which provides us information about the award amount and quantity by product name. For example here is simple
+report overview, we have summarised the award amount and quantity (count) by product name.
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{1.000000}{\includegraphics{{product_sample}.png}}
+\caption{Drill down sample of Product Dimension}\label{datawarehouse:id11}\end{figure}
+
+
+\subsection{Geography Dimension}
+\label{datawarehouse:geography-dimension}\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{0.800000}{\includegraphics{{geography_dim}.png}}
+\caption{Geography Dimension}\label{datawarehouse:id12}\end{figure}
+
+The geography dimension describes every transactions places of performance for recipients. It is primary a geographic
+dimension in our case study. Each row can be thought of as a location where an award has been made. Because of this we,
+can drill down / roll up any geography dimension attribute, such as country, state, city, zip code. These columns
+attributes are representing in the geography dimension a simple hierarchy for a single row.
+
+
+\subsection{Recipient Dimension}
+\label{datawarehouse:recipient-dimension}\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{0.800000}{\includegraphics{{recipient_dim}.png}}
+\caption{Recipient Dimension}\label{datawarehouse:id13}\end{figure}
+
+The recipient dimension describes recipient transactions. The dimension contains row for each recipient,
+along with descriptive attributes such as street address, state, city etc. We capture only the recipient name,
+address information and DUNS number. It is used to establish a business credit file, which is often referenced by
+lenders and potential business partners to help predict the reliability and/or financial stability of the company
+in question {[}\url{http://www.dnb.com/duns-number.html}{]}. Recipient geographic attributes have been complicated to
+dealing with. We wanted to avoid snowflaking  as we have mentioned in Choose Dimension chapter. In our model
+recipients typically have multiple addresses, but every transaction is geocoded on the prime recipient address.
+This means we have unique row for each recipient based on his geographic attributes. The street address column
+is our natural key to identify each unique recipient.
+
+A sample set of name and location attributes for individual recipient:
+
+\begin{tabulary}{\linewidth}{|L|L|L|L|L|L|L|L|}
+\hline
+
+1
+ & 
+Abbewood
+ & 
+1002 west 23rd st.
+ & 
+Alabama
+ & 
+Panama City
+ & 
+32405
+ & 
+United States of America
+ & 
+627189244
+\\
+\hline\end{tabulary}
+
+
+
+\subsection{Transaction Type Dimension}
+\label{datawarehouse:transaction-type-dimension}\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{0.800000}{\includegraphics{{transactiontype_dim}.png}}
+\caption{Transaction Type Dimension}\label{datawarehouse:id14}\end{figure}
+
+The transaction type dimension describes the type of award. It is our smallest dimension consists only of 4 unique row.
+The transaction status columns describe the status of the transaction active/inactive. The category columns is our key
+attribute in the dimension which describe what kind of transaction is reported by the federal agencies making contract,
+grant, loan, and other financial assistance award.
+\begin{itemize}
+\item {} 
+Contract is an agreement between the federal government and a prime recipient to execute goods and services for a fee.
+
+\item {} 
+Grant is type of federal award that requires an application process and include payments to non-federal entities for
+a defined purpose in which services are not rendered to the federal government.
+
+\item {} 
+Loan is type of federal awards that the borrower will eventually pay back to the government.
+
+\item {} 
+Other Financial Assistance includes direct payments to individuals, insurance payments, and other types of assistance payments.
+
+\end{itemize}
+
+The transaction description columns provides us descriptive information of types of awards.
+
+
+\subsection{Award Dimension}
+\label{datawarehouse:award-dimension}\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{0.800000}{\includegraphics{{award_dim}.png}}
+\caption{Award Dimension}\label{datawarehouse:id15}\end{figure}
+
+The award dimension is potentially the most important dimension in our schema. The grain of the fact table has been stated
+as “awards at the award modification level of detail”. This has been achieved by adding award identifiers from the source
+system to identify individual awards: the award\_id and award\_mod. Together with this two attributes we have achieved to
+uniquely identify each fact table rows. Because of this approach, each fact table row represents exactly one award
+or award modification, the award dimension and the fact table contain the same number of rows.
+
+\textbf{Slowly Changing Dimension}
+
+As our grain dictates, we need to track changes over time. The award modification number is are natural key identifier
+carried over from the source system. The award modification number uniquely identify a corresponding entity in our source system.
+For example, an individual award is identified by award id in our source system, which uniquely identify a contract or agreement.
+With the combination of the natural key award mod from the source system we have achieved to identify each award modification.
+The use of surrogate key allows the data warehouse uniquely identify each transaction and respond to changes in the source system.
+This allows us to track history changes of awards. With these dimension attributes we have specified a strategy to handle change.
+In other words, when an attribute value change in the operational system, we will respond to this change in our dimensional model.
+We refer this kind of change as slowly changing dimension. We made the claim earlier about our goals of the data warehouse was to
+represent awards correctly. Thats why we have decided to use a technique called SCD Type 2. Using the type 2 approach, when an
+agency make a modification to an award (for example restrict the original award or make additional funding) we create a new award
+dimension row for the given award to reflect new award amount.
+
+\begin{tabulary}{\linewidth}{|L|L|L|}
+\hline
+
+1
+ & 
+1PIC355199
+ & 
+c5e18f14-82cf-4e64-b1b0-cd767735e330
+\\
+\hline
+2
+ & 
+1PIC355199
+ & 
+c8130052-2d0b-41f2-9b2b-84f0f3da9d18
+\\
+\hline
+3
+ & 
+1PIC355199
+ & 
+c8c24821-38fe-463f-9fe5-2f3f6db054fc
+\\
+\hline
+4
+ & 
+1PIC355199
+ & 
+cc809f09-595b-455a-af92-3498a3c97a90
+\\
+\hline
+5
+ & 
+Geography
+ & 
+cd4f8125-a714-4565-8d72-4700f522d54a
+\\
+\hline\end{tabulary}
+
+
+Now we can see why the the award dimension key can’t be the Award ID natural key. We need different surrogate keys
+for the same award id. Each surrogate keys identifies a unique transaction that was true for a span of time.
+This method accurately track slowly changing dimensions attributes.
+
+
+\subsection{Federal Award Transactions}
+\label{datawarehouse:federal-award-transactions}
+As we have moved from the dimensional design, this is how our federal award transaction business model looks like for now.
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{0.800000}{\includegraphics{{starschema_final}.png}}
+\caption{Star Schema}\label{datawarehouse:id16}\end{figure}
+
+
+\chapter{OLAP}
+\label{olap::doc}\label{olap:olap}
+The presentation area is based on online analytic processing (OLAP) technology, the data is stored in cubes.
+
+
+\section{Cubes - OLAP Framework}
+\label{olap:cubes-olap-framework}
+Cubes is a light-weight Python framework and set of tools for development of reporting and analytical applications,
+Online Analytical Processing (OLAP), multidimensional analysis and browsing of aggregated data \phantomsection\label{olap:id1}{\hyperref[olap:cubes]{\crossref{{[}Cubes{]}}}}.
+
+The framework models the data as a cube with multiple dimensions:
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{1.000000}{\includegraphics{{cube-dims_and_cell}.png}}
+\caption{Cubes Dimension and Cell}\label{olap:id10}\end{figure}
+
+Core cube features that we have implemented:
+\begin{itemize}
+\item {} 
+\textbf{Workspace} - Cubes analytical workspace
+
+\item {} 
+\textbf{Model} - Description of data (metadata): cubes, dimensions, hierarchies, attributes, labels etc.
+
+\item {} 
+\textbf{Browser} - Aggregation browsing, slicing-and-dicing, drill-down.
+
+\item {} 
+\textbf{Backend} - built-in ROLAP backend which uses Postgres SQL database using SQLAlchemy.
+
+\item {} 
+\textbf{Server} - WSGI HTTP server for Cubes
+
+\end{itemize}
+
+
+\section{Analytical Workspace}
+\label{olap:analytical-workspace}
+Everything in Cubes happens in an analytical workspace. It contains cubes, maintains connections to the data stores
+(with cube data), provides connection to external cubes and more \phantomsection\label{olap:id2}{\hyperref[olap:workspace]{\crossref{{[}workspace{]}}}}.
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{1.000000}{\includegraphics{{cubes-workspace_simplified-2}.png}}
+\caption{Cubes Workspace}\label{olap:id11}\end{figure}
+
+The workspace properties are specified in a configuration file \emph{slicer.ini}.
+First we have specified the workspace - cubes workspace configuration.
+We have provided the workspace our \emph{model.json} metadata dictionary. We have added a logging
+path where to log file for better understanding of debug logs.
+
+\def\SphinxLiteralBlockLabel{\label{olap:workspace-configuration}}
+\SphinxSetupCaptionForVerbatim{literal-block}{slicer.ini}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{[}\PYG{n}{workspace}\PYG{p}{]}
+\PYG{n}{log}\PYG{p}{:} \PYG{n}{error}\PYG{o}{.}\PYG{n}{log}
+\PYG{n}{log\PYGZus{}lever}\PYG{p}{:} \PYG{n}{debug}
+\PYG{n}{model}\PYG{p}{:} \PYG{n}{model}\PYG{o}{.}\PYG{n}{json}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+For the server section we have defined the HTTP WSGI OLAP Server.
+The host where the server runs. Port on which the the server listens.
+We have allowed Cross-origin resource sharing header for the CubesViewer.
+
+\def\SphinxLiteralBlockLabel{\label{olap:server-configuration}}
+\SphinxSetupCaptionForVerbatim{literal-block}{slicer.ini}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{[}\PYG{n}{server}\PYG{p}{]}
+\PYG{n}{host}\PYG{p}{:} \PYG{n}{localhost}
+\PYG{n}{port}\PYG{p}{:} \PYG{l+m+mi}{5000}
+\PYG{n}{prettyprint}\PYG{p}{:} \PYG{n}{true}
+\PYG{n+nb}{reload}\PYG{p}{:} \PYG{n}{true}
+\PYG{n}{allow\PYGZus{}cors\PYGZus{}origin}\PYG{p}{:} \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{localhost}\PYG{p}{:}\PYG{l+m+mi}{8000}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+We have specified our data store - the database containing the cube’s data.
+We have defined the prefix for dimension \emph{dm\_} and for fact \emph{ft\_} this allows the
+mapper to find dimension and fact tables in the database.
+
+\def\SphinxLiteralBlockLabel{\label{olap:store-configuration}}
+\SphinxSetupCaptionForVerbatim{literal-block}{slicer.ini}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{[}\PYG{n}{store}\PYG{p}{]}
+\PYG{n+nb}{type}\PYG{p}{:} \PYG{n}{sql}
+\PYG{n}{url}\PYG{p}{:} \PYG{n}{postgresql}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{richardbanyi}\PYG{p}{:}\PYG{n}{dpcu923}\PYG{n+nd}{@localhost}\PYG{p}{:}\PYG{l+m+mi}{5432}\PYG{o}{/}\PYG{n}{usaspending}
+\PYG{n}{fact\PYGZus{}prefix}\PYG{p}{:} \PYG{n}{ft\PYGZus{}}
+\PYG{n}{dimension\PYGZus{}prefix}\PYG{p}{:} \PYG{n}{dm\PYGZus{}}
+\PYG{n}{debug}\PYG{p}{:} \PYG{n}{true}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+The model section contains list of models. We have defined only one model.
+
+\def\SphinxLiteralBlockLabel{\label{olap:list-of-models}}
+\SphinxSetupCaptionForVerbatim{literal-block}{slicer.ini}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{[}\PYG{n}{models}\PYG{p}{]}
+\PYG{n}{main}\PYG{p}{:} \PYG{n}{model}\PYG{o}{.}\PYG{n}{json}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+
+\section{Logical Model and Metadata}
+\label{olap:logical-model-and-metadata}
+Logical model describes the data from user’s or analyst’s perspective: data how they are being measured,
+aggregated and reported. Model is independent of physical implementation of data. This physical
+independence makes it easier to focus on data instead on ways of how to get the data in understandable form \phantomsection\label{olap:id3}{\hyperref[olap:model]{\crossref{{[}model{]}}}}.
+
+Analyst or report writers, anyone who will access the web application do not have to know where name
+of an government organisation or recipient name is stored, nor do they have to know where is data stored
+they only ask for \emph{agency.name} or \emph{recipient.name}.
+
+Example: User wants to find out the award amounts by geography which has four levels:country level, state level,
+city level and zip level. The original data is stored in the physical database in the geography table. User doesn’t
+have to know where the data are stored, he just queries for the geography.state and geography.city and will get the proper data.
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{1.000000}{\includegraphics{{logical-to-physical}.png}}
+\caption{Logical to Physical Mapping}\label{olap:id12}\end{figure}
+
+
+\section{Model}
+\label{olap:id4}
+The logical model is described using model metadata dictionary. The content is description of logical objects,
+physical storage and other additional information \phantomsection\label{olap:id5}{\hyperref[olap:model2]{\crossref{{[}model2{]}}}}.
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{1.000000}{\includegraphics{{cubes-model_metadata}.png}}
+\caption{Cubes - Model Metadata}\label{olap:id13}\end{figure}
+
+\def\SphinxLiteralBlockLabel{\label{olap:model-metadata}}
+\SphinxSetupCaptionForVerbatim{literal-block}{Model Example}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+    \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}usaspending\PYGZdq{}}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}label\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Federal Award Transactions\PYGZdq{}}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}description\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Federal Award Transactions of United States of America\PYGZdq{}}
+    \PYG{l+s+s2}{\PYGZdq{}cubes\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}\PYG{p}{...}\PYG{p}{]}
+    \PYG{l+s+s2}{\PYGZdq{}dimensions\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}\PYG{p}{...}\PYG{p}{]}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+In our case the logical part of the model description consists of the following attributes:
+\textbf{Name} is the name of our model, \textbf{label} and \textbf{descriptions} is used for human readable label/descriptions
+it’s optional. \textbf{Cubes} is a list of cubes metadata, we have defined only one cube for our case study spending.
+\textbf{Dimensions} is a list of dimension metadata.
+
+The physical part of the model description consists of the following attributes:
+
+\textbf{Joins} we have only specified backend join specification, it is used to match joins in the cube.
+
+
+\subsection{Cubes}
+\label{olap:id6}
+Cube descriptions are stored as a dictionary for key \emph{cubes}.
+
+\def\SphinxLiteralBlockLabel{\label{olap:cubes-metadata}}
+\SphinxSetupCaptionForVerbatim{literal-block}{Cubes Example}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGZob{}
+    \PYGZdq{}name\PYGZdq{}: \PYGZdq{}usaspending\PYGZdq{},
+    \PYGZdq{}label\PYGZdq{}: “Federal Award Transactions\PYGZdq{},
+    \PYGZdq{}dimensions\PYGZdq{}: [ \PYGZdq{}date\PYGZdq{}, ... ],
+    \PYGZdq{}measures\PYGZdq{}: [...],
+    \PYGZdq{}aggregates\PYGZdq{}: [...],
+    \PYGZdq{}details\PYGZdq{}: [...],
+\PYGZcb{}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+
+\subsection{Measures and Aggregates}
+\label{olap:measures-and-aggregates}\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{0.800000}{\includegraphics{{cubes-measure_vs_aggregate}.png}}
+\caption{Cubes - Measures vs. Aggreates}\label{olap:id14}\end{figure}
+
+The measure is numerical property of a fact. It represent the award\_amount column in the physical model.
+
+\def\SphinxLiteralBlockLabel{\label{olap:measures}}
+\SphinxSetupCaptionForVerbatim{literal-block}{Measures}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+s+s2}{\PYGZdq{}measures\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}
+   \PYG{p}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}award\PYGZus{}amount\PYGZdq{}} \PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}label\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Award amount\PYGZdq{}}\PYG{p}{\PYGZcb{}}
+ \PYG{p}{]}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+Aggregates is a list of aggregates that we have provided for the measure.
+
+\def\SphinxLiteralBlockLabel{\label{olap:list-of-aggregates}}
+\SphinxSetupCaptionForVerbatim{literal-block}{Aggregates}
+\begin{Verbatim}[commandchars=\\\{\}]
+ \PYG{l+s+s2}{\PYGZdq{}aggregates\PYGZdq{}}\PYG{o}{:}  \PYG{p}{[}
+   \PYG{p}{\PYGZob{}}
+       \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}award\PYGZus{}sum\PYGZdq{}}\PYG{p}{,}
+       \PYG{l+s+s2}{\PYGZdq{}label\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Total Award Amount\PYGZdq{}}\PYG{p}{,}
+       \PYG{l+s+s2}{\PYGZdq{}function\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}sum\PYGZdq{}}\PYG{p}{,}
+       \PYG{l+s+s2}{\PYGZdq{}measure\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}award\PYGZus{}amount\PYGZdq{}}
+   \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+   \PYG{p}{\PYGZob{}}
+       \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}transaction\PYGZus{}count\PYGZdq{}}\PYG{p}{,}
+       \PYG{l+s+s2}{\PYGZdq{}label\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Total Transactions\PYGZdq{}}\PYG{p}{,}
+       \PYG{l+s+s2}{\PYGZdq{}function\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}count\PYGZdq{}}
+   \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+   \PYG{p}{\PYGZob{}}
+       \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}award\PYGZus{}min\PYGZdq{}}\PYG{p}{,}
+       \PYG{l+s+s2}{\PYGZdq{}label\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Min Amount\PYGZdq{}}\PYG{p}{,}
+       \PYG{l+s+s2}{\PYGZdq{}measure\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}award\PYGZus{}amount\PYGZdq{}}\PYG{p}{,}
+       \PYG{l+s+s2}{\PYGZdq{}function\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}min\PYGZdq{}}
+   \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+   \PYG{p}{\PYGZob{}}
+       \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}award\PYGZus{}max\PYGZdq{}}\PYG{p}{,}
+       \PYG{l+s+s2}{\PYGZdq{}label\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Max Amount\PYGZdq{}}\PYG{p}{,}
+       \PYG{l+s+s2}{\PYGZdq{}measure\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}award\PYGZus{}amount\PYGZdq{}}\PYG{p}{,}
+       \PYG{l+s+s2}{\PYGZdq{}function\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}max\PYGZdq{}}
+   \PYG{p}{\PYGZcb{}}
+ \PYG{p}{]}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+Note that item\_count aggregate - it counts number of the facts within the cell. No measure required
+as a source for the aggregate. It helps to count the number of the transactions.
+
+
+\subsection{Mappings}
+\label{olap:mappings}
+The most important part of the OLAP on top of the start schema is mapping of the logical
+attributes to their physical attributes. In SQL database the physical attributes are stored in columns,
+which belongs to tables, which are part of the starcshema.
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{0.800000}{\includegraphics{{mapping_logical_to_physical}.png}}
+\caption{Cubes - Mapping Logical to Physical}\label{olap:id15}\end{figure}
+
+Example:
+
+For data browsing, we have defined mappings, so that Cubes framework has know where logical attributes are physically stored.
+With this the Cubes framework know which tables are related to the cube spending and how they are joined together.
+
+The are two ways how the mapping is being done:
+* Imlicit
+* Explicit
+
+We have chosen the implicit declarations which has been most straightforward and simple.
+With implicit mapping we have matched a database schema with logical model and have avoided additional specific mapping metadata.
+
+This is how it would looked like if we would have chosen explicit mappings:
+
+\def\SphinxLiteralBlockLabel{\label{olap:explicit-mapping}}
+\SphinxSetupCaptionForVerbatim{literal-block}{Explicit Mapping}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+s+s2}{\PYGZdq{}mappings\PYGZdq{}}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+   \PYG{l+s+s2}{\PYGZdq{}product.name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}dm\PYGZus{}products.product\PYGZus{}name\PYGZdq{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+The mapping process look like this:
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{0.800000}{\includegraphics{{mapping-overview}.png}}
+\caption{Cubes - Mapping Overview}\label{olap:id16}\end{figure}
+
+
+\subsection{Facts}
+\label{olap:facts}
+Cubes looks for fact table with the same name as cube name. We have specified prefix for every fact table with
+\emph{ft\_} in the workspace configuration \emph{slicer.ini}.
+\begin{itemize}
+\item {} 
+Cube is named \emph{spending}: the framework looks for a fact table named \emph{spending}.
+
+\item {} 
+\textbf{fact table name = fact table prefix + fact table name}
+
+\end{itemize}
+
+
+\subsection{Dimensions}
+\label{olap:dimensions}
+Same as for fact tables cubes looks for dimension table with the same name as dimension name.
+We have specified prefix for every dimension table with \emph{dm\_} in the workspace configuration \emph{slicer.ini}.
+We have design our dimension columns to have the same name as dimension attributes.
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{1.000000}{\includegraphics{{dimension_attribute_prefix_map}.png}}
+\caption{Cubes - Dimension attribute prefix}\label{olap:id17}\end{figure}
+\begin{itemize}
+\item {} 
+\textbf{dimension table name = dimension prefix + dimension name}
+
+\end{itemize}
+
+An example of product dimension:
+
+\def\SphinxLiteralBlockLabel{\label{olap:product-dimension}}
+\SphinxSetupCaptionForVerbatim{literal-block}{Product dimension}
+\begin{Verbatim}[commandchars=\\\{\}]
+ \PYG{p}{\PYGZob{}}
+   \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}product\PYGZdq{}}\PYG{p}{,}
+   \PYG{l+s+s2}{\PYGZdq{}label\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Product\PYGZdq{}}\PYG{p}{,}
+   \PYG{l+s+s2}{\PYGZdq{}attributes\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}
+       \PYG{p}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}id\PYGZdq{}} \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+       \PYG{p}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}product\PYGZus{}name\PYGZdq{}} \PYG{p}{\PYGZcb{}}
+   \PYG{p}{]}\PYG{p}{,}
+   \PYG{l+s+s2}{\PYGZdq{}levels\PYGZdq{}}\PYG{o}{:} \PYG{p}{[} \PYG{p}{...} \PYG{p}{]}\PYG{p}{,}
+   \PYG{l+s+s2}{\PYGZdq{}hierarchies\PYGZdq{}}\PYG{o}{:} \PYG{p}{[} \PYG{p}{...} \PYG{p}{]}
+ \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+
+\subsection{Joins}
+\label{olap:joins}
+Tables are joined by matching single-column - surrogate keys.
+Joins are defined as an ordered list. We had to define the column reference for both master
+table and a table with details. The order of joins has to be from master to detail.
+
+\def\SphinxLiteralBlockLabel{\label{olap:join}}
+\SphinxSetupCaptionForVerbatim{literal-block}{Join example}
+\begin{Verbatim}[commandchars=\\\{\}]
+ \PYG{l+s+s2}{\PYGZdq{}joins\PYGZdq{}}\PYG{o}{:}  \PYG{p}{[}
+     \PYG{p}{\PYGZob{}}
+         \PYG{l+s+s2}{\PYGZdq{}master\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}date\PYGZus{}id\PYGZdq{}}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}detail\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}dm\PYGZus{}date.id\PYGZdq{}}
+     \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+ \PYG{p}{]}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+Cubes supports three join methods \emph{match, detail and master}.
+
+\emph{match} (default) – the keys from both master and detail tables have to match – INNER JOIN
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{1.000000}{\includegraphics{{cubes-sql_joins-match}.png}}
+\caption{Cubes - Join Match}\label{olap:id18}\end{figure}
+
+
+\subsection{Hierarchies and Levels}
+\label{olap:hierarchies-and-levels}
+Dimensions can have more than one level. Date dimension has 8 levels. Which every of these levels has it’s own attributes.
+The month level is represented by two attributes month an integer data type which describes the mont of the year and
+second attribute month name.
+
+\def\SphinxLiteralBlockLabel{\label{olap:month-level}}
+\SphinxSetupCaptionForVerbatim{literal-block}{Levels - Month}
+\begin{Verbatim}[commandchars=\\\{\}]
+ \PYG{l+s+s2}{\PYGZdq{}levels\PYGZdq{}}\PYG{o}{:}  \PYG{p}{[}
+     \PYG{p}{\PYGZob{}}
+         \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}month\PYGZdq{}}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}label\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Month\PYGZdq{}}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}key\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}month\PYGZdq{}}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}label\PYGZus{}attribute\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}month\PYGZus{}name\PYGZdq{}}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}attributes\PYGZdq{}}\PYG{o}{:}  \PYG{p}{[}
+             \PYG{p}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}month\PYGZdq{}} \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+             \PYG{p}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}month\PYGZus{}name\PYGZdq{}} \PYG{p}{\PYGZcb{}}
+         \PYG{p}{]}
+     \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+For date dimension we have created multiple ways of organising attributes into hierarchies.
+The date can be composed of \emph{year-month-day} or \emph{year-quarter-month-day}.
+We have defined four different hierarchies.
+
+First we have defined all possible level.s Then created list of hierarchies where we specified
+order of the levels for the particularly hierarchy.
+
+\def\SphinxLiteralBlockLabel{\label{olap:ymd}}
+\SphinxSetupCaptionForVerbatim{literal-block}{Hierarchies - Year-Month-day}
+\begin{Verbatim}[commandchars=\\\{\}]
+ \PYG{l+s+s2}{\PYGZdq{}hierarchies\PYGZdq{}}\PYG{o}{:}  \PYG{p}{[}
+     \PYG{p}{\PYGZob{}}
+         \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}ymd\PYGZdq{}}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}label\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Y\PYGZhy{}M\PYGZhy{}D\PYGZdq{}}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}levels\PYGZdq{}}\PYG{o}{:} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}year\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}month\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}day\PYGZdq{}}\PYG{p}{]}
+     \PYG{p}{\PYGZcb{}}
+ \PYG{p}{]}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+
+\subsection{User-oriented Metadata}
+\label{olap:user-oriented-metadata}
+For a better understanding to users we have added labels for parts of the model that are being displayed to the users.
+They are used for report tables as column headings or as a filter of description. We have specified them for
+every object model (cube, dimension, level, attribute etc.) with the label attribute. The \emph{key} attribute is used
+for filtering and \emph{label\_attribute} is used for the data to be displayed in the user interface (labels).
+
+\def\SphinxLiteralBlockLabel{\label{olap:labels}}
+\SphinxSetupCaptionForVerbatim{literal-block}{Labels}
+\begin{Verbatim}[commandchars=\\\{\}]
+ \PYG{l+s+s2}{\PYGZdq{}levels\PYGZdq{}}\PYG{o}{:}  \PYG{p}{[}
+     \PYG{p}{\PYGZob{}}
+         \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}month\PYGZdq{}}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}label\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}Month\PYGZdq{}}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}key\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}month\PYGZdq{}}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}label\PYGZus{}attribute\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}month\PYGZus{}name\PYGZdq{}}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}attributes\PYGZdq{}}\PYG{o}{:}  \PYG{p}{[}
+             \PYG{p}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}month\PYGZdq{}} \PYG{p}{\PYGZcb{}}\PYG{p}{,}
+             \PYG{p}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}month\PYGZus{}name\PYGZdq{}} \PYG{p}{\PYGZcb{}}
+         \PYG{p}{]}
+     \PYG{p}{\PYGZcb{}}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{1.000000}{\includegraphics{{schema-label_attributes}.png}}
+\caption{Cubes - Labels}\label{olap:id19}\end{figure}
+
+
+\section{Slicing and Dicing}
+\label{olap:slicing-and-dicing}
+
+\subsection{Browser}
+\label{olap:browser}
+The aggregation, slicing, dicing, browsing of the multi-dimensional data is being done by an AggregationBrowser.
+
+\def\SphinxLiteralBlockLabel{\label{olap:workspace-browser}}
+\SphinxSetupCaptionForVerbatim{literal-block}{Workspace \& Browser initilization}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{cubes} \PYG{k+kn}{import} \PYG{n}{Workspace}
+
+\PYG{n}{workspace} \PYG{o}{=} \PYG{n}{Workspace}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{slicer.ini}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{browser} \PYG{o}{=} \PYG{n}{workspace}\PYG{o}{.}\PYG{n}{browser}\PYG{p}{(}\PYG{p}{)}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+Here we initialised our workspace, and create and initialises the aggregation browser.
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{0.800000}{\includegraphics{{browser-package}.png}}
+\caption{Cubes - Browser aggregate}\label{olap:id20}\end{figure}
+
+
+\subsection{Cells and Cuts}
+\label{olap:cells-and-cuts}
+Cell defines a point of interest – portion of the cube to be aggergated or browsed.
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{0.800000}{\includegraphics{{cubes-slice_and_dice-cell}.png}}
+\caption{Cubes - Slice and Dice cell}\label{olap:id21}\end{figure}
+
+There are three types of cells: point – defines a single point in a dimension at a
+particular level; range – defines all points of an ordered dimension (such as date)
+within the range and set – collection of points \phantomsection\label{olap:id7}{\hyperref[olap:cells]{\crossref{{[}cells{]}}}}.
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{1.000000}{\includegraphics{{cubes-point-range-set-cut}.png}}
+\caption{Cubes - Cuts}\label{olap:id22}\end{figure}
+
+Points are defined as dimension paths – list of dimension level keys. For example a date path for
+3rd of June 2015 would be: {[}2015, 6, 3{]}. For the month June it would be {[}2015, 6{]}
+and for the whole year of 2015 it would be {[}2015{]}.
+In python the cuts for “transactions from June of 2010 to June of 2012 for geography United States of America” are defined as:
+
+\def\SphinxLiteralBlockLabel{\label{olap:point-cuts}}
+\SphinxSetupCaptionForVerbatim{literal-block}{Point cut example}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{cuts} \PYG{o}{=} \PYG{p}{[}
+   \PYG{n}{PointCut}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{geography}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{united states of america}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{]}\PYG{p}{)}\PYG{p}{,}
+   \PYG{n}{PointCut}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{date}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{2010}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{2012}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{]}\PYG{p}{)}
+   \PYG{p}{]}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+A range might look like this:
+
+\def\SphinxLiteralBlockLabel{\label{olap:range-cuts}}
+\SphinxSetupCaptionForVerbatim{literal-block}{Range cut example}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{cuts} \PYG{o}{=} \PYG{p}{[}
+    \PYG{n}{PointCut}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{date}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{2010}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{2012}\PYG{p}{,} \PYG{l+m+mi}{12}\PYG{p}{,} \PYG{l+m+mi}{24}\PYG{p}{]}\PYG{p}{)}
+\PYG{p}{]}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+
+\subsection{Aggregate}
+\label{olap:aggregate}
+Aggregate of a cell:
+
+\def\SphinxLiteralBlockLabel{\label{olap:cell-aggregate}}
+\SphinxSetupCaptionForVerbatim{literal-block}{Aggregate of a Cell}
+\begin{Verbatim}[commandchars=\\\{\}]
+ \PYG{n}{cuts} \PYG{o}{=} \PYG{p}{[}
+     \PYG{n}{PointCut}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{geography}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{sk}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{]}\PYG{p}{)}
+     \PYG{n}{PointCut}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{date}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{2010}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{2012}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{]}\PYG{p}{)}\PYG{p}{,}
+ \PYG{p}{]}
+ \PYG{n}{cell} \PYG{o}{=} \PYG{n}{Cell}\PYG{p}{(}\PYG{n}{cube}\PYG{p}{,} \PYG{n}{cuts}\PYG{p}{)}
+ \PYG{n}{result} \PYG{o}{=} \PYG{n}{browser}\PYG{o}{.}\PYG{n}{aggregate}\PYG{p}{(}\PYG{n}{cell}\PYG{p}{)}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+We have a situation when a different hierarchy is desired than the default, so we have defined the hierarchy we wanted:
+
+\def\SphinxLiteralBlockLabel{\label{olap:cell-hierachy}}
+\SphinxSetupCaptionForVerbatim{literal-block}{Aggregate of a Cell with hierarchy}
+\begin{Verbatim}[commandchars=\\\{\}]
+ \PYG{n}{cuts} \PYG{o}{=} \PYG{p}{[}
+     \PYG{n}{PointCut}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{date}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{2010}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{2012}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{,} \PYG{n}{hierarchy}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{yqmd}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+ \PYG{p}{]}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+
+\subsection{Drilldown}
+\label{olap:drilldown}
+Drill-down – get more details, group the aggregation by dimension members.
+For example:
+
+\def\SphinxLiteralBlockLabel{\label{olap:id9}}
+\SphinxSetupCaptionForVerbatim{literal-block}{Drilldown}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{cut} \PYG{o}{=} \PYG{n}{PointCut}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{date}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{2010}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{cell} \PYG{o}{=} \PYG{n}{Cell}\PYG{p}{(}\PYG{n}{cube}\PYG{p}{,} \PYG{p}{[}\PYG{n}{cut}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{result} \PYG{o}{=} \PYG{n}{browser}\PYG{o}{.}\PYG{n}{aggregate}\PYG{p}{(}\PYG{n}{cell}\PYG{p}{,} \PYG{n}{drilldown}\PYG{o}{=}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{date}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{]}\PYG{p}{)}
+\end{Verbatim}
+\let\SphinxVerbatimTitle\empty
+\let\SphinxLiteralBlockLabel\empty
+
+\textbf{Implicit}
+
+The way we are drilling down, is that cubes knows the next level of the drilled dimension.
+We have stated that our geography dimension has 4 levels: country, state, city, zip. This
+means that the first level of the dimension is country. The “next level” is determined as the next
+level after the deepest level used in a cut. The next level is by state, and so on. If the cut is at
+its deepest level (zip), it is not possible to to drill-down deeper.
+
+\textbf{Explicit}
+
+For explicit drilling down, the cut is not considered for the drill down level. We have just implicitly declared the drill-down levels.
+
+
+\section{Drill Down Tree}
+\label{olap:drill-down-tree}
+We have created a function that traverse a dimension hierarchy and print-out aggregations
+(count of transactions and award amounts) at the actual browsed location.
+
+Attributes:
+\begin{itemize}
+\item {} 
+dimension - dimension to be traversed trough all levels.
+
+\end{itemize}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{drilldown}\PYG{p}{(}\PYG{n}{dim\PYGZus{}name}\PYG{o}{=}\PYG{n+nb+bp}{None}\PYG{p}{)}\PYG{p}{:}
+\end{Verbatim}
+
+First we need to get the dimension hierarchy to know the order of levels. Most dimensions have only one hierarchy, thought.
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{dimension} \PYG{o}{=} \PYG{n}{cube}\PYG{o}{.}\PYG{n}{dimension}\PYG{p}{(}\PYG{n}{dim\PYGZus{}name}\PYG{p}{)}
+\PYG{n}{hierarchy} \PYG{o}{=} \PYG{n}{dimension}\PYG{o}{.}\PYG{n}{hierarchy}\PYG{p}{(}\PYG{p}{)}
+\end{Verbatim}
+
+Parser the cut request parameter and convert it to a list of actual cube cuts.
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{cutstr} \PYG{o}{=} \PYG{n}{request}\PYG{o}{.}\PYG{n}{args}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{cut}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{hierarchy} \PYG{o}{=} \PYG{n}{dimension}\PYG{o}{.}\PYG{n}{hierarchy}\PYG{p}{(}\PYG{p}{)}
+\PYG{n}{cell} \PYG{o}{=} \PYG{n}{cubes}\PYG{o}{.}\PYG{n}{Cell}\PYG{p}{(}\PYG{n}{browser}\PYG{o}{.}\PYG{n}{cube}\PYG{p}{,} \PYG{n}{cubes}\PYG{o}{.}\PYG{n}{cuts\PYGZus{}from\PYGZus{}string}\PYG{p}{(}\PYG{n}{cube}\PYG{p}{,} \PYG{n}{cutstr}\PYG{p}{)}\PYG{p}{)}
+\end{Verbatim}
+
+We get the cut of actually browsed dimension, so we know “where we are”.
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{cut} \PYG{o}{=} \PYG{n}{cell}\PYG{o}{.}\PYG{n}{cut\PYGZus{}for\PYGZus{}dimension}\PYG{p}{(}\PYG{n}{dimension}\PYG{p}{)}
+
+\PYG{k}{if} \PYG{n}{cut}\PYG{p}{:}
+    \PYG{n}{path} \PYG{o}{=} \PYG{n}{cut}\PYG{o}{.}\PYG{n}{path}
+\PYG{k}{else}\PYG{p}{:}
+    \PYG{n}{path} \PYG{o}{=} \PYG{p}{[}\PYG{p}{]}
+\end{Verbatim}
+
+Now we do the actual aggregation of the cell.
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{levels} \PYG{o}{=} \PYG{n}{hierarchy}\PYG{o}{.}\PYG{n}{levels\PYGZus{}for\PYGZus{}path}\PYG{p}{(}\PYG{n}{path}\PYG{p}{)}
+\PYG{k}{if} \PYG{n}{levels}\PYG{p}{:}
+    \PYG{n}{next\PYGZus{}level} \PYG{o}{=} \PYG{n}{hierarchy}\PYG{o}{.}\PYG{n}{next\PYGZus{}level}\PYG{p}{(}\PYG{n}{levels}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
+\PYG{k}{else}\PYG{p}{:}
+    \PYG{n}{next\PYGZus{}level} \PYG{o}{=} \PYG{n}{hierarchy}\PYG{o}{.}\PYG{n}{next\PYGZus{}level}\PYG{p}{(}\PYG{n+nb+bp}{None}\PYG{p}{)}
+\end{Verbatim}
+
+We have created a flag, so that we know that we are at the deepest level.
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{is\PYGZus{}last} \PYG{o}{=} \PYG{n}{hierarchy}\PYG{o}{.}\PYG{n}{is\PYGZus{}last}\PYG{p}{(}\PYG{n}{next\PYGZus{}level}\PYG{p}{)}
+\end{Verbatim}
+
+And finally we, render the template
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{return} \PYG{n}{render\PYGZus{}template}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{drilldown.html}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{dimensions}\PYG{o}{=}\PYG{n}{cube}\PYG{o}{.}\PYG{n}{dimensions}\PYG{p}{,} \PYG{n}{dimension}\PYG{o}{=}\PYG{n}{dimension}\PYG{p}{,}
+                        \PYG{n}{levels}\PYG{o}{=}\PYG{n}{levels}\PYG{p}{,} \PYG{n}{next\PYGZus{}level}\PYG{o}{=}\PYG{n}{next\PYGZus{}level}\PYG{p}{,} \PYG{n}{result}\PYG{o}{=}\PYG{n}{result}\PYG{p}{,}
+                        \PYG{n}{cell}\PYG{o}{=}\PYG{n}{cell}\PYG{p}{,} \PYG{n}{is\PYGZus{}last}\PYG{o}{=}\PYG{n}{is\PYGZus{}last}\PYG{p}{,} \PYG{n}{details}\PYG{o}{=}\PYG{n}{details}\PYG{p}{,} \PYG{n}{pagination}\PYG{o}{=}\PYG{n}{pagination}
+                        \PYG{p}{)}
+\end{Verbatim}
+
+
+\chapter{Web Application}
+\label{olap:web-application}\begin{figure}[htbp]
+\centering
+\capstart
+
+\scalebox{0.800000}{\includegraphics{{website}.png}}
+\caption{Opengovernment - web application}\label{olap:id23}\end{figure}
+
+The final major component of the implementation environment is the web application.
+We have build a web application that provide variety of capabilities to general users to leverage
+the presentation area for analytical decision making.
+
+For the web development of the application we have used a micro web development framework for Python called Flask.
+For the front end we have used bootstrap framework to design the layouts and the interface. We are also relying
+on some  javascript libraries for the charts.
+
+The open government folder is where we have dropped our files. We have put directly in this folder our
+data warehouse schema, models for cubes, as well as the main application module. The static folder is a
+place where we have placed css, javascript files. Inside the templates folder the application looks for the templates.
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{o}{/}\PYG{n}{opengovernment}
+   \PYG{o}{/}\PYG{n}{static}
+   \PYG{o}{/}\PYG{n}{templates}
+   \PYG{o}{/}\PYG{n}{postgres}
+   \PYG{o}{/}\PYG{n}{models}
+   \PYG{n}{flask\PYGZus{}app}\PYG{o}{.}\PYG{n}{py}
+\end{Verbatim}
+
+The actual application module, we have named it flask\_app.py is the core of the back end.
+This is where the all web development functions are implemented. We have integrated Cubes Slicer
+Server with the application to provide raw analytical data. We have provided Slicer as a flask Blueprint
+to the application - a module that is plugged in.
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{if} \PYG{n}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:}
+
+    \PYG{c+c1}{\PYGZsh{} Create a Slicer and register it at http://localhost:5000/slicer}
+    \PYG{n}{app}\PYG{o}{.}\PYG{n}{register\PYGZus{}blueprint}\PYG{p}{(}\PYG{n}{slicer}\PYG{p}{,} \PYG{n}{url\PYGZus{}prefix}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{/slicer}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{config}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{slicer.ini}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+    \PYG{n}{app}\PYG{o}{.}\PYG{n}{run}\PYG{p}{(}\PYG{n}{host}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{localhost}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{port}\PYG{o}{=}\PYG{l+m+mi}{8000}\PYG{p}{,} \PYG{n}{debug}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{)}
+\end{Verbatim}
+
+We have implemented the following 7 features in our web application:
+\begin{itemize}
+\item {} 
+\textbf{Spending} - A good place to start to find information about federal funding.
+On Spending Page users just have to input a zip code which they are interested in and
+see all the federal transactions in their backyard. They can also see the transactions throughout state,
+county, as well as by federal agency and award type.
+
+\item {} 
+\textbf{Dashboard} - On Dashboard Page we enabled users to drill down from one place to another,
+they will find information to detailed data by focusing on something. For example to drill down through
+a series of place where the work was/is performed.
+
+\item {} 
+\textbf{Reports} - We have implemented a visual tool for exploring and analysing our OLAP Cube.
+We  have enabled users to explore data, create their own reports. It enables data exploration,
+data auditory, generation of reports, chart design and simple analytics.
+
+\item {} 
+\textbf{Charts} - We have also created our own charts using javascript libraries.
+On Chart pages users can drill down/roll up donut charts. Or they can look at Agencies
+Profile to see the total amount of money an agency awarded or State Summary to find out
+the total dollar amount for federal transactions for cities where the money was distributed.
+
+\end{itemize}
+
+
+\chapter{Conclusion}
+\label{conclusion:conclusion}\label{conclusion::doc}
+As we have been started through searching for data, we have studied the metadata of the source,
+the process in detail and observe the transactions of government institutes, such as contracts,
+grants, loans and other financial assistance, we have have decide the the federal award transaction
+is the business process to be modelled...
+
+
+\chapter{Resume in Slovak language}
+\label{resume:resume-in-slovak-language}\label{resume::doc}
+
 \chapter{References}
 \label{references:references}\label{references::doc}
 \phantomsection\label{references:id1}{[}1{]} Authors: School of Data, Organization: School of Data Date: Sep 02, 2013 Available from: \href{http://schoolofdata.org/handbook/courses/what-is-data/}{Data Fundamentals}
+
+
+\chapter{Appendix A}
+\label{apendixa::doc}\label{apendixa:appendix-a}
+
+\section{Instalation Manual}
+\label{apendixa:instalation-manual}
+\begin{thebibliography}{workspace}
+\bibitem[Cubes]{Cubes}{\phantomsection\label{olap:cubes} 
+Author: Stefan Urbanek
+Availailable: Cubes Overview
+}
+\bibitem[workspace]{workspace}{\phantomsection\label{olap:workspace} 
+Author: Stefan Urbanek
+Availailable: Cubes Analytical Workspace
+}
+\bibitem[model]{model}{\phantomsection\label{olap:model} 
+Author: Stefan Urbanek
+Availailable: Cubes Model
+}
+\bibitem[model2]{model2}{\phantomsection\label{olap:model2} 
+Author: Stefan Urbanek
+Availailable: Cubes  Model metadata
+}
+\bibitem[cells]{cells}{\phantomsection\label{olap:cells} 
+Author: Stefan Urbanek
+Availailable: Slicing and Dicing
+}
+\end{thebibliography}
 
 
 

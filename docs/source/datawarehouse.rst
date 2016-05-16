@@ -210,3 +210,173 @@ support handling changes to dimension table attributes.
 
 Dimensional Table Attributes
 ----------------------------
+
+Date Dimension
+""""""""""""""
+
+We have started with the date dimension, which is nearly guaranteed to be in every data warehouse.
+Unlike other dimensions, we could have build the date dimension in advance. We have put 10 - 20 years of rows representing
+days in the table so that we can cover the history we have stored, as well as several years in the future.
+From our data we know that first public awards come from the year 2008, so even 10 years worth of days is only about 3650 rows,
+which is relatively small dimension table.
+
+.. figure:: images/date_dim.png
+   :scale: 80 %
+
+   Date Dimension
+
+Each column in the date dimension table is defined by the particular day that the row represents.
+The full day columns represents the full date when the award have been signed in format YYYY-MM-DD it data type is date.
+The year columns represents the fiscal year of the award and it is a singe integer type. This column is useful for slicing,
+when we want filter a particular year, for example we want to show all the transactions made in the year of 2015.
+The month column represents the month number in the year (1, 2, …, 12). The month name columns represents the name of the month
+(January, February etc.). Similarly, as month we have a day column, which represents the day number in calendar month columns
+starts with 1 at the beginning of each month an it is depending on the particular month. The day in the year columns is a single
+integer which is representing the day number in the year, it starts from 1 and runs to 365, depending on what year is.
+The weekday name column represents the name of the day when the award have been signed, such as Wednesday. It has string data type.
+We have also included calendar week column. We have included quarter number (Q1,…, Q4). Columns like year, quarter, month, calendar week,
+day all these integers support as simple date filters. Figure 2.5 illustrates several rows from a partial date dimension table.
+
+.. figure:: images/date_dim_detail.png
+   :scale: 80 %
+
+   Sample of Date Dimension
+
+Product Dimension
+"""""""""""""""""
+
+.. figure:: images/product_dim.png
+   :scale: 80 %
+
+   Product Dimension
+
+The product dimension describes every product or service for a particular award.
+While a typical reasonable product dimension table would have 50 or more descriptive attributes, in our data warehouse
+we have only one product name attribute column. It is sourced from the operational system as a single attribute column with no hierarchy.
+The only function of the product dimension is to give a descriptive attribute of each award. In our case there is only
+2492 different values in the product dimension table. Viewed in this manner, we can only drill down on one level of the product
+dimension which provides us information about the award amount and quantity by product name. For example here is simple
+report overview, we have summarised the award amount and quantity (count) by product name.
+
+.. figure:: images/product_sample.png
+   :scale: 100 %
+
+   Drill down sample of Product Dimension
+
+Geography Dimension
+"""""""""""""""""""
+
+.. figure:: images/geography_dim.png
+   :scale: 80 %
+
+   Geography Dimension
+
+The geography dimension describes every transactions places of performance for recipients. It is primary a geographic
+dimension in our case study. Each row can be thought of as a location where an award has been made. Because of this we,
+can drill down / roll up any geography dimension attribute, such as country, state, city, zip code. These columns
+attributes are representing in the geography dimension a simple hierarchy for a single row.
+
+Recipient Dimension
+"""""""""""""""""""
+
+.. figure:: images/recipient_dim.png
+   :scale: 80 %
+
+   Recipient Dimension
+
+The recipient dimension describes recipient transactions. The dimension contains row for each recipient,
+along with descriptive attributes such as street address, state, city etc. We capture only the recipient name,
+address information and DUNS number. It is used to establish a business credit file, which is often referenced by
+lenders and potential business partners to help predict the reliability and/or financial stability of the company
+in question [http://www.dnb.com/duns-number.html]. Recipient geographic attributes have been complicated to
+dealing with. We wanted to avoid snowflaking  as we have mentioned in Choose Dimension chapter. In our model
+recipients typically have multiple addresses, but every transaction is geocoded on the prime recipient address.
+This means we have unique row for each recipient based on his geographic attributes. The street address column
+is our natural key to identify each unique recipient.
+
+A sample set of name and location attributes for individual recipient:
+
++---+----------+--------------------+---------+-------------+-------+--------------------------+-----------+
+| 1 | Abbewood | 1002 west 23rd st. | Alabama | Panama City | 32405 | United States of America | 627189244 |
++---+----------+--------------------+---------+-------------+-------+--------------------------+-----------+
+
+Transaction Type Dimension
+""""""""""""""""""""""""""
+
+.. figure:: images/transactiontype_dim.png
+   :scale: 80 %
+
+   Transaction Type Dimension
+
+The transaction type dimension describes the type of award. It is our smallest dimension consists only of 4 unique row.
+The transaction status columns describe the status of the transaction active/inactive. The category columns is our key
+attribute in the dimension which describe what kind of transaction is reported by the federal agencies making contract,
+grant, loan, and other financial assistance award.
+
+* Contract is an agreement between the federal government and a prime recipient to execute goods and services for a fee.
+
+* Grant is type of federal award that requires an application process and include payments to non-federal entities for
+  a defined purpose in which services are not rendered to the federal government.
+
+* Loan is type of federal awards that the borrower will eventually pay back to the government.
+
+* Other Financial Assistance includes direct payments to individuals, insurance payments, and other types of assistance payments.
+
+The transaction description columns provides us descriptive information of types of awards.
+
+Award Dimension
+"""""""""""""""
+
+.. figure:: images/award_dim.png
+   :scale: 80 %
+
+   Award Dimension
+
+The award dimension is potentially the most important dimension in our schema. The grain of the fact table has been stated
+as “awards at the award modification level of detail”. This has been achieved by adding award identifiers from the source
+system to identify individual awards: the award_id and award_mod. Together with this two attributes we have achieved to
+uniquely identify each fact table rows. Because of this approach, each fact table row represents exactly one award
+or award modification, the award dimension and the fact table contain the same number of rows.
+
+**Slowly Changing Dimension**
+
+As our grain dictates, we need to track changes over time. The award modification number is are natural key identifier
+carried over from the source system. The award modification number uniquely identify a corresponding entity in our source system.
+For example, an individual award is identified by award id in our source system, which uniquely identify a contract or agreement.
+With the combination of the natural key award mod from the source system we have achieved to identify each award modification.
+The use of surrogate key allows the data warehouse uniquely identify each transaction and respond to changes in the source system.
+This allows us to track history changes of awards. With these dimension attributes we have specified a strategy to handle change.
+In other words, when an attribute value change in the operational system, we will respond to this change in our dimensional model.
+We refer this kind of change as slowly changing dimension. We made the claim earlier about our goals of the data warehouse was to
+represent awards correctly. Thats why we have decided to use a technique called SCD Type 2. Using the type 2 approach, when an
+agency make a modification to an award (for example restrict the original award or make additional funding) we create a new award
+dimension row for the given award to reflect new award amount.
+
+
++---+------------+--------------------------------------+
+| 1 | 1PIC355199 | c5e18f14-82cf-4e64-b1b0-cd767735e330 |
++---+------------+--------------------------------------+
+| 2 | 1PIC355199 | c8130052-2d0b-41f2-9b2b-84f0f3da9d18 |
++---+------------+--------------------------------------+
+| 3 | 1PIC355199 | c8c24821-38fe-463f-9fe5-2f3f6db054fc |
++---+------------+--------------------------------------+
+| 4 | 1PIC355199 | cc809f09-595b-455a-af92-3498a3c97a90 |
++---+------------+--------------------------------------+
+| 5 | Geography  | cd4f8125-a714-4565-8d72-4700f522d54a |
++---+------------+--------------------------------------+
+
+
+
+Now we can see why the the award dimension key can’t be the Award ID natural key. We need different surrogate keys
+for the same award id. Each surrogate keys identifies a unique transaction that was true for a span of time.
+This method accurately track slowly changing dimensions attributes.
+
+Federal Award Transactions
+""""""""""""""""""""""""""
+
+As we have moved from the dimensional design, this is how our federal award transaction business model looks like for now.
+
+.. figure:: images/starschema_final.png
+   :scale: 80 %
+
+   Star Schema

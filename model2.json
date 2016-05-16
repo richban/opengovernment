@@ -107,6 +107,8 @@
                 {
                     "name": "month",
                     "label": "Month",
+                    "key": "month",
+                    "label_attribute": "month_name",
                     "attributes":  [
                         { "name": "month" },
                         { "name": "month_name" }
