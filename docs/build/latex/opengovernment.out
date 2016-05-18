@@ -51,16 +51,24 @@
 \BOOKMARK [2][-]{subsection.3.4.6}{Joins}{section.3.4}% 51
 \BOOKMARK [2][-]{subsection.3.4.7}{Hierarchies and Levels}{section.3.4}% 52
 \BOOKMARK [2][-]{subsection.3.4.8}{User-oriented Metadata}{section.3.4}% 53
-\BOOKMARK [1][-]{section.3.5}{Slicing and Dicing}{chapter.3}% 54
-\BOOKMARK [2][-]{subsection.3.5.1}{Browser}{section.3.5}% 55
-\BOOKMARK [2][-]{subsection.3.5.2}{Cells and Cuts}{section.3.5}% 56
-\BOOKMARK [2][-]{subsection.3.5.3}{Aggregate}{section.3.5}% 57
-\BOOKMARK [2][-]{subsection.3.5.4}{Drilldown}{section.3.5}% 58
-\BOOKMARK [1][-]{section.3.6}{Drill Down Tree}{chapter.3}% 59
-\BOOKMARK [0][-]{chapter.4}{Web Application}{}% 60
-\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 61
-\BOOKMARK [0][-]{chapter.6}{Resume in Slovak language}{}% 62
-\BOOKMARK [0][-]{chapter.7}{References}{}% 63
-\BOOKMARK [0][-]{chapter.8}{Appendix A}{}% 64
-\BOOKMARK [1][-]{section.8.1}{Instalation Manual}{chapter.8}% 65
-\BOOKMARK [0][-]{chapter*.12}{Bibliography}{}% 66
+\BOOKMARK [1][-]{section.3.5}{Slicer Server}{chapter.3}% 54
+\BOOKMARK [1][-]{section.3.6}{Slicing and Dicing}{chapter.3}% 55
+\BOOKMARK [2][-]{subsection.3.6.1}{Browser}{section.3.6}% 56
+\BOOKMARK [2][-]{subsection.3.6.2}{Cells and Cuts}{section.3.6}% 57
+\BOOKMARK [2][-]{subsection.3.6.3}{Aggregate}{section.3.6}% 58
+\BOOKMARK [2][-]{subsection.3.6.4}{Drilldown}{section.3.6}% 59
+\BOOKMARK [1][-]{section.3.7}{Drill Down Tree}{chapter.3}% 60
+\BOOKMARK [0][-]{chapter.4}{Web Application}{}% 61
+\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 62
+\BOOKMARK [0][-]{chapter.6}{Resume in Slovak language}{}% 63
+\BOOKMARK [0][-]{chapter.7}{References}{}% 64
+\BOOKMARK [0][-]{chapter.8}{Appendix A}{}% 65
+\BOOKMARK [1][-]{section.8.1}{Instalation Manual}{chapter.8}% 66
+\BOOKMARK [2][-]{subsection.8.1.1}{Python}{section.8.1}% 67
+\BOOKMARK [2][-]{subsection.8.1.2}{Install Packages}{section.8.1}% 68
+\BOOKMARK [2][-]{subsection.8.1.3}{Creating Virtual Environments}{section.8.1}% 69
+\BOOKMARK [2][-]{subsection.8.1.4}{PostgreSQL}{section.8.1}% 70
+\BOOKMARK [2][-]{subsection.8.1.5}{Cubes}{section.8.1}% 71
+\BOOKMARK [2][-]{subsection.8.1.6}{Flask}{section.8.1}% 72
+\BOOKMARK [2][-]{subsection.8.1.7}{Web application}{section.8.1}% 73
+\BOOKMARK [0][-]{chapter*.11}{Bibliography}{}% 74

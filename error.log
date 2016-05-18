@@ -34,3 +34,1033 @@ TypeError: the JSON object must be str, not 'bytes'
 2016-05-03 19:31:03,191 ERROR Internal Cubes error (SchemaError): Unknown column 'product_name' in table 'ft_spending_2' possible: ft_spending_2.id, ft_spending_2.transaction_type_id, ft_spending_2.date_id, ft_spending_2.product_id, ft_spending_2.geography_id, ft_spending_2.agency_id, ft_spending_2.recipient_id, ft_spending_2.award_id, ft_spending_2.award_amount, ft_spending_2.last_modified_date, ft_spending_2.date_added
 2016-05-03 19:52:08,211 ERROR Internal Cubes error (SchemaError): Unknown column 'product_name' in table 'ft_spending_2' possible: ft_spending_2.id, ft_spending_2.transaction_type_id, ft_spending_2.date_id, ft_spending_2.product_id, ft_spending_2.geography_id, ft_spending_2.agency_id, ft_spending_2.recipient_id, ft_spending_2.award_id, ft_spending_2.award_amount, ft_spending_2.last_modified_date, ft_spending_2.date_added
 2016-05-03 19:54:59,280 ERROR Internal Cubes error (SchemaError): Unknown column 'product_name' in table 'ft_spending_2' possible: ft_spending_2.id, ft_spending_2.transaction_type_id, ft_spending_2.date_id, ft_spending_2.product_id, ft_spending_2.geography_id, ft_spending_2.agency_id, ft_spending_2.recipient_id, ft_spending_2.award_id, ft_spending_2.award_amount, ft_spending_2.last_modified_date, ft_spending_2.date_added
+2016-05-17 23:08:04,502 ERROR Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/blueprint.py", line 235, in show_index
+    **info)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 127, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 60, in get_source
+    return loader.get_source(environment, local_name)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/loaders.py", line 171, in get_source
+    f = open_if_exists(filename)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/utils.py", line 151, in open_if_exists
+    return open(filename, mode)
+NotADirectoryError: [Errno 20] Not a directory: '/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/templates/index.html'
+2016-05-17 23:08:12,197 ERROR Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/blueprint.py", line 235, in show_index
+    **info)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 127, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 60, in get_source
+    return loader.get_source(environment, local_name)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/loaders.py", line 171, in get_source
+    f = open_if_exists(filename)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/utils.py", line 151, in open_if_exists
+    return open(filename, mode)
+NotADirectoryError: [Errno 20] Not a directory: '/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/templates/index.html'
+2016-05-17 23:08:31,662 ERROR Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/blueprint.py", line 235, in show_index
+    **info)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 127, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 60, in get_source
+    return loader.get_source(environment, local_name)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/loaders.py", line 171, in get_source
+    f = open_if_exists(filename)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/utils.py", line 151, in open_if_exists
+    return open(filename, mode)
+NotADirectoryError: [Errno 20] Not a directory: '/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/templates/index.html'
+2016-05-17 23:09:07,671 ERROR Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/blueprint.py", line 235, in show_index
+    **info)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 127, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 60, in get_source
+    return loader.get_source(environment, local_name)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/loaders.py", line 171, in get_source
+    f = open_if_exists(filename)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/utils.py", line 151, in open_if_exists
+    return open(filename, mode)
+NotADirectoryError: [Errno 20] Not a directory: '/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/templates/index.html'
+2016-05-17 23:09:20,368 ERROR Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/blueprint.py", line 235, in show_index
+    **info)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 127, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 60, in get_source
+    return loader.get_source(environment, local_name)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/loaders.py", line 171, in get_source
+    f = open_if_exists(filename)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/utils.py", line 151, in open_if_exists
+    return open(filename, mode)
+NotADirectoryError: [Errno 20] Not a directory: '/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/templates/index.html'
+2016-05-17 23:09:21,735 ERROR Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/blueprint.py", line 235, in show_index
+    **info)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 127, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 60, in get_source
+    return loader.get_source(environment, local_name)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/loaders.py", line 171, in get_source
+    f = open_if_exists(filename)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/utils.py", line 151, in open_if_exists
+    return open(filename, mode)
+NotADirectoryError: [Errno 20] Not a directory: '/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/templates/index.html'
+2016-05-17 23:10:06,102 ERROR Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/blueprint.py", line 235, in show_index
+    **info)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 127, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 60, in get_source
+    return loader.get_source(environment, local_name)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/loaders.py", line 171, in get_source
+    f = open_if_exists(filename)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/utils.py", line 151, in open_if_exists
+    return open(filename, mode)
+NotADirectoryError: [Errno 20] Not a directory: '/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/templates/index.html'
+2016-05-17 23:10:20,290 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1044, in _do_get
+    return self._pool.get(wait, self._timeout)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/queue.py", line 145, in get
+    raise Empty
+sqlalchemy.util.queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2074, in _wrap_pool_connect
+    return fn()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 376, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 713, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 480, in checkout
+    rec = pool._do_get()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1060, in _do_get
+    self._dec_overflow()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 184, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1057, in _do_get
+    return self._create_connection()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 323, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 449, in __init__
+    self.connection = self.__connect()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 607, in __connect
+    connection = self.__pool._invoke_creator(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/strategies.py", line 97, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 385, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/psycopg2/__init__.py", line 164, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, async=async)
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Connection refused
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/decorators.py", line 86, in wrapper
+    g.browser = workspace.browser(g.cube)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/workspace.py", line 637, in browser
+    **options)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/ext.py", line 224, in __call__
+    return self.create(_ext_name, *args, **kwargs)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/ext.py", line 243, in create
+    return ext.create(*args, **kwargs)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/ext.py", line 165, in create
+    return factory(*args, **kwargs)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/sql/browser.py", line 184, in __init__
+    tables=tables)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/sql/query.py", line 370, in __init__
+    self.fact_table = self.physical_table(fact)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/sql/query.py", line 528, in physical_table
+    schema=coalesced_schema)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 416, in __new__
+    metadata._remove_table(name, schema)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 184, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 411, in __new__
+    table._init(name, metadata, *args, **kw)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 484, in _init
+    self._autoload(metadata, autoload_with, include_columns)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 508, in _autoload
+    self, include_columns, exclude_columns
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1971, in run_callable
+    with self.contextual_connect() as conn:
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2039, in contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2078, in _wrap_pool_connect
+    e, dialect, self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1405, in _handle_dbapi_exception_noconnection
+    exc_info
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2074, in _wrap_pool_connect
+    return fn()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 376, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 713, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 480, in checkout
+    rec = pool._do_get()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1060, in _do_get
+    self._dec_overflow()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 184, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1057, in _do_get
+    return self._create_connection()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 323, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 449, in __init__
+    self.connection = self.__connect()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 607, in __connect
+    connection = self.__pool._invoke_creator(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/strategies.py", line 97, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 385, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/psycopg2/__init__.py", line 164, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, async=async)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Connection refused
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+
+2016-05-17 23:10:21,774 ERROR Exception on /cube/spending_2/model [GET]
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1044, in _do_get
+    return self._pool.get(wait, self._timeout)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/queue.py", line 145, in get
+    raise Empty
+sqlalchemy.util.queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2074, in _wrap_pool_connect
+    return fn()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 376, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 713, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 480, in checkout
+    rec = pool._do_get()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1060, in _do_get
+    self._dec_overflow()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 184, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1057, in _do_get
+    return self._create_connection()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 323, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 449, in __init__
+    self.connection = self.__connect()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 607, in __connect
+    connection = self.__pool._invoke_creator(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/strategies.py", line 97, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 385, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/psycopg2/__init__.py", line 164, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, async=async)
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Connection refused
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/decorators.py", line 64, in wrapper
+    return f(*args, **kwargs)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/blueprint.py", line 304, in cube_model
+    response["features"] = workspace.cube_features(g.cube)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/workspace.py", line 649, in cube_features
+    return self.browser(cube, identity).features()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/workspace.py", line 637, in browser
+    **options)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/ext.py", line 224, in __call__
+    return self.create(_ext_name, *args, **kwargs)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/ext.py", line 243, in create
+    return ext.create(*args, **kwargs)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/ext.py", line 165, in create
+    return factory(*args, **kwargs)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/sql/browser.py", line 184, in __init__
+    tables=tables)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/sql/query.py", line 370, in __init__
+    self.fact_table = self.physical_table(fact)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/sql/query.py", line 528, in physical_table
+    schema=coalesced_schema)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 416, in __new__
+    metadata._remove_table(name, schema)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 184, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 411, in __new__
+    table._init(name, metadata, *args, **kw)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 484, in _init
+    self._autoload(metadata, autoload_with, include_columns)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 508, in _autoload
+    self, include_columns, exclude_columns
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1971, in run_callable
+    with self.contextual_connect() as conn:
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2039, in contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2078, in _wrap_pool_connect
+    e, dialect, self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1405, in _handle_dbapi_exception_noconnection
+    exc_info
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2074, in _wrap_pool_connect
+    return fn()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 376, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 713, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 480, in checkout
+    rec = pool._do_get()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1060, in _do_get
+    self._dec_overflow()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 184, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1057, in _do_get
+    return self._create_connection()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 323, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 449, in __init__
+    self.connection = self.__connect()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 607, in __connect
+    connection = self.__pool._invoke_creator(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/strategies.py", line 97, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 385, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/psycopg2/__init__.py", line 164, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, async=async)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Connection refused
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+
+2016-05-17 23:11:57,950 ERROR Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/blueprint.py", line 235, in show_index
+    **info)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 127, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 60, in get_source
+    return loader.get_source(environment, local_name)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/loaders.py", line 171, in get_source
+    f = open_if_exists(filename)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/utils.py", line 151, in open_if_exists
+    return open(filename, mode)
+NotADirectoryError: [Errno 20] Not a directory: '/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/templates/index.html'
+2016-05-17 23:17:42,542 ERROR Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/blueprint.py", line 235, in show_index
+    **info)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 127, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 60, in get_source
+    return loader.get_source(environment, local_name)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/loaders.py", line 171, in get_source
+    f = open_if_exists(filename)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/utils.py", line 151, in open_if_exists
+    return open(filename, mode)
+NotADirectoryError: [Errno 20] Not a directory: '/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/templates/index.html'
+2016-05-17 23:18:02,527 ERROR Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/blueprint.py", line 235, in show_index
+    **info)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 127, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 60, in get_source
+    return loader.get_source(environment, local_name)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/loaders.py", line 171, in get_source
+    f = open_if_exists(filename)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/utils.py", line 151, in open_if_exists
+    return open(filename, mode)
+NotADirectoryError: [Errno 20] Not a directory: '/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/templates/index.html'
+2016-05-17 23:18:14,571 ERROR Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/blueprint.py", line 235, in show_index
+    **info)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 127, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/templating.py", line 60, in get_source
+    return loader.get_source(environment, local_name)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/loaders.py", line 171, in get_source
+    f = open_if_exists(filename)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/jinja2/utils.py", line 151, in open_if_exists
+    return open(filename, mode)
+NotADirectoryError: [Errno 20] Not a directory: '/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/templates/index.html'
+2016-05-17 23:20:30,486 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1044, in _do_get
+    return self._pool.get(wait, self._timeout)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/queue.py", line 145, in get
+    raise Empty
+sqlalchemy.util.queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2074, in _wrap_pool_connect
+    return fn()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 376, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 713, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 480, in checkout
+    rec = pool._do_get()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1060, in _do_get
+    self._dec_overflow()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 184, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1057, in _do_get
+    return self._create_connection()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 323, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 449, in __init__
+    self.connection = self.__connect()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 607, in __connect
+    connection = self.__pool._invoke_creator(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/strategies.py", line 97, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 385, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/psycopg2/__init__.py", line 164, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, async=async)
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Connection refused
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/decorators.py", line 86, in wrapper
+    g.browser = workspace.browser(g.cube)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/workspace.py", line 637, in browser
+    **options)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/ext.py", line 224, in __call__
+    return self.create(_ext_name, *args, **kwargs)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/ext.py", line 243, in create
+    return ext.create(*args, **kwargs)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/ext.py", line 165, in create
+    return factory(*args, **kwargs)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/sql/browser.py", line 184, in __init__
+    tables=tables)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/sql/query.py", line 370, in __init__
+    self.fact_table = self.physical_table(fact)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/sql/query.py", line 528, in physical_table
+    schema=coalesced_schema)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 416, in __new__
+    metadata._remove_table(name, schema)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 184, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 411, in __new__
+    table._init(name, metadata, *args, **kw)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 484, in _init
+    self._autoload(metadata, autoload_with, include_columns)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 508, in _autoload
+    self, include_columns, exclude_columns
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1971, in run_callable
+    with self.contextual_connect() as conn:
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2039, in contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2078, in _wrap_pool_connect
+    e, dialect, self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1405, in _handle_dbapi_exception_noconnection
+    exc_info
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2074, in _wrap_pool_connect
+    return fn()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 376, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 713, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 480, in checkout
+    rec = pool._do_get()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1060, in _do_get
+    self._dec_overflow()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 184, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1057, in _do_get
+    return self._create_connection()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 323, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 449, in __init__
+    self.connection = self.__connect()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 607, in __connect
+    connection = self.__pool._invoke_creator(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/strategies.py", line 97, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 385, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/psycopg2/__init__.py", line 164, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, async=async)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Connection refused
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+
+2016-05-17 23:20:30,617 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1044, in _do_get
+    return self._pool.get(wait, self._timeout)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/queue.py", line 145, in get
+    raise Empty
+sqlalchemy.util.queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2074, in _wrap_pool_connect
+    return fn()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 376, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 713, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 480, in checkout
+    rec = pool._do_get()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1060, in _do_get
+    self._dec_overflow()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 184, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1057, in _do_get
+    return self._create_connection()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 323, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 449, in __init__
+    self.connection = self.__connect()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 607, in __connect
+    connection = self.__pool._invoke_creator(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/strategies.py", line 97, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 385, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/psycopg2/__init__.py", line 164, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, async=async)
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Connection refused
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/decorators.py", line 86, in wrapper
+    g.browser = workspace.browser(g.cube)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/workspace.py", line 637, in browser
+    **options)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/ext.py", line 224, in __call__
+    return self.create(_ext_name, *args, **kwargs)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/ext.py", line 243, in create
+    return ext.create(*args, **kwargs)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/ext.py", line 165, in create
+    return factory(*args, **kwargs)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/sql/browser.py", line 184, in __init__
+    tables=tables)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/sql/query.py", line 370, in __init__
+    self.fact_table = self.physical_table(fact)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/sql/query.py", line 528, in physical_table
+    schema=coalesced_schema)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 416, in __new__
+    metadata._remove_table(name, schema)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 184, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 411, in __new__
+    table._init(name, metadata, *args, **kw)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 484, in _init
+    self._autoload(metadata, autoload_with, include_columns)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 508, in _autoload
+    self, include_columns, exclude_columns
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1971, in run_callable
+    with self.contextual_connect() as conn:
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2039, in contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2078, in _wrap_pool_connect
+    e, dialect, self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1405, in _handle_dbapi_exception_noconnection
+    exc_info
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2074, in _wrap_pool_connect
+    return fn()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 376, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 713, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 480, in checkout
+    rec = pool._do_get()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1060, in _do_get
+    self._dec_overflow()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 184, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1057, in _do_get
+    return self._create_connection()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 323, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 449, in __init__
+    self.connection = self.__connect()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 607, in __connect
+    connection = self.__pool._invoke_creator(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/strategies.py", line 97, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 385, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/psycopg2/__init__.py", line 164, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, async=async)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Connection refused
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+
+2016-05-17 23:20:41,495 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1044, in _do_get
+    return self._pool.get(wait, self._timeout)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/queue.py", line 145, in get
+    raise Empty
+sqlalchemy.util.queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2074, in _wrap_pool_connect
+    return fn()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 376, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 713, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 480, in checkout
+    rec = pool._do_get()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1060, in _do_get
+    self._dec_overflow()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 184, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1057, in _do_get
+    return self._create_connection()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 323, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 449, in __init__
+    self.connection = self.__connect()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 607, in __connect
+    connection = self.__pool._invoke_creator(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/strategies.py", line 97, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 385, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/psycopg2/__init__.py", line 164, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, async=async)
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Connection refused
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/server/decorators.py", line 86, in wrapper
+    g.browser = workspace.browser(g.cube)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/workspace.py", line 637, in browser
+    **options)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/ext.py", line 224, in __call__
+    return self.create(_ext_name, *args, **kwargs)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/ext.py", line 243, in create
+    return ext.create(*args, **kwargs)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/ext.py", line 165, in create
+    return factory(*args, **kwargs)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/sql/browser.py", line 184, in __init__
+    tables=tables)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/sql/query.py", line 370, in __init__
+    self.fact_table = self.physical_table(fact)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/cubes-1.1-py3.4.egg/cubes/sql/query.py", line 528, in physical_table
+    schema=coalesced_schema)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 416, in __new__
+    metadata._remove_table(name, schema)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 184, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 411, in __new__
+    table._init(name, metadata, *args, **kw)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 484, in _init
+    self._autoload(metadata, autoload_with, include_columns)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 508, in _autoload
+    self, include_columns, exclude_columns
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1971, in run_callable
+    with self.contextual_connect() as conn:
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2039, in contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2078, in _wrap_pool_connect
+    e, dialect, self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1405, in _handle_dbapi_exception_noconnection
+    exc_info
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 2074, in _wrap_pool_connect
+    return fn()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 376, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 713, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 480, in checkout
+    rec = pool._do_get()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1060, in _do_get
+    self._dec_overflow()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 184, in reraise
+    raise value
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 1057, in _do_get
+    return self._create_connection()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 323, in _create_connection
+    return _ConnectionRecord(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 449, in __init__
+    self.connection = self.__connect()
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/pool.py", line 607, in __connect
+    connection = self.__pool._invoke_creator(self)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/strategies.py", line 97, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 385, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/Users/richardbanyi/Developer/Environments/Data/lib/python3.4/site-packages/psycopg2/__init__.py", line 164, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, async=async)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Connection refused
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5432?
+

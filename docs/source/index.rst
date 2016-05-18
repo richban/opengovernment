@@ -9,7 +9,6 @@ Welcome to Design and implementation of open-data data warehouse's documentation
 .. toctree::
    :maxdepth: 3
 
-   abstract
    introduction
    datawarehouse
    olap

@@ -10,7 +10,7 @@ Cubes is a light-weight Python framework and set of tools for development of rep
 Online Analytical Processing (OLAP), multidimensional analysis and browsing of aggregated data [Cubes]_.
 
 .. [Cubes] Author: Stefan Urbanek
-           Availailable: `Cubes Overview <cubes.readthedocs.io/en/v1.0.1/#>`_
+           Availailable: `Cubes Overview <http://cubes.readthedocs.io/en/v1.0.1/#>`_
 
 The framework models the data as a cube with multiple dimensions:
 
@@ -39,7 +39,7 @@ Everything in Cubes happens in an analytical workspace. It contains cubes, maint
 (with cube data), provides connection to external cubes and more [workspace]_.
 
 .. [workspace] Author: Stefan Urbanek
-               Availailable: `Cubes Analytical Workspace <cubes.readthedocs.io/en/v1.0.1/tutorial.html>`_
+               Availailable: `Cubes Analytical Workspace <http://cubes.readthedocs.io/en/v1.0.1/tutorial.html>`_
 
 .. figure:: images/cubes-workspace_simplified-2.png
    :scale: 100 %
@@ -109,7 +109,7 @@ independence makes it easier to focus on data instead on ways of how to get the 
 
 
 .. [model] Author: Stefan Urbanek
-           Availailable: `Cubes Model <cubes.readthedocs.io/en/v1.0.1/model.html>`_
+           Availailable: `Cubes Model <http://cubes.readthedocs.io/en/v1.0.1/model.html>`_
 
 Analyst or report writers, anyone who will access the web application do not have to know where name
 of an government organisation or recipient name is stored, nor do they have to know where is data stored
@@ -128,10 +128,13 @@ Model
 -----
 
 The logical model is described using model metadata dictionary. The content is description of logical objects,
-physical storage and other additional information [model2]_.
+physical storage and other additional information [9]_.
 
-.. [model2] Author: Stefan Urbanek
-           Availailable: `Cubes  Model metadata <cubes.readthedocs.io/en/v1.0.1/model.html>`_
+.. [9] Author: Stefan Urbanek,
+       Date: 2010-2014,
+       Online: Model metadata
+       Availailable: `Cubes  Model Metadata <http://cubes.readthedocs.io/en/v1.0.1/model.html>`_
+
 
 .. figure:: images/cubes-model_metadata.png
    :scale: 100 %
@@ -164,18 +167,18 @@ Cubes
 
 Cube descriptions are stored as a dictionary for key *cubes*.
 
-.. code-block:: javascript
+.. code-block::  html
    :caption: Cubes Example
    :name: Cubes Metadata
 
-   {
-       "name": "usaspending",
-       "label": “Federal Award Transactions",
-       "dimensions": [ "date", ... ],
-       "measures": [...],
-       "aggregates": [...],
-       "details": [...],
-   }
+     {
+         "name": "usaspending",
+         "label": “Federal Award Transactions",
+         "dimensions": [ "date", ... ],
+         "measures": [...],
+         "aggregates": [...],
+         "details": [...],
+     }
 
 
 
@@ -416,6 +419,106 @@ for filtering and *label_attribute* is used for the data to be displayed in the 
 
    Cubes - Labels
 
+
+Slicer Server
+-------------
+
+Cubes framework provides a WSGI server which covers most of the Cube logical
+model metadata and aggregation browsing functionality. We have already configured the server at beginning of the OLAP section.
+
+To get a version of the server we just simple request a GET request.
+
+
+Request `GET /version`.
+
+.. code-block:: javascript
+   :caption: Slicer Server - GET /version
+   :name: Slicer Server - GET /version
+
+   {
+       "version": "1.1",
+       "api_version": 2,
+       "server_version": "1.1"
+   }
+
+To get a list of information about served cubes.
+
+Request `GET /cubes`.
+
+.. code-block:: javascript
+   :caption: Slicer Server - GET /cubes
+   :name: Slicer Server - GET /cubes
+
+   [
+       {
+           "label": "spending",
+           "category": null,
+           "name": "spending",
+           "info": {}
+       }
+   ]
+
+**Aggregation and Browsing**
+
+The core data and analytical functionality is accessed thought the following requests:
+
+* `/cube/<name>/aggregate` - aggregate measures, summary, generate drill-down, slice&dice.
+* `/cube/<name>/members/<dim>` - list of dimension members.
+* `/cube/<name>/facts` - list facts within cell.
+* `/cube/<name>/fact` - return a single fact.
+* `/cube/<name>/cell` - describe cell.
+
+The cells - part of the cube we are interested in are specified by cut. The cut in the URL are given as a parameter cut.
+
+For example:
+
+* `cut=date:2015`
+* `cut=geography:usa,california`
+
+**Aggregate**
+
+The server always returns the aggregation results as JSON. The result contain keys:
+summary - represents the aggregation of the whole cell specified in the cut
+aggregates - list of aggregate names that are considered in the aggregation
+cell - list of dictionaries describing the cell cuts.
+
+.. code-block:: javascript
+   :caption: Slicer Server - Aggregate
+   :name: Slicer Server - Aggregate
+
+    {
+        "summary": {
+            "award_sum": 275669527432.41,
+            "award_max": 9999999999.0,
+            "award_min": -1604823842.0,
+            "transaction_count": 1550767
+        },
+        "remainder": {},
+        "cells": [],
+        "aggregates": [
+            "award_sum",
+            "transaction_count",
+            "award_min",
+            "award_max"
+        ],
+        "cell": [
+            {
+                "type": "point",
+                "dimension": "date",
+                "hierarchy": "ymd",
+                "level_depth": 1,
+                "invert": false,
+                "hidden": false,
+                "path": [
+                    "2015"
+                ]
+            }
+        ],
+        "attributes": [],
+        "has_split": false
+    }
+
+
 Slicing and Dicing
 ------------------
 
@@ -455,7 +558,7 @@ particular level; range – defines all points of an ordered dimension (such as 
 within the range and set – collection of points [cells]_.
 
 .. [cells] Author: Stefan Urbanek
-           Availailable: `Slicing and Dicing <cubes.readthedocs.io/en/v1.0.1/slicing_and_dicing.html>`_
+           Availailable: `Slicing and Dicing <http://cubes.readthedocs.io/en/v1.0.1/slicing_and_dicing.html>`_
 
 .. figure:: images/cubes-point-range-set-cut.png
    :scale: 100 %
