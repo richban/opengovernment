@@ -73,4 +73,6 @@
 \contentsline {subsection}{\numberline {8.1.5}Cubes}{47}{subsection.8.1.5}
 \contentsline {subsection}{\numberline {8.1.6}Flask}{47}{subsection.8.1.6}
 \contentsline {subsection}{\numberline {8.1.7}Web application}{48}{subsection.8.1.7}
-\contentsline {chapter}{Bibliography}{49}{chapter*.11}
+\contentsline {chapter}{\numberline {9}Appendix B}{49}{chapter.9}
+\contentsline {section}{\numberline {9.1}Contents of DVD}{49}{section.9.1}
+\contentsline {chapter}{Bibliography}{50}{chapter*.11}
