@@ -23,54 +23,56 @@
 \BOOKMARK [2][-]{subsection.2.2.3}{Data presentation}{section.2.2}% 23
 \BOOKMARK [2][-]{subsection.2.2.4}{Data access tools}{section.2.2}% 24
 \BOOKMARK [1][-]{section.2.3}{Data Staging Area}{chapter.2}% 25
-\BOOKMARK [2][-]{subsection.2.3.1}{Extract - E}{section.2.3}% 26
-\BOOKMARK [1][-]{section.2.4}{Dimensional Modeling}{chapter.2}% 27
-\BOOKMARK [2][-]{subsection.2.4.1}{Business Process}{section.2.4}% 28
-\BOOKMARK [2][-]{subsection.2.4.2}{Declare the Grain}{section.2.4}% 29
-\BOOKMARK [2][-]{subsection.2.4.3}{Choose the Dimensions}{section.2.4}% 30
-\BOOKMARK [2][-]{subsection.2.4.4}{Identify Facts}{section.2.4}% 31
-\BOOKMARK [2][-]{subsection.2.4.5}{Suroggate Keys}{section.2.4}% 32
-\BOOKMARK [1][-]{section.2.5}{Dimensional Table Attributes}{chapter.2}% 33
-\BOOKMARK [2][-]{subsection.2.5.1}{Date Dimension}{section.2.5}% 34
-\BOOKMARK [2][-]{subsection.2.5.2}{Product Dimension}{section.2.5}% 35
-\BOOKMARK [2][-]{subsection.2.5.3}{Geography Dimension}{section.2.5}% 36
-\BOOKMARK [2][-]{subsection.2.5.4}{Recipient Dimension}{section.2.5}% 37
-\BOOKMARK [2][-]{subsection.2.5.5}{Transaction Type Dimension}{section.2.5}% 38
-\BOOKMARK [2][-]{subsection.2.5.6}{Award Dimension}{section.2.5}% 39
-\BOOKMARK [2][-]{subsection.2.5.7}{Federal Award Transactions}{section.2.5}% 40
-\BOOKMARK [0][-]{chapter.3}{OLAP}{}% 41
-\BOOKMARK [1][-]{section.3.1}{Cubes - OLAP Framework}{chapter.3}% 42
-\BOOKMARK [1][-]{section.3.2}{Analytical Workspace}{chapter.3}% 43
-\BOOKMARK [1][-]{section.3.3}{Logical Model and Metadata}{chapter.3}% 44
-\BOOKMARK [1][-]{section.3.4}{Model}{chapter.3}% 45
-\BOOKMARK [2][-]{subsection.3.4.1}{Cubes}{section.3.4}% 46
-\BOOKMARK [2][-]{subsection.3.4.2}{Measures and Aggregates}{section.3.4}% 47
-\BOOKMARK [2][-]{subsection.3.4.3}{Mappings}{section.3.4}% 48
-\BOOKMARK [2][-]{subsection.3.4.4}{Facts}{section.3.4}% 49
-\BOOKMARK [2][-]{subsection.3.4.5}{Dimensions}{section.3.4}% 50
-\BOOKMARK [2][-]{subsection.3.4.6}{Joins}{section.3.4}% 51
-\BOOKMARK [2][-]{subsection.3.4.7}{Hierarchies and Levels}{section.3.4}% 52
-\BOOKMARK [2][-]{subsection.3.4.8}{User-oriented Metadata}{section.3.4}% 53
-\BOOKMARK [1][-]{section.3.5}{Slicer Server}{chapter.3}% 54
-\BOOKMARK [1][-]{section.3.6}{Slicing and Dicing}{chapter.3}% 55
-\BOOKMARK [2][-]{subsection.3.6.1}{Browser}{section.3.6}% 56
-\BOOKMARK [2][-]{subsection.3.6.2}{Cells and Cuts}{section.3.6}% 57
-\BOOKMARK [2][-]{subsection.3.6.3}{Aggregate}{section.3.6}% 58
-\BOOKMARK [2][-]{subsection.3.6.4}{Drilldown}{section.3.6}% 59
-\BOOKMARK [1][-]{section.3.7}{Drill Down Tree}{chapter.3}% 60
-\BOOKMARK [0][-]{chapter.4}{Web Application}{}% 61
-\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 62
-\BOOKMARK [0][-]{chapter.6}{Resume in Slovak language}{}% 63
-\BOOKMARK [0][-]{chapter.7}{References}{}% 64
-\BOOKMARK [0][-]{chapter.8}{Appendix A}{}% 65
-\BOOKMARK [1][-]{section.8.1}{Instalation Manual}{chapter.8}% 66
-\BOOKMARK [2][-]{subsection.8.1.1}{Python}{section.8.1}% 67
-\BOOKMARK [2][-]{subsection.8.1.2}{Install Packages}{section.8.1}% 68
-\BOOKMARK [2][-]{subsection.8.1.3}{Creating Virtual Environments}{section.8.1}% 69
-\BOOKMARK [2][-]{subsection.8.1.4}{PostgreSQL}{section.8.1}% 70
-\BOOKMARK [2][-]{subsection.8.1.5}{Cubes}{section.8.1}% 71
-\BOOKMARK [2][-]{subsection.8.1.6}{Flask}{section.8.1}% 72
-\BOOKMARK [2][-]{subsection.8.1.7}{Web application}{section.8.1}% 73
-\BOOKMARK [0][-]{chapter.9}{Appendix B}{}% 74
-\BOOKMARK [1][-]{section.9.1}{Contents of DVD}{chapter.9}% 75
-\BOOKMARK [0][-]{chapter*.11}{Bibliography}{}% 76
+\BOOKMARK [2][-]{subsection.2.3.1}{Extract}{section.2.3}% 26
+\BOOKMARK [2][-]{subsection.2.3.2}{Clean}{section.2.3}% 27
+\BOOKMARK [2][-]{subsection.2.3.3}{Load}{section.2.3}% 28
+\BOOKMARK [1][-]{section.2.4}{Dimensional Modeling}{chapter.2}% 29
+\BOOKMARK [2][-]{subsection.2.4.1}{Business Process}{section.2.4}% 30
+\BOOKMARK [2][-]{subsection.2.4.2}{Declare the Grain}{section.2.4}% 31
+\BOOKMARK [2][-]{subsection.2.4.3}{Choose the Dimensions}{section.2.4}% 32
+\BOOKMARK [2][-]{subsection.2.4.4}{Identify Facts}{section.2.4}% 33
+\BOOKMARK [2][-]{subsection.2.4.5}{Suroggate Keys}{section.2.4}% 34
+\BOOKMARK [1][-]{section.2.5}{Dimensional Table Attributes}{chapter.2}% 35
+\BOOKMARK [2][-]{subsection.2.5.1}{Date Dimension}{section.2.5}% 36
+\BOOKMARK [2][-]{subsection.2.5.2}{Product Dimension}{section.2.5}% 37
+\BOOKMARK [2][-]{subsection.2.5.3}{Geography Dimension}{section.2.5}% 38
+\BOOKMARK [2][-]{subsection.2.5.4}{Recipient Dimension}{section.2.5}% 39
+\BOOKMARK [2][-]{subsection.2.5.5}{Transaction Type Dimension}{section.2.5}% 40
+\BOOKMARK [2][-]{subsection.2.5.6}{Award Dimension}{section.2.5}% 41
+\BOOKMARK [2][-]{subsection.2.5.7}{Federal Award Transactions}{section.2.5}% 42
+\BOOKMARK [0][-]{chapter.3}{OLAP}{}% 43
+\BOOKMARK [1][-]{section.3.1}{Cubes - OLAP Framework}{chapter.3}% 44
+\BOOKMARK [1][-]{section.3.2}{Analytical Workspace}{chapter.3}% 45
+\BOOKMARK [1][-]{section.3.3}{Logical Model and Metadata}{chapter.3}% 46
+\BOOKMARK [1][-]{section.3.4}{Model}{chapter.3}% 47
+\BOOKMARK [2][-]{subsection.3.4.1}{Cubes}{section.3.4}% 48
+\BOOKMARK [2][-]{subsection.3.4.2}{Measures and Aggregates}{section.3.4}% 49
+\BOOKMARK [2][-]{subsection.3.4.3}{Mappings}{section.3.4}% 50
+\BOOKMARK [2][-]{subsection.3.4.4}{Facts}{section.3.4}% 51
+\BOOKMARK [2][-]{subsection.3.4.5}{Dimensions}{section.3.4}% 52
+\BOOKMARK [2][-]{subsection.3.4.6}{Joins}{section.3.4}% 53
+\BOOKMARK [2][-]{subsection.3.4.7}{Hierarchies and Levels}{section.3.4}% 54
+\BOOKMARK [2][-]{subsection.3.4.8}{User-oriented Metadata}{section.3.4}% 55
+\BOOKMARK [1][-]{section.3.5}{Slicer Server}{chapter.3}% 56
+\BOOKMARK [1][-]{section.3.6}{Slicing and Dicing}{chapter.3}% 57
+\BOOKMARK [2][-]{subsection.3.6.1}{Browser}{section.3.6}% 58
+\BOOKMARK [2][-]{subsection.3.6.2}{Cells and Cuts}{section.3.6}% 59
+\BOOKMARK [2][-]{subsection.3.6.3}{Aggregate}{section.3.6}% 60
+\BOOKMARK [2][-]{subsection.3.6.4}{Drilldown}{section.3.6}% 61
+\BOOKMARK [1][-]{section.3.7}{Drill Down Tree}{chapter.3}% 62
+\BOOKMARK [0][-]{chapter.4}{Web Application}{}% 63
+\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 64
+\BOOKMARK [0][-]{chapter.6}{Resume in Slovak language}{}% 65
+\BOOKMARK [0][-]{chapter.7}{References}{}% 66
+\BOOKMARK [0][-]{chapter.8}{Appendix A}{}% 67
+\BOOKMARK [1][-]{section.8.1}{Instalation Manual}{chapter.8}% 68
+\BOOKMARK [2][-]{subsection.8.1.1}{Python}{section.8.1}% 69
+\BOOKMARK [2][-]{subsection.8.1.2}{Install Packages}{section.8.1}% 70
+\BOOKMARK [2][-]{subsection.8.1.3}{Creating Virtual Environments}{section.8.1}% 71
+\BOOKMARK [2][-]{subsection.8.1.4}{PostgreSQL}{section.8.1}% 72
+\BOOKMARK [2][-]{subsection.8.1.5}{Cubes}{section.8.1}% 73
+\BOOKMARK [2][-]{subsection.8.1.6}{Flask}{section.8.1}% 74
+\BOOKMARK [2][-]{subsection.8.1.7}{Web application}{section.8.1}% 75
+\BOOKMARK [0][-]{chapter.9}{Appendix B}{}% 76
+\BOOKMARK [1][-]{section.9.1}{Contents of DVD}{chapter.9}% 77
+\BOOKMARK [0][-]{chapter*.11}{Bibliography}{}% 78

@@ -113,8 +113,8 @@ used any ETL tools every process/job is all hand coded.
 
    ETL process flow
 
-Extract - E
-"""""""""""
+Extract
+"""""""
 
 The `usaspending.gov <https://www.usaspending.gov>`_  website doesn’t provide any API, only single page with the download able link.
 The raw data coming from the source system is stored locally on the disk. We have downloaded 4 different .csv flat files.
@@ -124,6 +124,225 @@ The raw data coming from the source system is stored locally on the disk. We hav
    :scale: 100 %
 
    Figure [5]
+
+We have examined the .csv flat files. We have encountered various errors when we wanted to load the data into our database.
+Here is an example of a source flat file:
+
+.. code-block:: html
+    :caption: Example of raw data
+    :name: Raw Data
+
+    "07: Direct loan","2",": Current record","","4967000","UTAH","SALT, LAKE”,"USA","841062671",  “”,
+
+The empty double quotes PostgreSQL treats as empty string and not as NULL value. When we wanted to insert the data into
+the database we have always encountered syntax type error for numeric types. We have decided to get rid of the double
+quotes in the flat files. For that reason we have made a little Python script which strip all the double quotes,
+in a way that we haven’t disturb data integrity.
+
+.. code-block:: python
+    :caption: Script to strip double quotes
+    :name: Python Script - Strip double quotes
+
+    for file in csv_files:
+      source = open(file, 'r')
+      source_name = os.path.basename(file).split('_')
+      cleaned_csv = open(path_cleaned+source_name[0]+'_cleaned.csv', 'w')
+      reader = csv.reader(source)
+      writer = csv.writer(cleaned_csv)
+      for row in reader:
+          writer.writerow(row)
+      source.close()
+      cleaned_csv.close()
+
+After we have stripped all the double quotes from all  the flat files we have managed to load the data into database.
+All the tables start with a prefix *base_* + name of the flat file from the source. For example for grants: *base_grants* table.
+
+**PICTURE**
+
+After we have created the base tables where we have loaded the extracted data from the source.
+We started with the highest level of business objectives, identify the likely data from the base tables,
+that we believe will support the decisions needed by the business model - which we have documented in the 
+Dimensional Modelling sections. We started with identifying specific data elements we believed are the most 
+important for the business model. We analysed the data in the base tables and come to conclusion that data in these 
+tables must be examined for data quality, completeness, and fitness for the purpose of the data warehouse. For the simplicity 
+we have designed logical data mapping document. The document contains the data from the source systems throughout to the target
+data table, and the exact manipulation of the data required to transform it from its original format to that of its target table.
+
+**TABLE**
+
+Clean
+"""""
+
+After we have populated our target table, we have created a various jobs to clean the data from the source and consolidate them.
+Staging table contains mostly raw text values and numeric only for amounts. Content of the table mostly matches information fromthe source.
+
+Goal of these jobs more specifically:
+
+* Cleanse DUNS number, zip code
+* Cleanse all columns of unwanted special characters (+,#,@,!)
+* Replace all foreign entities with a FRGN flag, there are lot of cases when the place of performance of agreements has been outside of United States of America. In most cases these values where mostly incorrect or have been unknown.
+* Correct state names. There are cases when the state names for United States of America are given only by their abbreviations.
+* Geography consolidation
+
+**Geography Consolidation**
+
+Table with geography country names sometime contain only their country codes. For those cases a mapping table have been
+created where we have specified a mapping of country codes to their valid country names.
+
+The process is depicted in the following image:
+
+**IMAGE**
+
+Load
+""""
+
+After extracting, cleaning and transformation finally it’s time to populate our dimension tables and fact table.
+First we have created the dimensions, we assign every dimension table a surrogate key, we have added a EXCEPT
+statement into our INSERT statement for a reason of avoiding duplicates to be inserted into the dimension tables.
+
+This step consisted of the following creates and loads of all structures for analytical processing.
+
+* fact table - fact is transcation
+* dimensions:
+  * geography
+  * agency
+  * recipient
+  * date
+  * type of transactions
+  * award
+
+**Dimensions**
+
+Examples how the dimensions have been created:
+
+**Geogprahy Dimension**
+
+.. code-block:: sql
+   :caption: Geography Dimension - SQL
+   :name: Create Geography Dimension
+
+    CREATE TABLE dm_geography (
+        id SERIAL PRIMARY KEY,
+        state text,
+        city text,
+        zip text,
+        country text
+    );
+
+**Recipeint Dimension**
+
+.. code-block:: sql
+   :caption: Recipient Dimension - SQL
+   :name: Create Recipient Dimension - SQL
+
+    CREATE TABLE dm_recipient (
+        id SERIAL PRIMARY KEY,
+        name text,
+        streetaddress text,
+        state text,
+        city text,
+        zip text,
+        country text,
+        duns text
+    );
+
+**Fact Table**
+
+The initial situation was that we should have built a data warehouse, which is able archive large data by monthly basis.
+We have also known that the information is needed for various reports on weekly, monthly, three months periods, and so on.
+For this purpose of better query performance we have broke down the fact table into partitions. PostgreSQL supports partitioning
+via table inheritance [https://www.postgresql.org/docs/9.1/static/ddl-partitioning.html]. We have made the partitioning in a such
+a way that every child table inherits from a single master table.
+
+The partitioning have been implemented in the following way:
+
+1. We created the master fact table
+
+.. code-block:: sql
+   :caption: Fact Table
+   :name: Fact Table
+
+   CREATE TABLE ft_spending_2 (
+      id SERIAL PRIMARY KEY NOT NULL,
+      transaction_type_id integer NOT NULL,
+      date_id integer NOT NULL,
+      product_id integer NOT NULL,
+      geography_id integer NOT NULL,
+      agency_id integer NOT NULL,
+      recipient_id integer NOT NULL,
+      award_id integer NOT NULL,
+      transaction_id text,
+      award_amount numeric,
+      transactions integer,
+      last_modified_date date,
+      date_added date
+  );
+
+2. We created the child fact tables, which inherits the master fact table and added checks for dates, because we wanted to
+   ensure that we have only right data on each partition.Partitions starts from 2015-01-01 and ends 2015-02-01. Each partition contains one month data.
+
+.. code-block:: sql
+   :caption: Child fact table
+   :name: Child fact table
+
+    CREATE TABLE ft_spending_2_15M01(
+        PRIMARY KEY (id, last_modified_date),
+        CHECK ( last_modified_date >= DATE '2015-01-01' and last_modified_date < DATE '2015-02-01')
+    ) INHERITS (ft_spending_2);
+
+3. We created indexes to child fact tables to speed up day field usage, because almost all queries are triggered on the date field.
+
+.. code-block:: sql
+   :caption: Child table indexes
+   :name: Child fact table indexes
+
+   CREATE INDEX idx_15M01 ON ft_spending_2_15M01 (last_modified_date);
+
+4. We wanted our data warehouse to be able to say INSERT INTO *spending* and have the data be redirected into the appropriate partition table.
+   We have arranged this by creating a suitable trigger function to the master table.
+
+.. code-block:: sql
+   :caption: Trigger Function
+   :name: Trigger Function
+
+    CREATE OR REPLACE FUNCTION ft_partition_trigger()
+    RETURNS TRIGGER AS $$
+    BEGIN
+      IF
+        (NEW.last_modified_date >= DATE '2016-01-01' and NEW.last_modified_date < DATE '2016-02-01') THEN
+        INSERT INTO ft_spending_2_16M01 VALUES (NEW.*);
+        ELSIF (NEW.last_modified_date >= DATE '2016-02-01' and NEW.last_modified_date < DATE '2016-03-01') THEN
+        INSERT INTO ft_spending_2_16M02 VALUES (NEW.*);
+        ELSIF (NEW.last_modified_date >= DATE '2016-03-01' and NEW.last_modified_date < DATE '2016-04-01') THEN
+        INSERT INTO ft_spending_2_16M03 VALUES (NEW.*);
+        ...
+        ELSIF (NEW.last_modified_date >= DATE '2015-11-01' and NEW.last_modified_date < DATE '2015-12-01') THEN
+        INSERT INTO ft_spending_2_15M11 VALUES (NEW.*);
+        ELSIF (NEW.last_modified_date >= DATE '2015-12-01' and NEW.last_modified_date < DATE '2016-01-01') THEN
+        INSERT INTO ft_spending_2_15M12 VALUES (NEW.*);
+        ELSE
+          RAISE EXCEPTION 'DATE OUT OF RANGE!';
+      END IF;
+      RETURN NULL;
+    END;
+    $$
+    LANGUAGE plpgsql;
+
+
+After creating the trigger function, we created a trigger which calls the trigger function.
+
+.. code-block:: sql
+   :caption: Trigger
+   :name:
+
+    CREATE TRIGGER insert_ft_spending_2
+      BEFORE INSERT ON ft_spending_2
+        FOR EACH ROW EXECUTE PROCEDURE ft_partition_trigger_2();
+
+With all of these steps we ensured the our master fact table is available and all UPDATEs. INSERT’s, SELECT’s and DELETE’s goes to the right child tables by date.
+
+Finally it was time to populating the fact table. The fact table has been created simply by transforming cleansed data and joining with prepared dimensions.
+
 
 Dimensional Modeling
 --------------------
