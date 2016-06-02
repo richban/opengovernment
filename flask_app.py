@@ -185,21 +185,21 @@ def all():
     form = forms_data()
 
     page = int(request.args.get('page', 0))
-
+    cuts = []
     if request.method == 'POST':
         if request.form['submit'] == 'reset':
             geo_cut = PointCut("geography", ["united states of america"])
             cell = cubes.Cell(browser.cube, [geo_cut])
 
-            result = browser.aggregate(cell, drilldown=["recipient"], page=page, page_size=10)
+            result = browser.aggregate(cell, drilldown=["recipient"], page=page, page_size=100)
 
-            pagination = Pagination(page=page, css_framework='foundation', total=result.total_cell_count, per_page=10)
+            pagination = Pagination(page=page, css_framework='foundation', total=result.total_cell_count, per_page=100)
 
             return render_template('all.html', result=result,
                                                 pagination=pagination,
                                                 form=form)
         if request.form['submit'] == 'go':
-            cuts = []
+
             if request.form['year']:
                 if request.form['month'] != "View All":
                     cuts.append(PointCut("date", [int(request.form["year"]),
@@ -208,8 +208,8 @@ def all():
                     cuts.append(PointCut("date", [int(request.form["year"])]))
 
             if request.form["state"] != "View All":
-                if request.form["city"] != "View All":
-                    if request.form["zip"] != "View All":
+                if request.form["city"] != None:
+                    if len(request.form["zip"]) == 5:
                         cuts.append(PointCut("geography", ["united states of america",request.form["state"],
                                                         request.form["city"], request.form["zip"]], hierarchy="cscz"))
                     else:
@@ -221,6 +221,7 @@ def all():
             if request.form["agency"] != "View All":
                 cuts.append(PointCut("agency", [request.form["agency"]]))
 
+            print(cuts)
             # if request.form["zip"]:
             #   cuts.append(PointCut("geography", ["united states of america", request.form["zip"]], hierarchy="cz"))
 
@@ -228,9 +229,9 @@ def all():
 
             # page = int(request.args.get('page', 0))
 
-            result = browser.aggregate(cell, drilldown=["recipient"], page=page, page_size=10)
+            result = browser.aggregate(cell, drilldown=["recipient"], page=page, page_size=100)
 
-            pagination = Pagination(page=page, css_framework='foundation', total=result.total_cell_count, per_page=10)
+            pagination = Pagination(page=page, css_framework='foundation', total=result.total_cell_count, per_page=100)
 
             return render_template('all.html', result=result,
                                                 pagination=pagination,
@@ -307,10 +308,39 @@ def forms_data():
 def spending():
     cube = workspace.cube(CUBE_NAME)
     browser = workspace.browser(cube)
-    result = browser.aggregate()
 
     form = forms_data()
     return render_template('spending.html', form=form)
+
+@app.route("/form", methods=['GET', 'POST'])
+def form():
+    cube = workspace.cube(CUBE_NAME)
+    browser = workspace.browser(cube)
+
+    states = []
+    cities = []
+    agencies = []
+    years = []
+    months = []
+    award_type = []
+
+
+    state = request.args.get('state', 'None', type=str)
+    year = request.args.get('year', 'None', type=int)
+
+    states_cut = PointCut("geography", ["united states of america", state], hierarchy="cscz")
+    city_cell = cubes.Cell(browser.cube, [states_cut])
+
+    city_members = browser.members(city_cell, "geography")
+
+    for member in city_members:
+        if(member["geography.city"] != "n\a"):
+            cities.append(member["geography.city"])
+
+    cities = sorted(set(cities))
+    cities = [(v, v) for v in cities]
+
+    return jsonify(resutls=cities)
 
 
 

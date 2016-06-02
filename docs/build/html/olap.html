@@ -1,0 +1,805 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>OLAP &mdash; Design and implementation of open-data data warehouse 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Design and implementation of open-data data warehouse 0.0.1 documentation" href="index.html" />
+    <link rel="next" title="Conclusion" href="conclusion.html" />
+    <link rel="prev" title="Building The Data Warehouse" href="datawarehouse.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="olap">
+<h1>OLAP<a class="headerlink" href="#olap" title="Permalink to this headline">¶</a></h1>
+<p>The presentation area is based on online analytic processing (OLAP) technology, the data is stored in cubes.</p>
+<div class="section" id="cubes-olap-framework">
+<h2>Cubes - OLAP Framework<a class="headerlink" href="#cubes-olap-framework" title="Permalink to this headline">¶</a></h2>
+<p>Cubes is a light-weight Python framework and set of tools for development of reporting and analytical applications,
+Online Analytical Processing (OLAP), multidimensional analysis and browsing of aggregated data <a class="reference internal" href="#cubes" id="id1">[Cubes]</a>.</p>
+<table class="docutils citation" frame="void" id="cubes" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[Cubes]</a></td><td>Author: Stefan Urbanek
+Availailable: <a class="reference external" href="http://cubes.readthedocs.io/en/v1.0.1/#">Cubes Overview</a></td></tr>
+</tbody>
+</table>
+<p>The framework models the data as a cube with multiple dimensions:</p>
+<div class="figure" id="id11">
+<a class="reference internal image-reference" href="_images/cube-dims_and_cell.png"><img alt="_images/cube-dims_and_cell.png" src="_images/cube-dims_and_cell.png" style="width: 770.0px; height: 456.0px;" /></a>
+<p class="caption"><span class="caption-text">Cubes Dimension and Cell</span></p>
+</div>
+<p>Core cube features that we have implemented:</p>
+<ul class="simple">
+<li><strong>Workspace</strong> - Cubes analytical workspace</li>
+<li><strong>Model</strong> - Description of data (metadata): cubes, dimensions, hierarchies, attributes, labels etc.</li>
+<li><strong>Browser</strong> - Aggregation browsing, slicing-and-dicing, drill-down.</li>
+<li><strong>Backend</strong> - built-in ROLAP backend which uses Postgres SQL database using SQLAlchemy.</li>
+<li><strong>Server</strong> - WSGI HTTP server for Cubes</li>
+</ul>
+</div>
+<div class="section" id="analytical-workspace">
+<h2>Analytical Workspace<a class="headerlink" href="#analytical-workspace" title="Permalink to this headline">¶</a></h2>
+<p>Everything in Cubes happens in an analytical workspace. It contains cubes, maintains connections to the data stores
+(with cube data), provides connection to external cubes and more <a class="reference internal" href="#workspace" id="id2">[workspace]</a>.</p>
+<table class="docutils citation" frame="void" id="workspace" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[workspace]</a></td><td>Author: Stefan Urbanek
+Availailable: <a class="reference external" href="http://cubes.readthedocs.io/en/v1.0.1/tutorial.html">Cubes Analytical Workspace</a></td></tr>
+</tbody>
+</table>
+<div class="figure" id="id12">
+<a class="reference internal image-reference" href="_images/cubes-workspace_simplified-2.png"><img alt="_images/cubes-workspace_simplified-2.png" src="_images/cubes-workspace_simplified-2.png" style="width: 920.0px; height: 495.0px;" /></a>
+<p class="caption"><span class="caption-text">Cubes Workspace</span></p>
+</div>
+<p>The workspace properties are specified in a configuration file <em>slicer.ini</em>.
+First we have specified the workspace - cubes workspace configuration.
+We have provided the workspace our <em>model.json</em> metadata dictionary. We have added a logging
+path where to log file for better understanding of debug logs.</p>
+<div class="literal-block-wrapper container" id="workspace-configuration">
+<div class="code-block-caption"><span class="caption-text">slicer.ini</span><a class="headerlink" href="#workspace-configuration" title="Permalink to this code">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">workspace</span><span class="p">]</span>
+<span class="n">log</span><span class="p">:</span> <span class="n">error</span><span class="o">.</span><span class="n">log</span>
+<span class="n">log_lever</span><span class="p">:</span> <span class="n">debug</span>
+<span class="n">model</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+</div>
+<p>For the server section we have defined the HTTP WSGI OLAP Server.
+The host where the server runs. Port on which the the server listens.
+We have allowed Cross-origin resource sharing header for the CubesViewer.</p>
+<div class="literal-block-wrapper container" id="server-configuration">
+<div class="code-block-caption"><span class="caption-text">slicer.ini</span><a class="headerlink" href="#server-configuration" title="Permalink to this code">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">server</span><span class="p">]</span>
+<span class="n">host</span><span class="p">:</span> <span class="n">localhost</span>
+<span class="n">port</span><span class="p">:</span> <span class="mi">5000</span>
+<span class="n">prettyprint</span><span class="p">:</span> <span class="n">true</span>
+<span class="nb">reload</span><span class="p">:</span> <span class="n">true</span>
+<span class="n">allow_cors_origin</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8000</span>
+</pre></div>
+</div>
+</div>
+<p>We have specified our data store - the database containing the cube’s data.
+We have defined the prefix for dimension <em>dm_</em> and for fact <em>ft_</em> this allows the
+mapper to find dimension and fact tables in the database.</p>
+<div class="literal-block-wrapper container" id="store-configuration">
+<div class="code-block-caption"><span class="caption-text">slicer.ini</span><a class="headerlink" href="#store-configuration" title="Permalink to this code">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">store</span><span class="p">]</span>
+<span class="nb">type</span><span class="p">:</span> <span class="n">sql</span>
+<span class="n">url</span><span class="p">:</span> <span class="n">postgresql</span><span class="p">:</span><span class="o">//</span><span class="n">richardbanyi</span><span class="p">:</span><span class="n">dpcu923</span><span class="nd">@localhost</span><span class="p">:</span><span class="mi">5432</span><span class="o">/</span><span class="n">usaspending</span>
+<span class="n">fact_prefix</span><span class="p">:</span> <span class="n">ft_</span>
+<span class="n">dimension_prefix</span><span class="p">:</span> <span class="n">dm_</span>
+<span class="n">debug</span><span class="p">:</span> <span class="n">true</span>
+</pre></div>
+</div>
+</div>
+<p>The model section contains list of models. We have defined only one model.</p>
+<div class="literal-block-wrapper container" id="list-of-models">
+<div class="code-block-caption"><span class="caption-text">slicer.ini</span><a class="headerlink" href="#list-of-models" title="Permalink to this code">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">models</span><span class="p">]</span>
+<span class="n">main</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="logical-model-and-metadata">
+<h2>Logical Model and Metadata<a class="headerlink" href="#logical-model-and-metadata" title="Permalink to this headline">¶</a></h2>
+<p>Logical model describes the data from user’s or analyst’s perspective: data how they are being measured,
+aggregated and reported. Model is independent of physical implementation of data. This physical
+independence makes it easier to focus on data instead on ways of how to get the data in understandable form <a class="reference internal" href="#model" id="id3">[model]</a>.</p>
+<table class="docutils citation" frame="void" id="model" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[model]</a></td><td>Author: Stefan Urbanek
+Availailable: <a class="reference external" href="http://cubes.readthedocs.io/en/v1.0.1/model.html">Cubes Model</a></td></tr>
+</tbody>
+</table>
+<p>Analyst or report writers, anyone who will access the web application do not have to know where name
+of an government organisation or recipient name is stored, nor do they have to know where is data stored
+they only ask for <em>agency.name</em> or <em>recipient.name</em>.</p>
+<p>Example: User wants to find out the award amounts by geography which has four levels:country level, state level,
+city level and zip level. The original data is stored in the physical database in the geography table. User doesn’t
+have to know where the data are stored, he just queries for the geography.state and geography.city and will get the proper data.</p>
+<div class="figure" id="id13">
+<a class="reference internal image-reference" href="_images/logical-to-physical.png"><img alt="_images/logical-to-physical.png" src="_images/logical-to-physical.png" style="width: 553.0px; height: 665.0px;" /></a>
+<p class="caption"><span class="caption-text">Logical to Physical Mapping</span></p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Model<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>The logical model is described using model metadata dictionary. The content is description of logical objects,
+physical storage and other additional information <a class="footnote-reference" href="#id6" id="id5">[9]</a>.</p>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[9]</a></td><td>Author: Stefan Urbanek,
+Date: 2010-2014,
+Online: Model metadata
+Availailable: <a class="reference external" href="http://cubes.readthedocs.io/en/v1.0.1/model.html">Cubes  Model Metadata</a></td></tr>
+</tbody>
+</table>
+<div class="figure" id="id14">
+<a class="reference internal image-reference" href="_images/cubes-model_metadata.png"><img alt="_images/cubes-model_metadata.png" src="_images/cubes-model_metadata.png" style="width: 366.0px; height: 474.0px;" /></a>
+<p class="caption"><span class="caption-text">Cubes - Model Metadata</span></p>
+</div>
+<div class="literal-block-wrapper container" id="model-metadata">
+<div class="code-block-caption"><span class="caption-text">Model Example</span><a class="headerlink" href="#model-metadata" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;usaspending&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Federal Award Transactions&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Federal Award Transactions of United States of America&quot;</span>
+    <span class="s2">&quot;cubes&quot;</span><span class="o">:</span> <span class="p">[...]</span>
+    <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[...]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>In our case the logical part of the model description consists of the following attributes:
+<strong>Name</strong> is the name of our model, <strong>label</strong> and <strong>descriptions</strong> is used for human readable label/descriptions
+it’s optional. <strong>Cubes</strong> is a list of cubes metadata, we have defined only one cube for our case study spending.
+<strong>Dimensions</strong> is a list of dimension metadata.</p>
+<p>The physical part of the model description consists of the following attributes:</p>
+<p><strong>Joins</strong> we have only specified backend join specification, it is used to match joins in the cube.</p>
+<div class="section" id="id7">
+<h3>Cubes<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>Cube descriptions are stored as a dictionary for key <em>cubes</em>.</p>
+<div class="literal-block-wrapper container" id="cubes-metadata">
+<div class="code-block-caption"><span class="caption-text">Cubes Example</span><a class="headerlink" href="#cubes-metadata" title="Permalink to this code">¶</a></div>
+<div class="highlight-html"><div class="highlight"><pre><span></span>  {
+      &quot;name&quot;: &quot;usaspending&quot;,
+      &quot;label&quot;: “Federal Award Transactions&quot;,
+      &quot;dimensions&quot;: [ &quot;date&quot;, ... ],
+      &quot;measures&quot;: [...],
+      &quot;aggregates&quot;: [...],
+      &quot;details&quot;: [...],
+  }
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="measures-and-aggregates">
+<h3>Measures and Aggregates<a class="headerlink" href="#measures-and-aggregates" title="Permalink to this headline">¶</a></h3>
+<div class="figure" id="id15">
+<a class="reference internal image-reference" href="_images/cubes-measure_vs_aggregate.png"><img alt="_images/cubes-measure_vs_aggregate.png" src="_images/cubes-measure_vs_aggregate.png" style="width: 461.6px; height: 334.40000000000003px;" /></a>
+<p class="caption"><span class="caption-text">Cubes - Measures vs. Aggreates</span></p>
+</div>
+<p>The measure is numerical property of a fact. It represent the award_amount column in the physical model.</p>
+<div class="literal-block-wrapper container" id="measures">
+<div class="code-block-caption"><span class="caption-text">Measures</span><a class="headerlink" href="#measures" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;measures&quot;</span><span class="o">:</span> <span class="p">[</span>
+   <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;award_amount&quot;</span> <span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Award amount&quot;</span><span class="p">}</span>
+ <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>Aggregates is a list of aggregates that we have provided for the measure.</p>
+<div class="literal-block-wrapper container" id="list-of-aggregates">
+<div class="code-block-caption"><span class="caption-text">Aggregates</span><a class="headerlink" href="#list-of-aggregates" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span> <span class="s2">&quot;aggregates&quot;</span><span class="o">:</span>  <span class="p">[</span>
+   <span class="p">{</span>
+       <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;award_sum&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Total Award Amount&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;function&quot;</span><span class="o">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;measure&quot;</span><span class="o">:</span> <span class="s2">&quot;award_amount&quot;</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+       <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;transaction_count&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Total Transactions&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;function&quot;</span><span class="o">:</span> <span class="s2">&quot;count&quot;</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+       <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;award_min&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Min Amount&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;measure&quot;</span><span class="o">:</span> <span class="s2">&quot;award_amount&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;function&quot;</span><span class="o">:</span> <span class="s2">&quot;min&quot;</span>
+   <span class="p">},</span>
+   <span class="p">{</span>
+       <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;award_max&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Max Amount&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;measure&quot;</span><span class="o">:</span> <span class="s2">&quot;award_amount&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;function&quot;</span><span class="o">:</span> <span class="s2">&quot;max&quot;</span>
+   <span class="p">}</span>
+ <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>Note that item_count aggregate - it counts number of the facts within the cell. No measure required
+as a source for the aggregate. It helps to count the number of the transactions.</p>
+</div>
+<div class="section" id="mappings">
+<h3>Mappings<a class="headerlink" href="#mappings" title="Permalink to this headline">¶</a></h3>
+<p>The most important part of the OLAP on top of the start schema is mapping of the logical
+attributes to their physical attributes. In SQL database the physical attributes are stored in columns,
+which belongs to tables, which are part of the starcshema.</p>
+<div class="figure" id="id16">
+<a class="reference internal image-reference" href="_images/mapping_logical_to_physical.png"><img alt="_images/mapping_logical_to_physical.png" src="_images/mapping_logical_to_physical.png" style="width: 504.0px; height: 365.6px;" /></a>
+<p class="caption"><span class="caption-text">Cubes - Mapping Logical to Physical</span></p>
+</div>
+<p>Example:</p>
+<p>For data browsing, we have defined mappings, so that Cubes framework has know where logical attributes are physically stored.
+With this the Cubes framework know which tables are related to the cube spending and how they are joined together.</p>
+<p>The are two ways how the mapping is being done:
+* Imlicit
+* Explicit</p>
+<p>We have chosen the implicit declarations which has been most straightforward and simple.
+With implicit mapping we have matched a database schema with logical model and have avoided additional specific mapping metadata.</p>
+<p>This is how it would looked like if we would have chosen explicit mappings:</p>
+<div class="literal-block-wrapper container" id="explicit-mapping">
+<div class="code-block-caption"><span class="caption-text">Explicit Mapping</span><a class="headerlink" href="#explicit-mapping" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s2">&quot;mappings&quot;</span><span class="o">:</span> <span class="p">{</span>
+   <span class="s2">&quot;product.name&quot;</span><span class="o">:</span> <span class="s2">&quot;dm_products.product_name&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>The mapping process look like this:</p>
+<div class="figure" id="id17">
+<a class="reference internal image-reference" href="_images/mapping-overview.png"><img alt="_images/mapping-overview.png" src="_images/mapping-overview.png" style="width: 719.2px; height: 509.6px;" /></a>
+<p class="caption"><span class="caption-text">Cubes - Mapping Overview</span></p>
+</div>
+</div>
+<div class="section" id="facts">
+<h3>Facts<a class="headerlink" href="#facts" title="Permalink to this headline">¶</a></h3>
+<p>Cubes looks for fact table with the same name as cube name. We have specified prefix for every fact table with
+<em>ft_</em> in the workspace configuration <em>slicer.ini</em>.</p>
+<ul class="simple">
+<li>Cube is named <em>spending</em>: the framework looks for a fact table named <em>spending</em>.</li>
+<li><strong>fact table name = fact table prefix + fact table name</strong></li>
+</ul>
+</div>
+<div class="section" id="dimensions">
+<h3>Dimensions<a class="headerlink" href="#dimensions" title="Permalink to this headline">¶</a></h3>
+<p>Same as for fact tables cubes looks for dimension table with the same name as dimension name.
+We have specified prefix for every dimension table with <em>dm_</em> in the workspace configuration <em>slicer.ini</em>.
+We have design our dimension columns to have the same name as dimension attributes.</p>
+<div class="figure" id="id18">
+<a class="reference internal image-reference" href="_images/dimension_attribute_prefix_map.png"><img alt="_images/dimension_attribute_prefix_map.png" src="_images/dimension_attribute_prefix_map.png" style="width: 246.0px; height: 132.0px;" /></a>
+<p class="caption"><span class="caption-text">Cubes - Dimension attribute prefix</span></p>
+</div>
+<ul class="simple">
+<li><strong>dimension table name = dimension prefix + dimension name</strong></li>
+</ul>
+<p>An example of product dimension:</p>
+<div class="literal-block-wrapper container" id="product-dimension">
+<div class="code-block-caption"><span class="caption-text">Product dimension</span><a class="headerlink" href="#product-dimension" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span> <span class="p">{</span>
+   <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;product&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Product&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="p">[</span>
+       <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;id&quot;</span> <span class="p">},</span>
+       <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;product_name&quot;</span> <span class="p">}</span>
+   <span class="p">],</span>
+   <span class="s2">&quot;levels&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">...</span> <span class="p">],</span>
+   <span class="s2">&quot;hierarchies&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="joins">
+<h3>Joins<a class="headerlink" href="#joins" title="Permalink to this headline">¶</a></h3>
+<p>Tables are joined by matching single-column - surrogate keys.
+Joins are defined as an ordered list. We had to define the column reference for both master
+table and a table with details. The order of joins has to be from master to detail.</p>
+<div class="literal-block-wrapper container" id="join">
+<div class="code-block-caption"><span class="caption-text">Join example</span><a class="headerlink" href="#join" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span> <span class="s2">&quot;joins&quot;</span><span class="o">:</span>  <span class="p">[</span>
+     <span class="p">{</span>
+         <span class="s2">&quot;master&quot;</span><span class="o">:</span> <span class="s2">&quot;date_id&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;detail&quot;</span><span class="o">:</span> <span class="s2">&quot;dm_date.id&quot;</span>
+     <span class="p">},</span>
+ <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>Cubes supports three join methods <em>match, detail and master</em>.</p>
+<p><em>match</em> (default) – the keys from both master and detail tables have to match – INNER JOIN</p>
+<div class="figure" id="id19">
+<a class="reference internal image-reference" href="_images/cubes-sql_joins-match.png"><img alt="_images/cubes-sql_joins-match.png" src="_images/cubes-sql_joins-match.png" style="width: 387.0px; height: 156.0px;" /></a>
+<p class="caption"><span class="caption-text">Cubes - Join Match</span></p>
+</div>
+</div>
+<div class="section" id="hierarchies-and-levels">
+<h3>Hierarchies and Levels<a class="headerlink" href="#hierarchies-and-levels" title="Permalink to this headline">¶</a></h3>
+<p>Dimensions can have more than one level. Date dimension has 8 levels. Which every of these levels has it’s own attributes.
+The month level is represented by two attributes month an integer data type which describes the mont of the year and
+second attribute month name.</p>
+<div class="literal-block-wrapper container" id="month-level">
+<div class="code-block-caption"><span class="caption-text">Levels - Month</span><a class="headerlink" href="#month-level" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span> <span class="s2">&quot;levels&quot;</span><span class="o">:</span>  <span class="p">[</span>
+     <span class="p">{</span>
+         <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;month&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Month&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;month&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;label_attribute&quot;</span><span class="o">:</span> <span class="s2">&quot;month_name&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;attributes&quot;</span><span class="o">:</span>  <span class="p">[</span>
+             <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;month&quot;</span> <span class="p">},</span>
+             <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;month_name&quot;</span> <span class="p">}</span>
+         <span class="p">]</span>
+     <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>For date dimension we have created multiple ways of organising attributes into hierarchies.
+The date can be composed of <em>year-month-day</em> or <em>year-quarter-month-day</em>.
+We have defined four different hierarchies.</p>
+<p>First we have defined all possible level.s Then created list of hierarchies where we specified
+order of the levels for the particularly hierarchy.</p>
+<div class="literal-block-wrapper container" id="ymd">
+<div class="code-block-caption"><span class="caption-text">Hierarchies - Year-Month-day</span><a class="headerlink" href="#ymd" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span> <span class="s2">&quot;hierarchies&quot;</span><span class="o">:</span>  <span class="p">[</span>
+     <span class="p">{</span>
+         <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;ymd&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Y-M-D&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;levels&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;month&quot;</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span><span class="p">]</span>
+     <span class="p">}</span>
+ <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="user-oriented-metadata">
+<h3>User-oriented Metadata<a class="headerlink" href="#user-oriented-metadata" title="Permalink to this headline">¶</a></h3>
+<p>For a better understanding to users we have added labels for parts of the model that are being displayed to the users.
+They are used for report tables as column headings or as a filter of description. We have specified them for
+every object model (cube, dimension, level, attribute etc.) with the label attribute. The <em>key</em> attribute is used
+for filtering and <em>label_attribute</em> is used for the data to be displayed in the user interface (labels).</p>
+<div class="literal-block-wrapper container" id="labels">
+<div class="code-block-caption"><span class="caption-text">Labels</span><a class="headerlink" href="#labels" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span> <span class="s2">&quot;levels&quot;</span><span class="o">:</span>  <span class="p">[</span>
+     <span class="p">{</span>
+         <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;month&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Month&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;month&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;label_attribute&quot;</span><span class="o">:</span> <span class="s2">&quot;month_name&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;attributes&quot;</span><span class="o">:</span>  <span class="p">[</span>
+             <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;month&quot;</span> <span class="p">},</span>
+             <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;month_name&quot;</span> <span class="p">}</span>
+         <span class="p">]</span>
+     <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="figure" id="id20">
+<a class="reference internal image-reference" href="_images/schema-label_attributes.png"><img alt="_images/schema-label_attributes.png" src="_images/schema-label_attributes.png" style="width: 329.0px; height: 232.0px;" /></a>
+<p class="caption"><span class="caption-text">Cubes - Labels</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="slicer-server">
+<h2>Slicer Server<a class="headerlink" href="#slicer-server" title="Permalink to this headline">¶</a></h2>
+<p>Cubes framework provides a WSGI server which covers most of the Cube logical
+model metadata and aggregation browsing functionality. We have already configured the server at beginning of the OLAP section.</p>
+<p>To get a version of the server we just simple request a GET request.</p>
+<p>Request <cite>GET /version</cite>.</p>
+<div class="literal-block-wrapper container" id="slicer-server-get-version">
+<div class="code-block-caption"><span class="caption-text">Slicer Server - GET /version</span><a class="headerlink" href="#slicer-server-get-version" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;1.1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;api_version&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;server_version&quot;</span><span class="o">:</span> <span class="s2">&quot;1.1&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>To get a list of information about served cubes.</p>
+<p>Request <cite>GET /cubes</cite>.</p>
+<div class="literal-block-wrapper container" id="slicer-server-get-cubes">
+<div class="code-block-caption"><span class="caption-text">Slicer Server - GET /cubes</span><a class="headerlink" href="#slicer-server-get-cubes" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;spending&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;category&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;spending&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;info&quot;</span><span class="o">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Aggregation and Browsing</strong></p>
+<p>The core data and analytical functionality is accessed thought the following requests:</p>
+<ul class="simple">
+<li><cite>/cube/&lt;name&gt;/aggregate</cite> - aggregate measures, summary, generate drill-down, slice&amp;dice.</li>
+<li><cite>/cube/&lt;name&gt;/members/&lt;dim&gt;</cite> - list of dimension members.</li>
+<li><cite>/cube/&lt;name&gt;/facts</cite> - list facts within cell.</li>
+<li><cite>/cube/&lt;name&gt;/fact</cite> - return a single fact.</li>
+<li><cite>/cube/&lt;name&gt;/cell</cite> - describe cell.</li>
+</ul>
+<p>The cells - part of the cube we are interested in are specified by cut. The cut in the URL are given as a parameter cut.</p>
+<p>For example:</p>
+<ul class="simple">
+<li><cite>cut=date:2015</cite></li>
+<li><cite>cut=geography:usa,california</cite></li>
+</ul>
+<p><strong>Aggregate</strong></p>
+<p>The server always returns the aggregation results as JSON. The result contain keys:
+summary - represents the aggregation of the whole cell specified in the cut
+aggregates - list of aggregate names that are considered in the aggregation
+cell - list of dictionaries describing the cell cuts.</p>
+<div class="literal-block-wrapper container" id="slicer-server-aggregate">
+<div class="code-block-caption"><span class="caption-text">Slicer Server - Aggregate</span><a class="headerlink" href="#slicer-server-aggregate" title="Permalink to this code">¶</a></div>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span> <span class="p">{</span>
+     <span class="s2">&quot;summary&quot;</span><span class="o">:</span> <span class="p">{</span>
+         <span class="s2">&quot;award_sum&quot;</span><span class="o">:</span> <span class="mf">275669527432.41</span><span class="p">,</span>
+         <span class="s2">&quot;award_max&quot;</span><span class="o">:</span> <span class="mf">9999999999.0</span><span class="p">,</span>
+         <span class="s2">&quot;award_min&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mf">1604823842.0</span><span class="p">,</span>
+         <span class="s2">&quot;transaction_count&quot;</span><span class="o">:</span> <span class="mi">1550767</span>
+     <span class="p">},</span>
+     <span class="s2">&quot;remainder&quot;</span><span class="o">:</span> <span class="p">{},</span>
+     <span class="s2">&quot;cells&quot;</span><span class="o">:</span> <span class="p">[],</span>
+     <span class="s2">&quot;aggregates&quot;</span><span class="o">:</span> <span class="p">[</span>
+         <span class="s2">&quot;award_sum&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;transaction_count&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;award_min&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;award_max&quot;</span>
+     <span class="p">],</span>
+     <span class="s2">&quot;cell&quot;</span><span class="o">:</span> <span class="p">[</span>
+         <span class="p">{</span>
+             <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;point&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;dimension&quot;</span><span class="o">:</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;hierarchy&quot;</span><span class="o">:</span> <span class="s2">&quot;ymd&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;level_depth&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+             <span class="s2">&quot;invert&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+             <span class="s2">&quot;hidden&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+             <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="p">[</span>
+                 <span class="s2">&quot;2015&quot;</span>
+             <span class="p">]</span>
+         <span class="p">}</span>
+     <span class="p">],</span>
+     <span class="s2">&quot;attributes&quot;</span><span class="o">:</span> <span class="p">[],</span>
+     <span class="s2">&quot;has_split&quot;</span><span class="o">:</span> <span class="kc">false</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="slicing-and-dicing">
+<h2>Slicing and Dicing<a class="headerlink" href="#slicing-and-dicing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="browser">
+<h3>Browser<a class="headerlink" href="#browser" title="Permalink to this headline">¶</a></h3>
+<p>The aggregation, slicing, dicing, browsing of the multi-dimensional data is being done by an AggregationBrowser.</p>
+<div class="literal-block-wrapper container" id="workspace-browser">
+<div class="code-block-caption"><span class="caption-text">Workspace &amp; Browser initilization</span><a class="headerlink" href="#workspace-browser" title="Permalink to this code">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cubes</span> <span class="kn">import</span> <span class="n">Workspace</span>
+
+<span class="n">workspace</span> <span class="o">=</span> <span class="n">Workspace</span><span class="p">(</span><span class="s2">&quot;slicer.ini&quot;</span><span class="p">)</span>
+<span class="n">browser</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="n">browser</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Here we initialised our workspace, and create and initialises the aggregation browser.</p>
+<div class="figure" id="id21">
+<a class="reference internal image-reference" href="_images/browser-package.png"><img alt="_images/browser-package.png" src="_images/browser-package.png" style="width: 469.6px; height: 379.20000000000005px;" /></a>
+<p class="caption"><span class="caption-text">Cubes - Browser aggregate</span></p>
+</div>
+</div>
+<div class="section" id="cells-and-cuts">
+<h3>Cells and Cuts<a class="headerlink" href="#cells-and-cuts" title="Permalink to this headline">¶</a></h3>
+<p>Cell defines a point of interest – portion of the cube to be aggergated or browsed.</p>
+<div class="figure" id="id22">
+<a class="reference internal image-reference" href="_images/cubes-slice_and_dice-cell.png"><img alt="_images/cubes-slice_and_dice-cell.png" src="_images/cubes-slice_and_dice-cell.png" style="width: 617.6px; height: 286.40000000000003px;" /></a>
+<p class="caption"><span class="caption-text">Cubes - Slice and Dice cell</span></p>
+</div>
+<p>There are three types of cells: point – defines a single point in a dimension at a
+particular level; range – defines all points of an ordered dimension (such as date)
+within the range and set – collection of points <a class="reference internal" href="#cells" id="id8">[cells]</a>.</p>
+<table class="docutils citation" frame="void" id="cells" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id8">[cells]</a></td><td>Author: Stefan Urbanek
+Availailable: <a class="reference external" href="http://cubes.readthedocs.io/en/v1.0.1/slicing_and_dicing.html">Slicing and Dicing</a></td></tr>
+</tbody>
+</table>
+<div class="figure" id="id23">
+<a class="reference internal image-reference" href="_images/cubes-point-range-set-cut.png"><img alt="_images/cubes-point-range-set-cut.png" src="_images/cubes-point-range-set-cut.png" style="width: 1487.0px; height: 491.0px;" /></a>
+<p class="caption"><span class="caption-text">Cubes - Cuts</span></p>
+</div>
+<p>Points are defined as dimension paths – list of dimension level keys. For example a date path for
+3rd of June 2015 would be: [2015, 6, 3]. For the month June it would be [2015, 6]
+and for the whole year of 2015 it would be [2015].
+In python the cuts for “transactions from June of 2010 to June of 2012 for geography United States of America” are defined as:</p>
+<div class="literal-block-wrapper container" id="point-cuts">
+<div class="code-block-caption"><span class="caption-text">Point cut example</span><a class="headerlink" href="#point-cuts" title="Permalink to this code">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">cuts</span> <span class="o">=</span> <span class="p">[</span>
+   <span class="n">PointCut</span><span class="p">(</span><span class="s2">&quot;geography&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;united states of america&quot;</span><span class="p">]),</span>
+   <span class="n">PointCut</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+   <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>A range might look like this:</p>
+<div class="literal-block-wrapper container" id="range-cuts">
+<div class="code-block-caption"><span class="caption-text">Range cut example</span><a class="headerlink" href="#range-cuts" title="Permalink to this code">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">cuts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">PointCut</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2010</span><span class="p">],</span> <span class="p">[</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">24</span><span class="p">])</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="aggregate">
+<h3>Aggregate<a class="headerlink" href="#aggregate" title="Permalink to this headline">¶</a></h3>
+<p>Aggregate of a cell:</p>
+<div class="literal-block-wrapper container" id="cell-aggregate">
+<div class="code-block-caption"><span class="caption-text">Aggregate of a Cell</span><a class="headerlink" href="#cell-aggregate" title="Permalink to this code">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span></span> <span class="n">cuts</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="n">PointCut</span><span class="p">(</span><span class="s2">&quot;geography&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;sk&quot;</span><span class="p">])</span>
+     <span class="n">PointCut</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">6</span><span class="p">]),</span>
+ <span class="p">]</span>
+ <span class="n">cell</span> <span class="o">=</span> <span class="n">Cell</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="n">cuts</span><span class="p">)</span>
+ <span class="n">result</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We have a situation when a different hierarchy is desired than the default, so we have defined the hierarchy we wanted:</p>
+<div class="literal-block-wrapper container" id="cell-hierachy">
+<div class="code-block-caption"><span class="caption-text">Aggregate of a Cell with hierarchy</span><a class="headerlink" href="#cell-hierachy" title="Permalink to this code">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span></span> <span class="n">cuts</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="n">PointCut</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">hierarchy</span><span class="o">=</span><span class="s2">&quot;yqmd&quot;</span><span class="p">)</span>
+ <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="drilldown">
+<h3>Drilldown<a class="headerlink" href="#drilldown" title="Permalink to this headline">¶</a></h3>
+<p>Drill-down – get more details, group the aggregation by dimension members.
+For example:</p>
+<div class="literal-block-wrapper container" id="id10">
+<div class="code-block-caption"><span class="caption-text">Drilldown</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">cut</span> <span class="o">=</span> <span class="n">PointCut</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2010</span><span class="p">])</span>
+<span class="n">cell</span> <span class="o">=</span> <span class="n">Cell</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="p">[</span><span class="n">cut</span><span class="p">])</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">browser</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="n">drilldown</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Implicit</strong></p>
+<p>The way we are drilling down, is that cubes knows the next level of the drilled dimension.
+We have stated that our geography dimension has 4 levels: country, state, city, zip. This
+means that the first level of the dimension is country. The “next level” is determined as the next
+level after the deepest level used in a cut. The next level is by state, and so on. If the cut is at
+its deepest level (zip), it is not possible to to drill-down deeper.</p>
+<p><strong>Explicit</strong></p>
+<p>For explicit drilling down, the cut is not considered for the drill down level. We have just implicitly declared the drill-down levels.</p>
+</div>
+</div>
+<div class="section" id="drill-down-tree">
+<h2>Drill Down Tree<a class="headerlink" href="#drill-down-tree" title="Permalink to this headline">¶</a></h2>
+<p>We have created a function that traverse a dimension hierarchy and print-out aggregations
+(count of transactions and award amounts) at the actual browsed location.</p>
+<p>Attributes:</p>
+<ul class="simple">
+<li>dimension - dimension to be traversed trough all levels.</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">drilldown</span><span class="p">(</span><span class="n">dim_name</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>First we need to get the dimension hierarchy to know the order of levels. Most dimensions have only one hierarchy, thought.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dimension</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">dimension</span><span class="p">(</span><span class="n">dim_name</span><span class="p">)</span>
+<span class="n">hierarchy</span> <span class="o">=</span> <span class="n">dimension</span><span class="o">.</span><span class="n">hierarchy</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Parser the cut request parameter and convert it to a list of actual cube cuts.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">cutstr</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cut&quot;</span><span class="p">)</span>
+<span class="n">hierarchy</span> <span class="o">=</span> <span class="n">dimension</span><span class="o">.</span><span class="n">hierarchy</span><span class="p">()</span>
+<span class="n">cell</span> <span class="o">=</span> <span class="n">cubes</span><span class="o">.</span><span class="n">Cell</span><span class="p">(</span><span class="n">browser</span><span class="o">.</span><span class="n">cube</span><span class="p">,</span> <span class="n">cubes</span><span class="o">.</span><span class="n">cuts_from_string</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="n">cutstr</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>We get the cut of actually browsed dimension, so we know “where we are”.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">cut</span> <span class="o">=</span> <span class="n">cell</span><span class="o">.</span><span class="n">cut_for_dimension</span><span class="p">(</span><span class="n">dimension</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">cut</span><span class="p">:</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">cut</span><span class="o">.</span><span class="n">path</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p>Now we do the actual aggregation of the cell.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">levels</span> <span class="o">=</span> <span class="n">hierarchy</span><span class="o">.</span><span class="n">levels_for_path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">levels</span><span class="p">:</span>
+    <span class="n">next_level</span> <span class="o">=</span> <span class="n">hierarchy</span><span class="o">.</span><span class="n">next_level</span><span class="p">(</span><span class="n">levels</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">next_level</span> <span class="o">=</span> <span class="n">hierarchy</span><span class="o">.</span><span class="n">next_level</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We have created a flag, so that we know that we are at the deepest level.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">is_last</span> <span class="o">=</span> <span class="n">hierarchy</span><span class="o">.</span><span class="n">is_last</span><span class="p">(</span><span class="n">next_level</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And finally we, render the template</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;drilldown.html&#39;</span><span class="p">,</span> <span class="n">dimensions</span><span class="o">=</span><span class="n">cube</span><span class="o">.</span><span class="n">dimensions</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=</span><span class="n">dimension</span><span class="p">,</span>
+                        <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span> <span class="n">next_level</span><span class="o">=</span><span class="n">next_level</span><span class="p">,</span> <span class="n">result</span><span class="o">=</span><span class="n">result</span><span class="p">,</span>
+                        <span class="n">cell</span><span class="o">=</span><span class="n">cell</span><span class="p">,</span> <span class="n">is_last</span><span class="o">=</span><span class="n">is_last</span><span class="p">,</span> <span class="n">details</span><span class="o">=</span><span class="n">details</span><span class="p">,</span> <span class="n">pagination</span><span class="o">=</span><span class="n">pagination</span>
+                        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="web-application">
+<h1>Web Application<a class="headerlink" href="#web-application" title="Permalink to this headline">¶</a></h1>
+<div class="figure" id="id24">
+<a class="reference internal image-reference" href="_images/website.png"><img alt="_images/website.png" src="_images/website.png" style="width: 1023.2px; height: 603.2px;" /></a>
+<p class="caption"><span class="caption-text">Opengovernment - web application</span></p>
+</div>
+<p>The final major component of the implementation environment is the web application.
+We have build a web application that provide variety of capabilities to general users to leverage
+the presentation area for analytical decision making.</p>
+<p>For the web development of the application we have used a micro web development framework for Python called Flask.
+For the front end we have used bootstrap framework to design the layouts and the interface. We are also relying
+on some  javascript libraries for the charts.</p>
+<p>The open government folder is where we have dropped our files. We have put directly in this folder our
+data warehouse schema, models for cubes, as well as the main application module. The static folder is a
+place where we have placed css, javascript files. Inside the templates folder the application looks for the templates.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">opengovernment</span>
+   <span class="o">/</span><span class="n">static</span>
+   <span class="o">/</span><span class="n">templates</span>
+   <span class="o">/</span><span class="n">postgres</span>
+   <span class="o">/</span><span class="n">models</span>
+   <span class="n">flask_app</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>The actual application module, we have named it flask_app.py is the core of the back end.
+This is where the all web development functions are implemented. We have integrated Cubes Slicer
+Server with the application to provide raw analytical data. We have provided Slicer as a flask Blueprint
+to the application - a module that is plugged in.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="c1"># Create a Slicer and register it at http://localhost:5000/slicer</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">slicer</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s2">&quot;/slicer&quot;</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="s2">&quot;slicer.ini&quot;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We have implemented the following 7 features in our web application:</p>
+<ul class="simple">
+<li><strong>Spending</strong> - A good place to start to find information about federal funding.
+On Spending Page users just have to input a zip code which they are interested in and
+see all the federal transactions in their backyard. They can also see the transactions throughout state,
+county, as well as by federal agency and award type.</li>
+<li><strong>Dashboard</strong> - On Dashboard Page we enabled users to drill down from one place to another,
+they will find information to detailed data by focusing on something. For example to drill down through
+a series of place where the work was/is performed.</li>
+<li><strong>Reports</strong> - We have implemented a visual tool for exploring and analysing our OLAP Cube.
+We  have enabled users to explore data, create their own reports. It enables data exploration,
+data auditory, generation of reports, chart design and simple analytics.</li>
+<li><strong>Charts</strong> - We have also created our own charts using javascript libraries.
+On Chart pages users can drill down/roll up donut charts. Or they can look at Agencies
+Profile to see the total amount of money an agency awarded or State Summary to find out
+the total dollar amount for federal transactions for cities where the money was distributed.</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">OLAP</a><ul>
+<li><a class="reference internal" href="#cubes-olap-framework">Cubes - OLAP Framework</a></li>
+<li><a class="reference internal" href="#analytical-workspace">Analytical Workspace</a></li>
+<li><a class="reference internal" href="#logical-model-and-metadata">Logical Model and Metadata</a></li>
+<li><a class="reference internal" href="#id4">Model</a><ul>
+<li><a class="reference internal" href="#id7">Cubes</a></li>
+<li><a class="reference internal" href="#measures-and-aggregates">Measures and Aggregates</a></li>
+<li><a class="reference internal" href="#mappings">Mappings</a></li>
+<li><a class="reference internal" href="#facts">Facts</a></li>
+<li><a class="reference internal" href="#dimensions">Dimensions</a></li>
+<li><a class="reference internal" href="#joins">Joins</a></li>
+<li><a class="reference internal" href="#hierarchies-and-levels">Hierarchies and Levels</a></li>
+<li><a class="reference internal" href="#user-oriented-metadata">User-oriented Metadata</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#slicer-server">Slicer Server</a></li>
+<li><a class="reference internal" href="#slicing-and-dicing">Slicing and Dicing</a><ul>
+<li><a class="reference internal" href="#browser">Browser</a></li>
+<li><a class="reference internal" href="#cells-and-cuts">Cells and Cuts</a></li>
+<li><a class="reference internal" href="#aggregate">Aggregate</a></li>
+<li><a class="reference internal" href="#drilldown">Drilldown</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#drill-down-tree">Drill Down Tree</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#web-application">Web Application</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="datawarehouse.html" title="previous chapter">Building The Data Warehouse</a></li>
+      <li>Next: <a href="conclusion.html" title="next chapter">Conclusion</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/olap.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Richard Banyi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/olap.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

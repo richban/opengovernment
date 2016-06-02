@@ -1,0 +1,588 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>sphinxtr: The Sphinx Thesis Resource &mdash; Design and implementation of open-data data warehouse 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Design and implementation of open-data data warehouse 0.0.1 documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sphinxtr-the-sphinx-thesis-resource">
+<h1>sphinxtr:  The Sphinx Thesis Resource<a class="headerlink" href="#sphinxtr-the-sphinx-thesis-resource" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="preamble">
+<h2>Preamble<a class="headerlink" href="#preamble" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
+<p>This project is a collection of extensions and monkey patches to
+Sphinx to better format a PhD thesis.</p>
+</div>
+<div class="section" id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>
+<p>Thanks to Sphinx for a kickass build system and docutils for the
+groundwork of multiple format output.</p>
+</div>
+<div class="section" id="dedication">
+<h2>Dedication<a class="headerlink" href="#dedication" title="Permalink to this headline">¶</a></h2>
+<p>To my parents.</p>
+</div>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Creating a PhD thesis is typically done using LaTeX. This works really
+well for producing a PDF, but a giant PDF file is not a great way to
+put documents on the web. There are solutions that exist to turn latex
+source files into HTML, but in my experience, they tend to produce
+poor HTML output.</p>
+<p>The Sphinx project is a wonderful tool for creating portable
+documents, allowing for output to many different formats.
+Unfortunately, it has many shortcomings when trying to typeset
+something so advanced as a PhD thesis. The aim of this project is to
+modify Sphinx to support all of the needs of a thesis writer. Many of
+the patches are not appropriate for contributing directly to the
+upstream Sphinx repository, so this is instead a separate project.</p>
+<p>This sphinxtr output is available in several formats at:
+<a class="reference external" href="http://jterrace.github.com/sphinxtr">http://jterrace.github.com/sphinxtr</a>.</p>
+<p>The source code for sphinxtr can be found at:
+<a class="reference external" href="https://github.com/jterrace/sphinxtr">https://github.com/jterrace/sphinxtr</a>.</p>
+<div class="section" id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<p>Install the required Python packages:</p>
+<blockquote>
+<div>pip install -r requirements.txt</div></blockquote>
+</div>
+<div class="section" id="building">
+<h3>Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h3>
+<p>You need &#8220;make&#8221;. The following targets are supported:</p>
+<dl class="docutils">
+<dt>html</dt>
+<dd>Builds HTML format, separated into sections</dd>
+<dt>singlehtml</dt>
+<dd>Builds HTML format on a single page</dd>
+<dt>text</dt>
+<dd>Builds text files, separated into sections</dd>
+<dt>singletext</dt>
+<dd>Builds a single text file</dd>
+<dt>latexpdf</dt>
+<dd>Builds into latex source files and then compiles into a PDF.
+Requires latex.</dd>
+</dl>
+</div>
+<div class="section" id="changes">
+<h3>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h3>
+<p>The following changes and additions have been made from vanilla
+Sphinx:</p>
+<ul class="simple">
+<li>A cross-format bibtex bibliography based on sphinx-natbib</li>
+<li>Tables that can go inside figures</li>
+<li>Changed table formatting to look pretty, like booktabs</li>
+<li>Improved alignment in table environment</li>
+<li>Added support for short captions that show up in the &#8220;list of
+figures&#8221; section</li>
+<li>Changed equation reference formatting from &#8220;(1)&#8221; to &#8220;1&#8221;</li>
+<li>Full customization of latex preamble and style file</li>
+<li>Numbered figures</li>
+<li>Numbered section references</li>
+<li>A singletext output that builds into a single text file, similar to
+singlehtml</li>
+<li>A subfigure environment</li>
+</ul>
+</div>
+<div class="section" id="documents-using-sphinxtr">
+<h3>Documents Using sphinxtr<a class="headerlink" href="#documents-using-sphinxtr" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Jeff Terrace&#8217;s PhD Thesis</li>
+</ul>
+</div>
+</div>
+<div class="section" id="typography">
+<h2>Typography<a class="headerlink" href="#typography" title="Permalink to this headline">¶</a></h2>
+<p>This chapter has typography stuff. This also shows how to have a
+toctree inside a chapter.</p>
+<div class="section" id="headings">
+<h3>Headings<a class="headerlink" href="#headings" title="Permalink to this headline">¶</a></h3>
+<p>The title of this chapter, &#8220;Typography&#8221;, is the first heading level.
+This section, &#8220;Headings&#8221;, is the second level.</p>
+<div class="section" id="third-level">
+<h4>Third-level<a class="headerlink" href="#third-level" title="Permalink to this headline">¶</a></h4>
+<p>The third level heading. You probably shouldn&#8217;t go beyond this because
+it just looks ridiculous, but you can anyway.</p>
+<div class="section" id="fourth-level">
+<h5>Fourth-level<a class="headerlink" href="#fourth-level" title="Permalink to this headline">¶</a></h5>
+<p>The fourth level heading.</p>
+<div class="section" id="fifth-level">
+<h6>Fifth-level<a class="headerlink" href="#fifth-level" title="Permalink to this headline">¶</a></h6>
+<p>The fifth level heading.</p>
+<p>-[ Rubric Heading ]-</p>
+<p>A rubric heading is just a paragraph heading without document
+structure.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="text">
+<h3>Text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h3>
+<p>You can make <em>emphasized text</em>.</p>
+<p>You can make <strong>bold text</strong>.</p>
+<p>You can make &#8220;fixed-width font&#8221;.</p>
+<p>You can make block quotes:</p>
+<blockquote>
+<div>this is a block quote</div></blockquote>
+<p>You can make code blocks:</p>
+<blockquote>
+<div>this is a code block</div></blockquote>
+<p>Some convenience substitutions are defined in the epilog:</p>
+<ul class="simple">
+<li>e.g.,</li>
+<li>i.e.,</li>
+<li>et al.</li>
+<li>dash—</li>
+<li>non-breaking space -&gt; &lt;-</li>
+</ul>
+<p>You can have inline ^superscript or _subscript text.</p>
+<p>Big quotes, also known as an epigraph:</p>
+<blockquote>
+<div><p><em>Your avatar can look any way you want it to, up to the limitations
+of your equipment. If you&#8217;re ugly, you can make your avatar
+beautiful. If you&#8217;ve just gotten out of bed, your avatar can be
+wearing beautiful clothes and professionally applied makeup. You
+can look like a gorilla or a dragon, or a giant talking penis in
+the Metaverse. Spend five minutes walking down the street, and you
+will see all of these.</em></p>
+<p class="attribution">&mdash;Neal Stephenson, Snow Crash</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="lists">
+<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
+<p>This is a few examples of different list types.</p>
+<div class="section" id="unordered-lists">
+<h3>Unordered Lists<a class="headerlink" href="#unordered-lists" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>item 1</li>
+<li>item 2<ul>
+<li>item 3</li>
+<li>item 4</li>
+</ul>
+</li>
+<li>item 5</li>
+</ul>
+</div>
+<div class="section" id="ordered-lists">
+<h3>Ordered Lists<a class="headerlink" href="#ordered-lists" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>item 1</li>
+<li>item 2<ol class="arabic">
+<li>item 3</li>
+<li>item 4</li>
+</ol>
+</li>
+<li>item 5</li>
+</ol>
+</div>
+<div class="section" id="description-lists">
+<h3>Description Lists<a class="headerlink" href="#description-lists" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>term1</dt>
+<dd>definition 1</dd>
+<dt>term2</dt>
+<dd>definition 2</dd>
+<dt>term3</dt>
+<dd>definition 3</dd>
+</dl>
+</div>
+<div class="section" id="mixed">
+<h3>Mixed<a class="headerlink" href="#mixed" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>term</dt>
+<dd><p class="first">definition</p>
+<ul class="last simple">
+<li>list1</li>
+<li>list2</li>
+</ul>
+</dd>
+<dt>term2</dt>
+<dd><p class="first">something</p>
+<ol class="last arabic simple">
+<li>num1</li>
+<li>num2<ul>
+<li>list1</li>
+<li>list2</li>
+</ul>
+</li>
+<li>num3</li>
+</ol>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="math">
+<h2>Math<a class="headerlink" href="#math" title="Permalink to this headline">¶</a></h2>
+<p>Math uses latex math syntax:</p>
+<blockquote>
+<div>A^{&#8216;&#8217;}_c = sqrt[3]{ (frac{L^2_c}{sum{L^2}})
+(frac{A_c}{sum{A}}) (frac{A&#8217;_c}{sum{A&#8217;}}) } cdot T</div></blockquote>
+<p>Equations can have labels which you can reference eq-cc-err-stop.</p>
+<blockquote>
+<div>frac{log(1 + E_{current})}{log(1 + E_{max})}</div></blockquote>
+</div>
+<div class="section" id="references-and-citations">
+<h2>References and Citations<a class="headerlink" href="#references-and-citations" title="Permalink to this headline">¶</a></h2>
+<p>You can reference a section by its label. This chapter is Chapter 5.</p>
+<div class="section" id="subsection">
+<h3>Subsection<a class="headerlink" href="#subsection" title="Permalink to this headline">¶</a></h3>
+<p>This subsection is Section 5.1.</p>
+</div>
+<div class="section" id="citations">
+<h3>Citations<a class="headerlink" href="#citations" title="Permalink to this headline">¶</a></h3>
+<p>COLLADA [1] is a cool 3D file format. I wrote a paper about 3D stuff
+[3]. The website we built is running [2]. The bibliography is in
+bibtex format.</p>
+</div>
+<div class="section" id="footnotes">
+<h3>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h3>
+<p>Reference a footnote [1].</p>
+</div>
+<div class="section" id="external-links">
+<h3>External Links<a class="headerlink" href="#external-links" title="Permalink to this headline">¶</a></h3>
+<p>You can link to a website.</p>
+<p>-[ Footnotes ]-</p>
+<p>[1] This is a footnote at the end of the page or document.</p>
+</div>
+</div>
+<div class="section" id="figures-and-tables">
+<h2>Figures and Tables<a class="headerlink" href="#figures-and-tables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vector-svg-figures">
+<h3>Vector SVG Figures<a class="headerlink" href="#vector-svg-figures" title="Permalink to this headline">¶</a></h3>
+<p>Vector figures are nicely supported. You should have a PDF file and an
+SVG file. The PDF will be used for the latex output and the SVG for
+the HTML output. The HTML output has a nice zoom feature using
+Colorbox.</p>
+<blockquote>
+<div>[image: Sirikata System Overview][image]The Sirikata metaverse
+platform architecture.</div></blockquote>
+<p>See an example in Figure . I suggest making figures in something like
+Inkscape. If you have only a vector PDF, you can use pdf2svg to
+convert (&#8220;brew install pdf2svg&#8221; or &#8220;apt-get install pdf2svg&#8221;).</p>
+</div>
+<div class="section" id="image-figures">
+<h3>Image Figures<a class="headerlink" href="#image-figures" title="Permalink to this headline">¶</a></h3>
+<p>Regular rasterized images work fine too.</p>
+<blockquote>
+<div>[image: Open3DHub Browsing Interface][image]The Open3DHub website
+allows browsing of 3D meshes.</div></blockquote>
+<p>A PNG example is shown in Figure .</p>
+</div>
+<div class="section" id="subfigures">
+<h3>Subfigures<a class="headerlink" href="#subfigures" title="Permalink to this headline">¶</a></h3>
+<p>The subfigure directives allow you to place multiple figures side-by-
+side in the document. Here&#8217;s an example:</p>
+<p>You can reference the entire Figure  or one of its subfigures, e.g.,
+Figure .</p>
+</div>
+<div class="section" id="table">
+<h3>Table<a class="headerlink" href="#table" title="Permalink to this headline">¶</a></h3>
+<p>Tables can be put inside the figtable directive which automatically
+numbers them, adds a caption, and adds a label.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Progressive</th>
+<th class="head">128</th>
+<th class="head">256</th>
+<th class="head">512</th>
+<th class="head">1024</th>
+<th class="head">2048</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0%</td>
+<td>0.53</td>
+<td>0.63</td>
+<td>0.81</td>
+<td>1.03</td>
+<td>1.35</td>
+</tr>
+<tr class="row-odd"><td>25%</td>
+<td>0.65</td>
+<td>0.75</td>
+<td>0.97</td>
+<td>1.16</td>
+<td>1.45</td>
+</tr>
+<tr class="row-even"><td>50%</td>
+<td>0.74</td>
+<td>0.85</td>
+<td>1.02</td>
+<td>1.26</td>
+<td>1.58</td>
+</tr>
+<tr class="row-odd"><td>75%</td>
+<td>0.79</td>
+<td>0.95</td>
+<td>1.11</td>
+<td>1.34</td>
+<td>1.70</td>
+</tr>
+<tr class="row-even"><td>100%</td>
+<td>0.88</td>
+<td>0.99</td>
+<td>1.20</td>
+<td>1.44</td>
+<td>1.82</td>
+</tr>
+</tbody>
+</table>
+<p>Mean size of progressive format as a fraction of the original across
+all test models, shown as a function of the progressive stream
+downloaded and texture resolution.</p>
+<p>Table  has all right-aligned columns.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="48%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Left Align</th>
+<th class="head">Right Align</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Some text is left align</td>
+<td>Followed by right-aligned</td>
+</tr>
+<tr class="row-odd"><td>Some more text here</td>
+<td>And more text here</td>
+</tr>
+<tr class="row-even"><td>And even more text</td>
+<td>Also even more text here</td>
+</tr>
+</tbody>
+</table>
+<p>This table has mixed alignment</p>
+<p>Table  has one column left-aligned and one column right-aligned.</p>
+</div>
+<div class="section" id="text-wrapping-table">
+<h3>Text Wrapping Table<a class="headerlink" href="#text-wrapping-table" title="Permalink to this headline">¶</a></h3>
+<p>Text wrapping in tables work if you specify the width and either
+raggedleft or raggedright.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column Family</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Users</strong></td>
+<td>Stores a list of users who have authenticated with OpenID.</td>
+</tr>
+<tr class="row-odd"><td><strong>Names</strong></td>
+<td>Stores a list of the 3D models in the database with their associated metadata.</td>
+</tr>
+<tr class="row-even"><td><strong>TempFiles</strong></td>
+<td>Temporarily stores the binary file data of uploaded files until they have been processed.</td>
+</tr>
+<tr class="row-odd"><td><strong>Files</strong></td>
+<td>Stores the binary file data for uploaded and verified files.</td>
+</tr>
+<tr class="row-even"><td><strong>Sessions</strong></td>
+<td>Stores HTTP session information used by the Django framework to look up session state associated with a user&#8217;s browser cookie.</td>
+</tr>
+<tr class="row-odd"><td><strong>OpenIdAssocs, OpenIdNonces</strong></td>
+<td>Stores OpenID authentication information for users.</td>
+</tr>
+<tr class="row-even"><td><strong>CeleryResults</strong></td>
+<td>Stores the result of application processing tasks (see Section something).</td>
+</tr>
+<tr class="row-odd"><td><strong>APIConsumers</strong></td>
+<td>Stores a list of consumers of the API for use with the OAuth protocol.</td>
+</tr>
+</tbody>
+</table>
+<p>A list of Open3DHub&#8217;s Cassandra column families and their descriptions</p>
+<p>A text wrapping table example is shown in Figure .</p>
+</div>
+</div>
+<div class="section" id="bibliography">
+<h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>[1]</td>
+<td>Khronos Group Inc., The.  COLLADA - Digital Asset Schema Release 1.4.1 Specification (2nd</td>
+</tr>
+<tr class="row-even"><td>[2]</td>
+<td>Open3DHub.  <a class="reference external" href="http://open3dhub.com/">http://open3dhub.com/</a></td>
+</tr>
+<tr class="row-odd"><td>[3]</td>
+<td><ol class="first last upperalpha simple" start="10">
+<li>Terrace, E. Cheslack-Postava, P. Levis, M. J. Freedman. Unsupervised Conversion of 3D</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>This work is licensed under a Creative Commons Attribution 3.0 United
+States License.</p>
+<p>[image: Creative Commons License][image]</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">sphinxtr:  The Sphinx Thesis Resource</a><ul>
+<li><a class="reference internal" href="#preamble">Preamble</a></li>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#acknowledgements">Acknowledgements</a></li>
+<li><a class="reference internal" href="#dedication">Dedication</a></li>
+<li><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#building">Building</a></li>
+<li><a class="reference internal" href="#changes">Changes</a></li>
+<li><a class="reference internal" href="#documents-using-sphinxtr">Documents Using sphinxtr</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#typography">Typography</a><ul>
+<li><a class="reference internal" href="#headings">Headings</a><ul>
+<li><a class="reference internal" href="#third-level">Third-level</a><ul>
+<li><a class="reference internal" href="#fourth-level">Fourth-level</a><ul>
+<li><a class="reference internal" href="#fifth-level">Fifth-level</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#text">Text</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#lists">Lists</a><ul>
+<li><a class="reference internal" href="#unordered-lists">Unordered Lists</a></li>
+<li><a class="reference internal" href="#ordered-lists">Ordered Lists</a></li>
+<li><a class="reference internal" href="#description-lists">Description Lists</a></li>
+<li><a class="reference internal" href="#mixed">Mixed</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#math">Math</a></li>
+<li><a class="reference internal" href="#references-and-citations">References and Citations</a><ul>
+<li><a class="reference internal" href="#subsection">Subsection</a></li>
+<li><a class="reference internal" href="#citations">Citations</a></li>
+<li><a class="reference internal" href="#footnotes">Footnotes</a></li>
+<li><a class="reference internal" href="#external-links">External Links</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#figures-and-tables">Figures and Tables</a><ul>
+<li><a class="reference internal" href="#vector-svg-figures">Vector SVG Figures</a></li>
+<li><a class="reference internal" href="#image-figures">Image Figures</a></li>
+<li><a class="reference internal" href="#subfigures">Subfigures</a></li>
+<li><a class="reference internal" href="#table">Table</a></li>
+<li><a class="reference internal" href="#text-wrapping-table">Text Wrapping Table</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bibliography">Bibliography</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/sample.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Richard Banyi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/sample.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

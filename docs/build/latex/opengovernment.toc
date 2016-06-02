@@ -1,80 +1,26 @@
 \select@language {english}
-\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
-\contentsline {section}{\numberline {1.1}Data}{1}{section.1.1}
-\contentsline {subsection}{\numberline {1.1.1}What is Data?}{1}{subsection.1.1.1}
-\contentsline {subsection}{\numberline {1.1.2}From Data to information knowledge}{2}{subsection.1.1.2}
-\contentsline {subsection}{\numberline {1.1.3}Finding Data}{2}{subsection.1.1.3}
-\contentsline {subsection}{\numberline {1.1.4}Identify data source}{3}{subsection.1.1.4}
-\contentsline {subsection}{\numberline {1.1.5}Problem with sources}{3}{subsection.1.1.5}
-\contentsline {section}{\numberline {1.2}Open Data}{3}{section.1.2}
-\contentsline {subsection}{\numberline {1.2.1}Why open Data?}{4}{subsection.1.2.1}
-\contentsline {subsection}{\numberline {1.2.2}What is Open Data?}{5}{subsection.1.2.2}
-\contentsline {section}{\numberline {1.3}Data Warehouse Fundamentals}{6}{section.1.3}
-\contentsline {subsection}{\numberline {1.3.1}What is Data Warehouse}{6}{subsection.1.3.1}
-\contentsline {subsection}{\numberline {1.3.2}Operational Systems}{6}{subsection.1.3.2}
-\contentsline {subsection}{\numberline {1.3.3}Analytic Systems}{6}{subsection.1.3.3}
-\contentsline {subsection}{\numberline {1.3.4}Analytic Databases and Dimensional Design}{7}{subsection.1.3.4}
-\contentsline {subsection}{\numberline {1.3.5}The Star Schema}{8}{subsection.1.3.5}
-\contentsline {chapter}{\numberline {2}Building The Data Warehouse}{10}{chapter.2}
-\contentsline {section}{\numberline {2.1}Plan}{10}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Goals of Data Warehouse}{10}{subsection.2.1.1}
-\contentsline {subsubsection}{Finding the Data}{10}{subsubsection*.4}
-\contentsline {section}{\numberline {2.2}Data warehouse Environment}{11}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Operational Source systems}{12}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Data Staging Area}{12}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Data presentation}{12}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Data access tools}{12}{subsection.2.2.4}
-\contentsline {section}{\numberline {2.3}Data Staging Area}{12}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Extract}{12}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Clean}{14}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Load}{15}{subsection.2.3.3}
-\contentsline {section}{\numberline {2.4}Dimensional Modeling}{17}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Business Process}{17}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Declare the Grain}{18}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}Choose the Dimensions}{18}{subsection.2.4.3}
-\contentsline {subsection}{\numberline {2.4.4}Identify Facts}{19}{subsection.2.4.4}
-\contentsline {subsection}{\numberline {2.4.5}Suroggate Keys}{19}{subsection.2.4.5}
-\contentsline {section}{\numberline {2.5}Dimensional Table Attributes}{20}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Date Dimension}{20}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Product Dimension}{20}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}Geography Dimension}{21}{subsection.2.5.3}
-\contentsline {subsection}{\numberline {2.5.4}Recipient Dimension}{22}{subsection.2.5.4}
-\contentsline {subsection}{\numberline {2.5.5}Transaction Type Dimension}{22}{subsection.2.5.5}
-\contentsline {subsection}{\numberline {2.5.6}Award Dimension}{23}{subsection.2.5.6}
-\contentsline {subsection}{\numberline {2.5.7}Federal Award Transactions}{24}{subsection.2.5.7}
-\contentsline {chapter}{\numberline {3}OLAP}{26}{chapter.3}
-\contentsline {section}{\numberline {3.1}Cubes - OLAP Framework}{26}{section.3.1}
-\contentsline {section}{\numberline {3.2}Analytical Workspace}{27}{section.3.2}
-\contentsline {section}{\numberline {3.3}Logical Model and Metadata}{28}{section.3.3}
-\contentsline {section}{\numberline {3.4}Model}{29}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Cubes}{29}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Measures and Aggregates}{31}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Mappings}{32}{subsection.3.4.3}
-\contentsline {subsection}{\numberline {3.4.4}Facts}{33}{subsection.3.4.4}
-\contentsline {subsection}{\numberline {3.4.5}Dimensions}{34}{subsection.3.4.5}
-\contentsline {subsection}{\numberline {3.4.6}Joins}{35}{subsection.3.4.6}
-\contentsline {subsection}{\numberline {3.4.7}Hierarchies and Levels}{35}{subsection.3.4.7}
-\contentsline {subsection}{\numberline {3.4.8}User-oriented Metadata}{36}{subsection.3.4.8}
-\contentsline {section}{\numberline {3.5}Slicer Server}{37}{section.3.5}
-\contentsline {section}{\numberline {3.6}Slicing and Dicing}{39}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Browser}{39}{subsection.3.6.1}
-\contentsline {subsection}{\numberline {3.6.2}Cells and Cuts}{39}{subsection.3.6.2}
-\contentsline {subsection}{\numberline {3.6.3}Aggregate}{41}{subsection.3.6.3}
-\contentsline {subsection}{\numberline {3.6.4}Drilldown}{42}{subsection.3.6.4}
-\contentsline {section}{\numberline {3.7}Drill Down Tree}{42}{section.3.7}
-\contentsline {chapter}{\numberline {4}Web Application}{44}{chapter.4}
-\contentsline {chapter}{\numberline {5}Conclusion}{46}{chapter.5}
-\contentsline {chapter}{\numberline {6}Resume in Slovak language}{47}{chapter.6}
-\contentsline {chapter}{\numberline {7}References}{48}{chapter.7}
-\contentsline {chapter}{\numberline {8}Appendix A}{49}{chapter.8}
-\contentsline {section}{\numberline {8.1}Instalation Manual}{49}{section.8.1}
-\contentsline {subsection}{\numberline {8.1.1}Python}{49}{subsection.8.1.1}
-\contentsline {subsection}{\numberline {8.1.2}Install Packages}{50}{subsection.8.1.2}
-\contentsline {subsection}{\numberline {8.1.3}Creating Virtual Environments}{50}{subsection.8.1.3}
-\contentsline {subsection}{\numberline {8.1.4}PostgreSQL}{50}{subsection.8.1.4}
-\contentsline {subsection}{\numberline {8.1.5}Cubes}{51}{subsection.8.1.5}
-\contentsline {subsection}{\numberline {8.1.6}Flask}{51}{subsection.8.1.6}
-\contentsline {subsection}{\numberline {8.1.7}Web application}{52}{subsection.8.1.7}
-\contentsline {chapter}{\numberline {9}Appendix B}{53}{chapter.9}
-\contentsline {section}{\numberline {9.1}Contents of DVD}{53}{section.9.1}
-\contentsline {chapter}{Bibliography}{54}{chapter*.11}
+\contentsline {section}{\numberline {1}Data}{2}{section.2}
+\contentsline {subsection}{\numberline {1.1}What is Data?}{2}{subsection.3}
+\contentsline {subsection}{\numberline {1.2}From Data to information knowledge}{3}{subsection.7}
+\contentsline {subsection}{\numberline {1.3}Finding Data}{4}{subsection.8}
+\contentsline {subsection}{\numberline {1.4}Identify data source}{4}{subsection.12}
+\contentsline {subsection}{\numberline {1.5}Problem with sources}{4}{subsection.13}
+\contentsline {section}{\numberline {2}Open Data}{5}{section.15}
+\contentsline {subsection}{\numberline {2.1}Why open Data?}{5}{subsection.16}
+\contentsline {subsection}{\numberline {2.2}What is Open Data?}{7}{subsection.17}
+\contentsline {section}{\numberline {3}Data Warehouse Fundamentals}{8}{section.20}
+\contentsline {subsection}{\numberline {3.1}What is Data Warehouse}{8}{subsection.21}
+\contentsline {subsection}{\numberline {3.2}Operational Systems}{8}{subsection.23}
+\contentsline {subsection}{\numberline {3.3}Analytic Systems}{9}{subsection.24}
+\contentsline {subsection}{\numberline {3.4}Analytic Databases and Dimensional Design}{10}{subsection.25}
+\contentsline {subsection}{\numberline {3.5}The Star Schema}{11}{subsection.29}
+\contentsline {section}{\numberline {4}Plan}{12}{section.32}
+\contentsline {subsection}{\numberline {4.1}Goals of Data Warehouse}{12}{subsection.33}
+\contentsline {subsubsection}{\numberline {4.1.1}Finding the Data}{12}{subsubsection.34}
+\contentsline {section}{\numberline {5}Data warehouse Environment}{13}{section.35}
+\contentsline {subsection}{\numberline {5.1}Operational Source systems}{14}{subsection.38}
+\contentsline {subsection}{\numberline {5.2}Data Staging Area}{14}{subsection.39}
+\contentsline {subsection}{\numberline {5.3}Data presentation}{14}{subsection.40}
+\contentsline {subsection}{\numberline {5.4}Data access tools}{14}{subsection.41}
+\contentsline {section}{\numberline {6}Data Staging Area}{14}{section.42}
+\contentsline {subsection}{\numberline {6.1}Extract}{15}{subsection.45}

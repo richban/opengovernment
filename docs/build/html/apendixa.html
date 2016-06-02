@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Appendix A &mdash; Design and implementation of open-data data warehouse 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Design and implementation of open-data data warehouse 0.0.1 documentation" href="index.html" />
+    <link rel="next" title="Appendix B" href="appendixb.html" />
+    <link rel="prev" title="References" href="references.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="appendix-a">
+<h1>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="instalation-manual">
+<h2>Instalation Manual<a class="headerlink" href="#instalation-manual" title="Permalink to this headline">¶</a></h2>
+<p>In this section of appendinx, user guide to setting up the environment and installation is described.
+This sections covers all the pre-requireties and procedures for demonstration of the bachelor thesis.</p>
+<div class="section" id="python">
+<h3>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
+<p>Before we start, we will need Python on your computer, but you may not need to download it.
+First of all check that you don&#8217;t already have Python installed by entering python in a command line window.
+If you see a response from a Python interpreter it will include a version number in its initial display.</p>
+<div class="literal-block-wrapper container" id="python-in-command-line">
+<div class="code-block-caption"><span class="caption-text">Python in command line</span><a class="headerlink" href="#python-in-command-line" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>Python 3.4.3 <span class="o">(</span>v3.4.3:9b73f1c3e601, Feb <span class="m">23</span> 2015, 02:52:03<span class="o">)</span>
+<span class="o">[</span>GCC 4.2.1 <span class="o">(</span>Apple Inc. build 5666<span class="o">)</span> <span class="o">(</span>dot 3<span class="o">)]</span> on darwin
+Type <span class="s2">&quot;help&quot;</span>, <span class="s2">&quot;copyright&quot;</span>, <span class="s2">&quot;credits&quot;</span> or <span class="s2">&quot;license&quot;</span> <span class="k">for</span> more information.
+&gt;&gt;&gt;
+</pre></div>
+</div>
+</div>
+<p>If you need to install Python, you may as well download the most recent stable version Python 3.</p>
+<p><strong>If you&#8217;re running Windows:</strong> the most stable Windows downloads are available from the <cite>https://www.python.org/downloads/windows/</cite>.</p>
+<p><strong>If you are using a Mac:</strong> see the <cite>https://www.python.org/downloads/windows/</cite>.</p>
+<p><strong>For Debian or Ubuntu:</strong> For Debian or Ubuntu, install the python3.x and python3.x-dev packages</p>
+</div>
+<div class="section" id="install-packages">
+<h3>Install Packages<a class="headerlink" href="#install-packages" title="Permalink to this headline">¶</a></h3>
+<p>This section covers the basics of how to install Python packages (i.e. a bundle of software to be installed).</p>
+<p>If you have Python 3 &gt;=3.4 installed from python.org, you will already have pip and setuptools,
+but will need to upgrade to the latest version.</p>
+<p>On Linux or OS X:</p>
+<div class="literal-block-wrapper container" id="pip-install">
+<div class="code-block-caption"><span class="caption-text">Pip install</span><a class="headerlink" href="#pip-install" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install -U
+</pre></div>
+</div>
+</div>
+<p>On Windows:</p>
+<div class="literal-block-wrapper container" id="pip-install-on-windows">
+<div class="code-block-caption"><span class="caption-text">Pip install on Windows</span><a class="headerlink" href="#pip-install-on-windows" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python -m pip install
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-virtual-environments">
+<h3>Creating Virtual Environments<a class="headerlink" href="#creating-virtual-environments" title="Permalink to this headline">¶</a></h3>
+<p>Python “Virtual Environments” allow Python packages to be installed in an isolated location for
+a particular application, rather than being installed globally.</p>
+<p>The basic commands:</p>
+<div class="literal-block-wrapper container" id="creating-virtual-environment">
+<div class="code-block-caption"><span class="caption-text">Creating Virtual Environment</span><a class="headerlink" href="#creating-virtual-environment" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install virtualenv
+virtualenv &lt;DIR&gt;
+<span class="nb">source</span> &lt;DIR&gt;/bin/activate
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="postgresql">
+<h3>PostgreSQL<a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h3>
+<p>PostgreSQL is an object-relational database management system (ORDBMS).
+It supports a large part of the SQL standard and offers many modern features.</p>
+<p><strong>For Windows distribution:</strong> <cite>http://www.enterprisedb.com/products-services-training/pgdownload</cite></p>
+<p>After downloading the source installation just simple run the setup.exe and follow the instructions.</p>
+<p><strong>For OS X distribution:</strong> <cite>http://postgresapp.com</cite></p>
+<p>For MAC OS X we recommend to download Postgres.app which is a simple application that runs a menubar without the need of any installation.</p>
+</div>
+<div class="section" id="cubes">
+<h3>Cubes<a class="headerlink" href="#cubes" title="Permalink to this headline">¶</a></h3>
+<p>You may install Cubes with the minimal dependencies:</p>
+<div class="literal-block-wrapper container" id="install-cubes">
+<div class="code-block-caption"><span class="caption-text">Install Cubes</span><a class="headerlink" href="#install-cubes" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install cubes
+</pre></div>
+</div>
+</div>
+<p>The cubes has optional requirements:</p>
+<ul class="simple">
+<li><strong>SQLAlchemy</strong> for SQL database</li>
+<li><strong>Flask</strong> for Slicer OLAP HTTP server</li>
+</ul>
+<p>To install these requirements:</p>
+<div class="literal-block-wrapper container" id="cubes-requirements">
+<div class="code-block-caption"><span class="caption-text">Cubes requirements</span><a class="headerlink" href="#cubes-requirements" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install Flask SQLAlchemy
+</pre></div>
+</div>
+</div>
+<p>There is also a customized installation with requirements:</p>
+<div class="literal-block-wrapper container" id="customized-installation">
+<div class="code-block-caption"><span class="caption-text">Customized installation</span><a class="headerlink" href="#customized-installation" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install python-dateutil jsonschema expressions grako click
+</pre></div>
+</div>
+</div>
+<p>To run Cubes OLAP HTTP server:</p>
+<div class="literal-block-wrapper container" id="olap-http-server">
+<div class="code-block-caption"><span class="caption-text">OLAP HTTP server</span><a class="headerlink" href="#olap-http-server" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>slicer serve slicer.ini
+</pre></div>
+</div>
+</div>
+<p>And try to do some queries:</p>
+<div class="literal-block-wrapper container" id="id1">
+<div class="code-block-caption"><span class="caption-text">OLAP HTTP server</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>curl <span class="s2">&quot;http://localhost:5000/cube/spending/aggregate&quot;</span>
+curl <span class="s2">&quot;http://localhost:5000/cube/spending/aggregate?drilldown=year&quot;</span>
+curl <span class="s2">&quot;http://localhost:5000/cube/spending/aggregate?drilldown=country&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="flask">
+<h3>Flask<a class="headerlink" href="#flask" title="Permalink to this headline">¶</a></h3>
+<p>In order to run the web application you have install Flask which is a micro
+webdevelopment framework for Python.</p>
+<p>Enter the following command to get Flask activated in your virtualenv</p>
+<div class="literal-block-wrapper container" id="install-flask">
+<div class="code-block-caption"><span class="caption-text">Install Flask</span><a class="headerlink" href="#install-flask" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install Flask
+</pre></div>
+</div>
+</div>
+<p>Flask depends on two external libraries Werkzeug and Jinja2.
+The web application depends also on other external packages. For successfuly running the application
+install the following packages</p>
+<div class="literal-block-wrapper container" id="install-external-packages">
+<div class="code-block-caption"><span class="caption-text">Install external packages</span><a class="headerlink" href="#install-external-packages" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install Werkzeug jinja2 Flask-WTF
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="web-application">
+<h3>Web application<a class="headerlink" href="#web-application" title="Permalink to this headline">¶</a></h3>
+<p>After all these installations, you should be able to run the application. Now just copy the <em>opengovernment</em> folder,
+which is located on the DVD, into your home directory of your virtual environment.
+Open the <em>postgres</em> folder and run the following command to load the data into database</p>
+<div class="literal-block-wrapper container" id="load-data">
+<div class="code-block-caption"><span class="caption-text">Load Data</span><a class="headerlink" href="#load-data" title="Permalink to this code">¶</a></div>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="n">pg_restore</span> <span class="o">-</span><span class="n">Fc</span> <span class="o">-</span><span class="k">C</span> <span class="n">pg_dump</span><span class="p">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+</div>
+<p>Move up to folder <em>opengovernment</em>. Run the Cubes OLAP HTTP server.</p>
+<div class="literal-block-wrapper container" id="id2">
+<div class="code-block-caption"><span class="caption-text">OLAP HTTP server</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>slicer serve slicer.ini
+</pre></div>
+</div>
+</div>
+<p>Now run the actual Flask application <em>flask_app.py</em></p>
+<div class="literal-block-wrapper container" id="run-flask-app">
+<div class="code-block-caption"><span class="caption-text">Run Flask App</span><a class="headerlink" href="#run-flask-app" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python flask_app.py
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Appendix A</a><ul>
+<li><a class="reference internal" href="#instalation-manual">Instalation Manual</a><ul>
+<li><a class="reference internal" href="#python">Python</a></li>
+<li><a class="reference internal" href="#install-packages">Install Packages</a></li>
+<li><a class="reference internal" href="#creating-virtual-environments">Creating Virtual Environments</a></li>
+<li><a class="reference internal" href="#postgresql">PostgreSQL</a></li>
+<li><a class="reference internal" href="#cubes">Cubes</a></li>
+<li><a class="reference internal" href="#flask">Flask</a></li>
+<li><a class="reference internal" href="#web-application">Web application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="references.html" title="previous chapter">References</a></li>
+      <li>Next: <a href="appendixb.html" title="next chapter">Appendix B</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/apendixa.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Richard Banyi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/apendixa.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

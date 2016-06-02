@@ -6,6 +6,11 @@
 Welcome to Design and implementation of open-data data warehouse's documentation!
 =================================================================================
 
+.. raw:: latex
+
+   \listoffigures
+   \listoftables
+
 .. toctree::
    :maxdepth: 3
 
@@ -17,3 +22,5 @@ Welcome to Design and implementation of open-data data warehouse's documentation
    references
    apendixa
    appendixb
+
+

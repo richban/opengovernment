@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Conclusion &mdash; Design and implementation of open-data data warehouse 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Design and implementation of open-data data warehouse 0.0.1 documentation" href="index.html" />
+    <link rel="next" title="Resume in Slovak language" href="resume.html" />
+    <link rel="prev" title="OLAP" href="olap.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="conclusion">
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h1>
+<p>The bachelor thesis was aimed to implement an open-data data warehouse using open government data.
+As we have been started through searching for data, we have studied the metadata of the source, the
+process in detail and observe the transactions of government institutes, such as contracts, grants,
+loans and other financial assistance, we have decided that the federal award transaction is thebusiness process to be modelled.</p>
+<p>Once the business model has been identified, we faced a serious decision about the granularity of the data warehouse.
+We ensured maximum dimensionality and flexibility by choosing the most granular data - individual transactions made by federal agencies.
+After we have declared the grain of the fact table, the dimensions fall out immediately.</p>
+<p>We have made various transformations on data to enforce data quality, integrity and consistency, conformed data so
+that separate flat files can be used together, and delivered data into the presentation layer.</p>
+<p>Then, we have designed the multidimensional model of the presentation layer, which is based on online analytic processing
+(OLAP) technology, so that the data is stored in cubes. We have properly specified the analytical workspace of the Cubes.
+Following we have provided logical model metadata to the workspace.</p>
+<p>Finally, the major component of the the implementation was to make it accessible and available to the end users.
+For this reason, we have build a web application using a micro web development framework for Python called Flask.
+We have implemented various features for the end users. Visual tool for exploring and analysis, which enables data
+exploration, data auditory, generation of reports, chart design and simple analytics. By this we have enabled the
+general public to evaluate the business process of the government.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="olap.html" title="previous chapter">OLAP</a></li>
+      <li>Next: <a href="resume.html" title="next chapter">Resume in Slovak language</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/conclusion.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Richard Banyi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/conclusion.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

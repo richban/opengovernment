@@ -28,7 +28,7 @@
 
 
 \title{Design and implementation of open-data data warehouse Documentation}
-\date{May 28, 2016}
+\date{May 29, 2016}
 \release{0.0.1}
 \author{Richard Banyi}
 \newcommand{\sphinxlogo}{}
@@ -46,69 +46,69 @@
     \PYG@it{\PYG@bf{\PYG@ff{#1}}}}}}}
 \def\PYG#1#2{\PYG@reset\PYG@toks#1+\relax+\PYG@do{#2}}
 
-\expandafter\def\csname PYG@tok@err\endcsname{\def\PYG@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
-\expandafter\def\csname PYG@tok@s1\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
-\expandafter\def\csname PYG@tok@kd\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@sd\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
-\expandafter\def\csname PYG@tok@ge\endcsname{\let\PYG@it=\textit}
-\expandafter\def\csname PYG@tok@nd\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.33,0.33,0.33}{##1}}}
-\expandafter\def\csname PYG@tok@kr\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@mi\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
-\expandafter\def\csname PYG@tok@nv\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
-\expandafter\def\csname PYG@tok@cm\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
-\expandafter\def\csname PYG@tok@gp\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.78,0.36,0.04}{##1}}}
-\expandafter\def\csname PYG@tok@na\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
-\expandafter\def\csname PYG@tok@sc\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
-\expandafter\def\csname PYG@tok@go\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.20,0.20,0.20}{##1}}}
-\expandafter\def\csname PYG@tok@nt\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.02,0.16,0.45}{##1}}}
-\expandafter\def\csname PYG@tok@bp\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@kp\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@gi\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
-\expandafter\def\csname PYG@tok@ne\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@sr\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.14,0.33,0.53}{##1}}}
-\expandafter\def\csname PYG@tok@sh\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
-\expandafter\def\csname PYG@tok@il\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
-\expandafter\def\csname PYG@tok@gt\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
-\expandafter\def\csname PYG@tok@mh\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
-\expandafter\def\csname PYG@tok@nc\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.05,0.52,0.71}{##1}}}
 \expandafter\def\csname PYG@tok@se\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
-\expandafter\def\csname PYG@tok@cpf\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
-\expandafter\def\csname PYG@tok@vg\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
-\expandafter\def\csname PYG@tok@nn\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.05,0.52,0.71}{##1}}}
-\expandafter\def\csname PYG@tok@no\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.38,0.68,0.84}{##1}}}
-\expandafter\def\csname PYG@tok@kc\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@mo\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
-\expandafter\def\csname PYG@tok@w\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
-\expandafter\def\csname PYG@tok@ss\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.32,0.47,0.09}{##1}}}
-\expandafter\def\csname PYG@tok@ow\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@ch\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
-\expandafter\def\csname PYG@tok@s\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
-\expandafter\def\csname PYG@tok@m\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
-\expandafter\def\csname PYG@tok@ni\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.84,0.33,0.22}{##1}}}
-\expandafter\def\csname PYG@tok@s2\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
-\expandafter\def\csname PYG@tok@sb\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
-\expandafter\def\csname PYG@tok@c1\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
-\expandafter\def\csname PYG@tok@gs\endcsname{\let\PYG@bf=\textbf}
-\expandafter\def\csname PYG@tok@gr\endcsname{\def\PYG@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
-\expandafter\def\csname PYG@tok@mb\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
-\expandafter\def\csname PYG@tok@cs\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}\def\PYG@bc##1{\setlength{\fboxsep}{0pt}\colorbox[rgb]{1.00,0.94,0.94}{\strut ##1}}}
-\expandafter\def\csname PYG@tok@vc\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
-\expandafter\def\csname PYG@tok@kn\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@err\endcsname{\def\PYG@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PYG@tok@ge\endcsname{\let\PYG@it=\textit}
+\expandafter\def\csname PYG@tok@gt\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PYG@tok@s1\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PYG@tok@sd\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
 \expandafter\def\csname PYG@tok@gu\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
-\expandafter\def\csname PYG@tok@o\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
-\expandafter\def\csname PYG@tok@cp\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@c\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
-\expandafter\def\csname PYG@tok@nf\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.02,0.16,0.49}{##1}}}
-\expandafter\def\csname PYG@tok@gh\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
 \expandafter\def\csname PYG@tok@nb\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
-\expandafter\def\csname PYG@tok@vi\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
-\expandafter\def\csname PYG@tok@gd\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
-\expandafter\def\csname PYG@tok@si\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.44,0.63,0.82}{##1}}}
-\expandafter\def\csname PYG@tok@mf\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
+\expandafter\def\csname PYG@tok@cm\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
+\expandafter\def\csname PYG@tok@bp\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@kr\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@il\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
+\expandafter\def\csname PYG@tok@no\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.38,0.68,0.84}{##1}}}
+\expandafter\def\csname PYG@tok@gp\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.78,0.36,0.04}{##1}}}
+\expandafter\def\csname PYG@tok@nt\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.02,0.16,0.45}{##1}}}
 \expandafter\def\csname PYG@tok@k\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@cs\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}\def\PYG@bc##1{\setlength{\fboxsep}{0pt}\colorbox[rgb]{1.00,0.94,0.94}{\strut ##1}}}
+\expandafter\def\csname PYG@tok@nd\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.33,0.33,0.33}{##1}}}
+\expandafter\def\csname PYG@tok@mf\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
+\expandafter\def\csname PYG@tok@c\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
+\expandafter\def\csname PYG@tok@ni\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.84,0.33,0.22}{##1}}}
+\expandafter\def\csname PYG@tok@vg\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
+\expandafter\def\csname PYG@tok@nf\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.02,0.16,0.49}{##1}}}
+\expandafter\def\csname PYG@tok@cp\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@c1\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
+\expandafter\def\csname PYG@tok@m\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
+\expandafter\def\csname PYG@tok@ne\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@mb\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
+\expandafter\def\csname PYG@tok@o\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
 \expandafter\def\csname PYG@tok@sx\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.78,0.36,0.04}{##1}}}
+\expandafter\def\csname PYG@tok@mi\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
+\expandafter\def\csname PYG@tok@ch\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
+\expandafter\def\csname PYG@tok@gd\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PYG@tok@cpf\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.25,0.50,0.56}{##1}}}
+\expandafter\def\csname PYG@tok@si\endcsname{\let\PYG@it=\textit\def\PYG@tc##1{\textcolor[rgb]{0.44,0.63,0.82}{##1}}}
+\expandafter\def\csname PYG@tok@go\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.20,0.20,0.20}{##1}}}
+\expandafter\def\csname PYG@tok@nv\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
+\expandafter\def\csname PYG@tok@kn\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@sb\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PYG@tok@kd\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
 \expandafter\def\csname PYG@tok@kt\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.56,0.13,0.00}{##1}}}
+\expandafter\def\csname PYG@tok@w\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PYG@tok@s\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PYG@tok@vc\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
+\expandafter\def\csname PYG@tok@sc\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PYG@tok@vi\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
+\expandafter\def\csname PYG@tok@gr\endcsname{\def\PYG@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PYG@tok@na\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PYG@tok@sr\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.14,0.33,0.53}{##1}}}
+\expandafter\def\csname PYG@tok@gh\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PYG@tok@gi\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PYG@tok@kc\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
 \expandafter\def\csname PYG@tok@nl\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.13,0.44}{##1}}}
+\expandafter\def\csname PYG@tok@nc\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.05,0.52,0.71}{##1}}}
+\expandafter\def\csname PYG@tok@nn\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.05,0.52,0.71}{##1}}}
+\expandafter\def\csname PYG@tok@sh\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PYG@tok@kp\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@mh\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
+\expandafter\def\csname PYG@tok@ss\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.32,0.47,0.09}{##1}}}
+\expandafter\def\csname PYG@tok@s2\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PYG@tok@mo\endcsname{\def\PYG@tc##1{\textcolor[rgb]{0.13,0.50,0.31}{##1}}}
+\expandafter\def\csname PYG@tok@ow\endcsname{\let\PYG@bf=\textbf\def\PYG@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PYG@tok@gs\endcsname{\let\PYG@bf=\textbf}
 
 \def\PYGZbs{\char`\\}
 \def\PYGZus{\char`\_}
@@ -139,10 +139,11 @@
 \tableofcontents
 \phantomsection\label{index::doc}
 
-
+\listoffigures
+\listoftables
 
 \chapter{Introduction}
-\label{introduction:welcome-to-design-and-implementation-of-open-data-data-warehouse-s-documentation}\label{introduction::doc}\label{introduction:introduction}
+\label{introduction::doc}\label{introduction:welcome-to-design-and-implementation-of-open-data-data-warehouse-s-documentation}\label{introduction:introduction}
 
 \section{Data}
 \label{introduction:data}
@@ -161,8 +162,8 @@ Author: School of Data
 Date: Sep 02, 2013
 Organization: School of Data
 Available: \href{http://schoolofdata.org/handbook/courses/what-is-data/}{Data Fundamentals}
-}.
-\begin{figure}[htbp]
+} \titleref{Strunk1979}.
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -587,7 +588,7 @@ are stored as columns in a fact table.
 Dimension tables are not in third normal form. A dimensional model serves a different purpose from ER model.
 It is not necessary to isolate repeating values in an environment that doesn't support transaction processing.
 When additional normalization is performed within dimensions, in such cases, the schema is referred as a snowflake.
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -678,7 +679,7 @@ The data warehouse must be designed to handle this change.
 \label{datawarehouse:data-warehouse-environment}
 It is helpful to understand the pieces of the data warehouse before we begin to combine them.
 Each component serves specific function.
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -721,7 +722,7 @@ The ETL system is the foundation of the data warehouse. We have design an ETL sy
 system, enforces data quality and consistency, conforms data so that separate flat files can be used together,
 and delivers data into presentation layer where we build the application so that end users can make decisions. We haven’t
 used any ETL tools every process/job is all hand coded.
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -733,7 +734,7 @@ used any ETL tools every process/job is all hand coded.
 \label{datawarehouse:extract}
 The \href{https://www.usaspending.gov}{usaspending.gov}  website doesn’t provide any API, only single page with the download able link.
 The raw data coming from the source system is stored locally on the disk. We have downloaded 4 different .csv flat files.
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -1023,7 +1024,7 @@ After we have declared the grain of the fact table, the recipient, agency, date,
 We assume that the calendar date is the date when the award was signed.
 
 In our case study we have decided on the following dimensions:
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -1088,7 +1089,7 @@ Unlike other dimensions, we could have build the date dimension in advance. We h
 days in the table so that we can cover the history we have stored, as well as several years in the future.
 From our data we know that first public awards come from the year 2008, so even 10 years worth of days is only about 3650 rows,
 which is relatively small dimension table.
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -1106,7 +1107,7 @@ integer which is representing the day number in the year, it starts from 1 and r
 The weekday name column represents the name of the day when the award have been signed, such as Wednesday. It has string data type.
 We have also included calendar week column. We have included quarter number (Q1,…, Q4). Columns like year, quarter, month, calendar week,
 day all these integers support as simple date filters. Figure 2.5 illustrates several rows from a partial date dimension table.
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -1115,7 +1116,7 @@ day all these integers support as simple date filters. Figure 2.5 illustrates se
 
 
 \subsection{Product Dimension}
-\label{datawarehouse:product-dimension}\begin{figure}[htbp]
+\label{datawarehouse:product-dimension}\begin{figure}[h]
 \centering
 \capstart
 
@@ -1129,7 +1130,7 @@ The only function of the product dimension is to give a descriptive attribute of
 2492 different values in the product dimension table. Viewed in this manner, we can only drill down on one level of the product
 dimension which provides us information about the award amount and quantity by product name. For example here is simple
 report overview, we have summarised the award amount and quantity (count) by product name.
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -1138,7 +1139,7 @@ report overview, we have summarised the award amount and quantity (count) by pro
 
 
 \subsection{Geography Dimension}
-\label{datawarehouse:geography-dimension}\begin{figure}[htbp]
+\label{datawarehouse:geography-dimension}\begin{figure}[h]
 \centering
 \capstart
 
@@ -1152,7 +1153,7 @@ attributes are representing in the geography dimension a simple hierarchy for a 
 
 
 \subsection{Recipient Dimension}
-\label{datawarehouse:recipient-dimension}\begin{figure}[htbp]
+\label{datawarehouse:recipient-dimension}\begin{figure}[h]
 \centering
 \capstart
 
@@ -1195,7 +1196,7 @@ United States of America
 
 
 \subsection{Transaction Type Dimension}
-\label{datawarehouse:transaction-type-dimension}\begin{figure}[htbp]
+\label{datawarehouse:transaction-type-dimension}\begin{figure}[h]
 \centering
 \capstart
 
@@ -1226,7 +1227,7 @@ The transaction description columns provides us descriptive information of types
 
 
 \subsection{Award Dimension}
-\label{datawarehouse:award-dimension}\begin{figure}[htbp]
+\label{datawarehouse:award-dimension}\begin{figure}[h]
 \centering
 \capstart
 
@@ -1301,7 +1302,7 @@ This method accurately track slowly changing dimensions attributes.
 \subsection{Federal Award Transactions}
 \label{datawarehouse:federal-award-transactions}
 As we have moved from the dimensional design, this is how our federal award transaction business model looks like for now.
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -1320,7 +1321,7 @@ Cubes is a light-weight Python framework and set of tools for development of rep
 Online Analytical Processing (OLAP), multidimensional analysis and browsing of aggregated data \phantomsection\label{olap:id1}{\hyperref[olap:cubes]{\crossref{{[}Cubes{]}}}}.
 
 The framework models the data as a cube with multiple dimensions:
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -1351,7 +1352,7 @@ Core cube features that we have implemented:
 \label{olap:analytical-workspace}
 Everything in Cubes happens in an analytical workspace. It contains cubes, maintains connections to the data stores
 (with cube data), provides connection to external cubes and more \phantomsection\label{olap:id2}{\hyperref[olap:workspace]{\crossref{{[}workspace{]}}}}.
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -1433,7 +1434,7 @@ they only ask for \emph{agency.name} or \emph{recipient.name}.
 Example: User wants to find out the award amounts by geography which has four levels:country level, state level,
 city level and zip level. The original data is stored in the physical database in the geography table. User doesn’t
 have to know where the data are stored, he just queries for the geography.state and geography.city and will get the proper data.
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -1450,7 +1451,7 @@ Date: 2010-2014,
 Online: Model metadata
 Availailable: \href{http://cubes.readthedocs.io/en/v1.0.1/model.html}{Cubes  Model Metadata}
 }.
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -1502,7 +1503,7 @@ Cube descriptions are stored as a dictionary for key \emph{cubes}.
 
 
 \subsection{Measures and Aggregates}
-\label{olap:measures-and-aggregates}\begin{figure}[htbp]
+\label{olap:measures-and-aggregates}\begin{figure}[h]
 \centering
 \capstart
 
@@ -1564,7 +1565,7 @@ as a source for the aggregate. It helps to count the number of the transactions.
 The most important part of the OLAP on top of the start schema is mapping of the logical
 attributes to their physical attributes. In SQL database the physical attributes are stored in columns,
 which belongs to tables, which are part of the starcshema.
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -1596,7 +1597,7 @@ This is how it would looked like if we would have chosen explicit mappings:
 \let\SphinxLiteralBlockLabel\empty
 
 The mapping process look like this:
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -1623,7 +1624,7 @@ Cube is named \emph{spending}: the framework looks for a fact table named \emph{
 Same as for fact tables cubes looks for dimension table with the same name as dimension name.
 We have specified prefix for every dimension table with \emph{dm\_} in the workspace configuration \emph{slicer.ini}.
 We have design our dimension columns to have the same name as dimension attributes.
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -1677,7 +1678,7 @@ table and a table with details. The order of joins has to be from master to deta
 Cubes supports three join methods \emph{match, detail and master}.
 
 \emph{match} (default) – the keys from both master and detail tables have to match – INNER JOIN
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -1755,7 +1756,7 @@ for filtering and \emph{label\_attribute} is used for the data to be displayed i
 \end{Verbatim}
 \let\SphinxVerbatimTitle\empty
 \let\SphinxLiteralBlockLabel\empty
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -1901,7 +1902,7 @@ The aggregation, slicing, dicing, browsing of the multi-dimensional data is bein
 \let\SphinxLiteralBlockLabel\empty
 
 Here we initialised our workspace, and create and initialises the aggregation browser.
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -1912,7 +1913,7 @@ Here we initialised our workspace, and create and initialises the aggregation br
 \subsection{Cells and Cuts}
 \label{olap:cells-and-cuts}
 Cell defines a point of interest – portion of the cube to be aggergated or browsed.
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -1922,7 +1923,7 @@ Cell defines a point of interest – portion of the cube to be aggergated or bro
 There are three types of cells: point – defines a single point in a dimension at a
 particular level; range – defines all points of an ordered dimension (such as date)
 within the range and set – collection of points \phantomsection\label{olap:id8}{\hyperref[olap:cells]{\crossref{{[}cells{]}}}}.
-\begin{figure}[htbp]
+\begin{figure}[h]
 \centering
 \capstart
 
@@ -2085,7 +2086,7 @@ And finally we, render the template
 
 
 \chapter{Web Application}
-\label{olap:web-application}\begin{figure}[htbp]
+\label{olap:web-application}\begin{figure}[h]
 \centering
 \capstart
 
@@ -2181,9 +2182,120 @@ general public to evaluate the business process of the government.
 \chapter{Resume in Slovak language}
 \label{resume::doc}\label{resume:resume-in-slovak-language}
 
+\section{Otvorené Dáta}
+\label{resume:otvorene-data}
+Viete aká časť z vašich daní ide na verejne osvetlenie či na verejnú dopravu? Zamysleli ste sa
+niekedy či do vášho regiónu investujú nejaké inštitúcie, prípadne koľko prostriedkov takéto inštitúcie
+investujú? Nové technológie v súčasnosti poskytujú odpovede na takýto typ otázok.
+
+Väčšinu dát na odpovedanie týchto otázok generujú samotné verejné inštitúcie. Avšak častokrát požadované
+dáta nie sú k dispozícii vo forme výstupe, ktorý by bol jednoduchý a účelný. Ak si vezmeme ako príklad našu krajinu,
+Slovensko, môžeme vidieť, že tu stále chýba transparentosť informácií a takisto tvorenie dátových setov, ktoré by boli
+užívateľovi jednoducho prístupné.
+
+Čo sú to otvorené dáta? Otvorené dáta sú dáta, ktoré môžu byť voľne použité a redistrubuované kýmkoľvek.
+Dáta musia byť dostupné vo vhodnej, modifikovateľnej forme. Otvorené dáta a najmä otvorené dáta týkajúce sa
+verejnej správy sú oblasťou, ktorá je stále nevyužitá a jej potenciál sa nenapĺňa. V súčasnosti je možné
+poukázať na určité oblasti, kde otvorené dáta týkajúce sa verejnej správy tvoria hodnoty. Niektoré z týchto oblastí zahŕňajú:
+\begin{itemize}
+\item {} 
+Transparentnosť a kontrola verejnosťou
+
+\item {} 
+Seba posilnenie
+
+\item {} 
+Zlepšenie produktov a služieb
+
+\item {} 
+Inovácie
+
+\item {} 
+Zlepšenie užitočnosti a efektivity štátnych služieb
+
+\end{itemize}
+
+Prvým krokom naštartovania tohto nevyužitého potenciálu môže byť transformácia dát štátnej správy na otvorené dáta.
+Toto sa môže uskutočniť len za podmienok, že sú skutočne otvorené a že neexistujú žiadne obmedzenia (právne, finančné
+alebo technologické). Z tohto vyplýva, že na realizáciu a využitie potenciálu dát, dáta musia mať charakter otvorených dát.
+
+
+\section{Základy dátového skladu}
+\label{resume:zaklady-datoveho-skladu}
+
+\subsection{Co je to datovy sklad?}
+\label{resume:co-je-to-datovy-sklad}
+Dátový sklad (DW) je systém na reportovanie a analýzu dát. Dátové sklady sú centrálnym úložiskom integrovaných dát
+z jedného alebo z viacerých rôznych zdrojov. Ukladajú aktuálne aj staršie dáta a používajú sa pre vytvorenie analytických
+správ slúžiacich pre pracovníkov celej spoločnosti.
+
+
+\subsection{Operačný systém}
+\label{resume:operacny-system}
+Operačný systém priamo podporuje realizáciu business procesu tým, že zachytí detaily o signifikantných udalostiach
+alebo transakciách. Napríklad predajný systém,  zhromažďuje informácie o objednávkach, zásielkach či reklamáciach.
+
+
+\subsection{Analytický systém}
+\label{resume:analyticky-system}
+Analytický systém podporuje vyhodnotenie obchodného procesu. Akým trendom sa uberajú objednávky tento mesiac v porovnaní s minulým?
+Kde sa ocitáme pri porovnávaní našich cieľov predaja v rámci kvartálu?
+
+
+\subsection{Analytické databázy a Dimenzionálny navrh}
+\label{resume:analyticke-databazy-a-dimenzionalny-navrh}
+Dimenzionálny model business processu sa skladá z dvoch častí a to:  z rozmerov a ich kontextu.
+Je známe, že tieto komponeny sú usporiadané do návrhu databázy, ktorá poskytuje širokú škálu analytického využitia. Realizovanie v multidimenzionálnej databáze, je známe pod pojmom kocka.
+
+Analytické systémy a operačné systémy slúžia pre zásadne odlišné účely. Operačný systém podporuje realizáciu obchodného procesu, zatiaľ čo analytický systém zabezpečuje vyhodnocovanie procesu.
+
+Každé dimenzionálne riešenie popisuje proces tým, že zachytí to, čo je merané a kontext v ktorom sú merania vyhodnocované.
+
+
+\section{Návrh Dátového skladu}
+\label{resume:navrh-datoveho-skladu}
+
+\subsection{Cieľe Dátového skladu}
+\label{resume:ciele-datoveho-skladu}
+Pred tým ako sme sa zamerali na dimenzionálne modelovanie a implementáciu, bolo potrebné sa zamerať na základné
+ciele dátového skladu. Ako je možné sa zamerať na tieto základné ciele, ak nám chýba to najdôležitejšie a síce, dáta.
+Na základe našich skúseností môžeme tvrdiť, že dáta sú univerzum a tvoria základné požiadavky resp. sú stavebným základom
+pre dátový sklad. Dáta sú vždy na prvom mieste pred technológiami a business modelom.
+
+
+\subsection{Hľadanie dát}
+\label{resume:hladanie-dat}
+Rozhodli sme sa zamerať na dáta týkajúce sa štátnej správy. Skúmali sme niekoľko dátových sád a napokon sme vybrali „Usa Spending Gov“.
+
+Všetky údaje transakcie príjemcu na USAspending.gov sú reportované federálnymi agentúrami, ktoré uzatvárajú kontrakty,
+úvery, granty a dalšie obstarávania. Po identifikácii zdroja dát a preskúmaní súborov dát sme sa rozhodli použiť tieto
+dáta pre náš business model a pre model dátového skladu.
+
+Pre potrebny nášho dátoveho skladu sme si stanovili nasledujúce ciele:
+\begin{itemize}
+\item {} 
+Hlavným poslaním dátového skladu bolo zverejnenie dát federálnych organizácií. Kľúčom úspechu a víziou nášho dátového skladu bolo, či dátový sklad účinne slúži širokej verejnosti.
+
+\item {} 
+Dátový sklad musí sprístupniť informácie ľahko a dostupne.
+
+\item {} 
+Takisto musí prezentovať informácie federálnych organizácií konzistentne.
+
+\item {} 
+Dátový sklad musí byť prispôsobivý a odolné voči zmene.
+
+\item {} 
+Je potrebné najskôr chápať jednotlivé časťi dátového skladu pred tým ako ich začneme kombinovať.
+
+\end{itemize}
+
+
 \chapter{References}
 \label{references::doc}\label{references:references}
 \phantomsection\label{references:id1}{[}1{]} Authors: School of Data, Organization: School of Data Date: Sep 02, 2013 Available from: \href{http://schoolofdata.org/handbook/courses/what-is-data/}{Data Fundamentals}
+
+
 
 
 \chapter{Appendix A}

@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
@@ -24,6 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Design and implementation of open-data data warehouse 0.0.1 documentation" href="#" />
+    <link rel="next" title="Introduction" href="introduction.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -40,19 +41,134 @@
             
   <div class="section" id="welcome-to-design-and-implementation-of-open-data-data-warehouse-s-documentation">
 <h1>Welcome to Design and implementation of open-data data warehouse&#8217;s documentation!<a class="headerlink" href="#welcome-to-design-and-implementation-of-open-data-data-warehouse-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
 <div class="toctree-wrapper compound">
-<ul class="simple">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#data">Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#what-is-data">What is Data?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#from-data-to-information-knowledge">From Data to information knowledge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#finding-data">Finding Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#identify-data-source">Identify data source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#problem-with-sources">Problem with sources</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#open-data">Open Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#why-open-data">Why open Data?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#what-is-open-data">What is Open Data?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#data-warehouse-fundamentals">Data Warehouse Fundamentals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#what-is-data-warehouse">What is Data Warehouse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#operational-systems">Operational Systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#analytic-systems">Analytic Systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#analytic-databases-and-dimensional-design">Analytic Databases and Dimensional Design</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#the-star-schema">The Star Schema</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datawarehouse.html">Building The Data Warehouse</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="datawarehouse.html#plan">Plan</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#goals-of-data-warehouse">Goals of Data Warehouse</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datawarehouse.html#data-warehouse-environment">Data warehouse Environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#operational-source-systems">Operational Source systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#data-staging-area">Data Staging Area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#data-presentation">Data presentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#data-access-tools">Data access tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datawarehouse.html#id2">Data Staging Area</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#extract">Extract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#clean">Clean</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#load">Load</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datawarehouse.html#dimensional-modeling">Dimensional Modeling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#business-process">Business Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#declare-the-grain">Declare the Grain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#choose-the-dimensions">Choose the Dimensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#identify-facts">Identify Facts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#suroggate-keys">Suroggate Keys</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="datawarehouse.html#dimensional-table-attributes">Dimensional Table Attributes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#date-dimension">Date Dimension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#product-dimension">Product Dimension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#geography-dimension">Geography Dimension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#recipient-dimension">Recipient Dimension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#transaction-type-dimension">Transaction Type Dimension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#award-dimension">Award Dimension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datawarehouse.html#federal-award-transactions">Federal Award Transactions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="olap.html">OLAP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="olap.html#cubes-olap-framework">Cubes - OLAP Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="olap.html#analytical-workspace">Analytical Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="olap.html#logical-model-and-metadata">Logical Model and Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="olap.html#id4">Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="olap.html#id7">Cubes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="olap.html#measures-and-aggregates">Measures and Aggregates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="olap.html#mappings">Mappings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="olap.html#facts">Facts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="olap.html#dimensions">Dimensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="olap.html#joins">Joins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="olap.html#hierarchies-and-levels">Hierarchies and Levels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="olap.html#user-oriented-metadata">User-oriented Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="olap.html#slicer-server">Slicer Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="olap.html#slicing-and-dicing">Slicing and Dicing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="olap.html#browser">Browser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="olap.html#cells-and-cuts">Cells and Cuts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="olap.html#aggregate">Aggregate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="olap.html#drilldown">Drilldown</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="olap.html#drill-down-tree">Drill Down Tree</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="olap.html#web-application">Web Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resume.html">Resume in Slovak language</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resume.html#otvorene-data">Otvorené Dáta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resume.html#zaklady-datoveho-skladu">Základy dátového skladu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="resume.html#co-je-to-datovy-sklad">Co je to datovy sklad?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="resume.html#operacny-system">Operačný systém</a></li>
+<li class="toctree-l3"><a class="reference internal" href="resume.html#analyticky-system">Analytický systém</a></li>
+<li class="toctree-l3"><a class="reference internal" href="resume.html#analyticke-databazy-a-dimenzionalny-navrh">Analytické databázy a Dimenzionálny navrh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="resume.html#navrh-datoveho-skladu">Návrh Dátového skladu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="resume.html#ciele-datoveho-skladu">Cieľe Dátového skladu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="resume.html#hladanie-dat">Hľadanie dát</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apendixa.html">Appendix A</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apendixa.html#instalation-manual">Instalation Manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apendixa.html#python">Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apendixa.html#install-packages">Install Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apendixa.html#creating-virtual-environments">Creating Virtual Environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apendixa.html#postgresql">PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apendixa.html#cubes">Cubes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apendixa.html#flask">Flask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apendixa.html#web-application">Web application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendixb.html">Appendix B</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendixb.html#contents-of-dvd">Contents of DVD</a></li>
+</ul>
+</li>
 </ul>
 </div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
-</ul>
 </div>
 
 
@@ -60,16 +176,11 @@
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="#">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Welcome to Design and implementation of open-data data warehouse&#8217;s documentation!</a></li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
-</ul>
-<div class="relations">
+        <div class="sphinxsidebarwrapper"><div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="introduction.html" title="next chapter">Introduction</a></li>
   </ul></li>
 </ul>
 </div>

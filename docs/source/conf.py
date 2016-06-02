@@ -222,7 +222,7 @@ latex_elements = {
 #'preamble': '',
 
 # Latex figure (float) alignment
-#'figure_align': 'htbp',
+'figure_align': 'h',
 
 # Font Package Inclusion
 'fontpkg': '\\usepackage{times}',

@@ -1,78 +1,77 @@
-\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.1.1}{Data}{chapter.1}% 2
-\BOOKMARK [2][-]{subsection.1.1.1}{What is Data?}{section.1.1}% 3
-\BOOKMARK [2][-]{subsection.1.1.2}{From Data to information knowledge}{section.1.1}% 4
-\BOOKMARK [2][-]{subsection.1.1.3}{Finding Data}{section.1.1}% 5
-\BOOKMARK [2][-]{subsection.1.1.4}{Identify data source}{section.1.1}% 6
-\BOOKMARK [2][-]{subsection.1.1.5}{Problem with sources}{section.1.1}% 7
-\BOOKMARK [1][-]{section.1.2}{Open Data}{chapter.1}% 8
-\BOOKMARK [2][-]{subsection.1.2.1}{Why open Data?}{section.1.2}% 9
-\BOOKMARK [2][-]{subsection.1.2.2}{What is Open Data?}{section.1.2}% 10
-\BOOKMARK [1][-]{section.1.3}{Data Warehouse Fundamentals}{chapter.1}% 11
-\BOOKMARK [2][-]{subsection.1.3.1}{What is Data Warehouse}{section.1.3}% 12
-\BOOKMARK [2][-]{subsection.1.3.2}{Operational Systems}{section.1.3}% 13
-\BOOKMARK [2][-]{subsection.1.3.3}{Analytic Systems}{section.1.3}% 14
-\BOOKMARK [2][-]{subsection.1.3.4}{Analytic Databases and Dimensional Design}{section.1.3}% 15
-\BOOKMARK [2][-]{subsection.1.3.5}{The Star Schema}{section.1.3}% 16
-\BOOKMARK [0][-]{chapter.2}{Building The Data Warehouse}{}% 17
-\BOOKMARK [1][-]{section.2.1}{Plan}{chapter.2}% 18
-\BOOKMARK [2][-]{subsection.2.1.1}{Goals of Data Warehouse}{section.2.1}% 19
-\BOOKMARK [1][-]{section.2.2}{Data warehouse Environment}{chapter.2}% 20
-\BOOKMARK [2][-]{subsection.2.2.1}{Operational Source systems}{section.2.2}% 21
-\BOOKMARK [2][-]{subsection.2.2.2}{Data Staging Area}{section.2.2}% 22
-\BOOKMARK [2][-]{subsection.2.2.3}{Data presentation}{section.2.2}% 23
-\BOOKMARK [2][-]{subsection.2.2.4}{Data access tools}{section.2.2}% 24
-\BOOKMARK [1][-]{section.2.3}{Data Staging Area}{chapter.2}% 25
-\BOOKMARK [2][-]{subsection.2.3.1}{Extract}{section.2.3}% 26
-\BOOKMARK [2][-]{subsection.2.3.2}{Clean}{section.2.3}% 27
-\BOOKMARK [2][-]{subsection.2.3.3}{Load}{section.2.3}% 28
-\BOOKMARK [1][-]{section.2.4}{Dimensional Modeling}{chapter.2}% 29
-\BOOKMARK [2][-]{subsection.2.4.1}{Business Process}{section.2.4}% 30
-\BOOKMARK [2][-]{subsection.2.4.2}{Declare the Grain}{section.2.4}% 31
-\BOOKMARK [2][-]{subsection.2.4.3}{Choose the Dimensions}{section.2.4}% 32
-\BOOKMARK [2][-]{subsection.2.4.4}{Identify Facts}{section.2.4}% 33
-\BOOKMARK [2][-]{subsection.2.4.5}{Suroggate Keys}{section.2.4}% 34
-\BOOKMARK [1][-]{section.2.5}{Dimensional Table Attributes}{chapter.2}% 35
-\BOOKMARK [2][-]{subsection.2.5.1}{Date Dimension}{section.2.5}% 36
-\BOOKMARK [2][-]{subsection.2.5.2}{Product Dimension}{section.2.5}% 37
-\BOOKMARK [2][-]{subsection.2.5.3}{Geography Dimension}{section.2.5}% 38
-\BOOKMARK [2][-]{subsection.2.5.4}{Recipient Dimension}{section.2.5}% 39
-\BOOKMARK [2][-]{subsection.2.5.5}{Transaction Type Dimension}{section.2.5}% 40
-\BOOKMARK [2][-]{subsection.2.5.6}{Award Dimension}{section.2.5}% 41
-\BOOKMARK [2][-]{subsection.2.5.7}{Federal Award Transactions}{section.2.5}% 42
-\BOOKMARK [0][-]{chapter.3}{OLAP}{}% 43
-\BOOKMARK [1][-]{section.3.1}{Cubes - OLAP Framework}{chapter.3}% 44
-\BOOKMARK [1][-]{section.3.2}{Analytical Workspace}{chapter.3}% 45
-\BOOKMARK [1][-]{section.3.3}{Logical Model and Metadata}{chapter.3}% 46
-\BOOKMARK [1][-]{section.3.4}{Model}{chapter.3}% 47
-\BOOKMARK [2][-]{subsection.3.4.1}{Cubes}{section.3.4}% 48
-\BOOKMARK [2][-]{subsection.3.4.2}{Measures and Aggregates}{section.3.4}% 49
-\BOOKMARK [2][-]{subsection.3.4.3}{Mappings}{section.3.4}% 50
-\BOOKMARK [2][-]{subsection.3.4.4}{Facts}{section.3.4}% 51
-\BOOKMARK [2][-]{subsection.3.4.5}{Dimensions}{section.3.4}% 52
-\BOOKMARK [2][-]{subsection.3.4.6}{Joins}{section.3.4}% 53
-\BOOKMARK [2][-]{subsection.3.4.7}{Hierarchies and Levels}{section.3.4}% 54
-\BOOKMARK [2][-]{subsection.3.4.8}{User-oriented Metadata}{section.3.4}% 55
-\BOOKMARK [1][-]{section.3.5}{Slicer Server}{chapter.3}% 56
-\BOOKMARK [1][-]{section.3.6}{Slicing and Dicing}{chapter.3}% 57
-\BOOKMARK [2][-]{subsection.3.6.1}{Browser}{section.3.6}% 58
-\BOOKMARK [2][-]{subsection.3.6.2}{Cells and Cuts}{section.3.6}% 59
-\BOOKMARK [2][-]{subsection.3.6.3}{Aggregate}{section.3.6}% 60
-\BOOKMARK [2][-]{subsection.3.6.4}{Drilldown}{section.3.6}% 61
-\BOOKMARK [1][-]{section.3.7}{Drill Down Tree}{chapter.3}% 62
-\BOOKMARK [0][-]{chapter.4}{Web Application}{}% 63
-\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 64
-\BOOKMARK [0][-]{chapter.6}{Resume in Slovak language}{}% 65
-\BOOKMARK [0][-]{chapter.7}{References}{}% 66
-\BOOKMARK [0][-]{chapter.8}{Appendix A}{}% 67
-\BOOKMARK [1][-]{section.8.1}{Instalation Manual}{chapter.8}% 68
-\BOOKMARK [2][-]{subsection.8.1.1}{Python}{section.8.1}% 69
-\BOOKMARK [2][-]{subsection.8.1.2}{Install Packages}{section.8.1}% 70
-\BOOKMARK [2][-]{subsection.8.1.3}{Creating Virtual Environments}{section.8.1}% 71
-\BOOKMARK [2][-]{subsection.8.1.4}{PostgreSQL}{section.8.1}% 72
-\BOOKMARK [2][-]{subsection.8.1.5}{Cubes}{section.8.1}% 73
-\BOOKMARK [2][-]{subsection.8.1.6}{Flask}{section.8.1}% 74
-\BOOKMARK [2][-]{subsection.8.1.7}{Web application}{section.8.1}% 75
-\BOOKMARK [0][-]{chapter.9}{Appendix B}{}% 76
-\BOOKMARK [1][-]{section.9.1}{Contents of DVD}{chapter.9}% 77
-\BOOKMARK [0][-]{chapter*.11}{Bibliography}{}% 78
+\BOOKMARK [1][]{section.2}{Data}{}% 1
+\BOOKMARK [2][]{subsection.3}{What is Data?}{section.2}% 2
+\BOOKMARK [2][]{subsection.7}{From Data to information knowledge}{section.2}% 3
+\BOOKMARK [2][]{subsection.8}{Finding Data}{section.2}% 4
+\BOOKMARK [2][]{subsection.12}{Identify data source}{section.2}% 5
+\BOOKMARK [2][]{subsection.13}{Problem with sources}{section.2}% 6
+\BOOKMARK [1][]{section.15}{Open Data}{}% 7
+\BOOKMARK [2][]{subsection.16}{Why open Data?}{section.15}% 8
+\BOOKMARK [2][]{subsection.17}{What is Open Data?}{section.15}% 9
+\BOOKMARK [1][]{section.20}{Data Warehouse Fundamentals}{}% 10
+\BOOKMARK [2][]{subsection.21}{What is Data Warehouse}{section.20}% 11
+\BOOKMARK [2][]{subsection.23}{Operational Systems}{section.20}% 12
+\BOOKMARK [2][]{subsection.24}{Analytic Systems}{section.20}% 13
+\BOOKMARK [2][]{subsection.25}{Analytic Databases and Dimensional Design}{section.20}% 14
+\BOOKMARK [2][]{subsection.29}{The Star Schema}{section.20}% 15
+\BOOKMARK [1][]{section.32}{Plan}{}% 16
+\BOOKMARK [2][]{subsection.33}{Goals of Data Warehouse}{section.32}% 17
+\BOOKMARK [1][]{section.35}{Data warehouse Environment}{}% 18
+\BOOKMARK [2][]{subsection.38}{Operational Source systems}{section.35}% 19
+\BOOKMARK [2][]{subsection.39}{Data Staging Area}{section.35}% 20
+\BOOKMARK [2][]{subsection.40}{Data presentation}{section.35}% 21
+\BOOKMARK [2][]{subsection.41}{Data access tools}{section.35}% 22
+\BOOKMARK [1][]{section.42}{Data Staging Area}{}% 23
+\BOOKMARK [2][]{subsection.45}{Extract}{section.42}% 24
+\BOOKMARK [2][]{subsection.60}{Clean}{section.42}% 25
+\BOOKMARK [2][]{subsection.61}{Load}{section.42}% 26
+\BOOKMARK [1][]{section.104}{Dimensional Modeling}{}% 27
+\BOOKMARK [2][]{subsection.105}{Business Process}{section.104}% 28
+\BOOKMARK [2][]{subsection.106}{Declare the Grain}{section.104}% 29
+\BOOKMARK [2][]{subsection.107}{Choose the Dimensions}{section.104}% 30
+\BOOKMARK [2][]{subsection.110}{Identify Facts}{section.104}% 31
+\BOOKMARK [2][]{subsection.111}{Suroggate Keys}{section.104}% 32
+\BOOKMARK [1][]{section.112}{Dimensional Table Attributes}{}% 33
+\BOOKMARK [2][]{subsection.113}{Date Dimension}{section.112}% 34
+\BOOKMARK [2][]{subsection.118}{Product Dimension}{section.112}% 35
+\BOOKMARK [2][]{subsection.123}{Geography Dimension}{section.112}% 36
+\BOOKMARK [2][]{subsection.126}{Recipient Dimension}{section.112}% 37
+\BOOKMARK [2][]{subsection.129}{Transaction Type Dimension}{section.112}% 38
+\BOOKMARK [2][]{subsection.132}{Award Dimension}{section.112}% 39
+\BOOKMARK [2][]{subsection.135}{Federal Award Transactions}{section.112}% 40
+\BOOKMARK [1][]{section.138}{Cubes - OLAP Framework}{}% 41
+\BOOKMARK [1][]{section.142}{Analytical Workspace}{}% 42
+\BOOKMARK [1][]{section.170}{Logical Model and Metadata}{}% 43
+\BOOKMARK [1][]{section.174}{Model}{}% 44
+\BOOKMARK [2][]{subsection.184}{Cubes}{section.174}% 45
+\BOOKMARK [2][]{subsection.191}{Measures and Aggregates}{section.174}% 46
+\BOOKMARK [2][]{subsection.206}{Mappings}{section.174}% 47
+\BOOKMARK [2][]{subsection.217}{Facts}{section.174}% 48
+\BOOKMARK [2][]{subsection.218}{Dimensions}{section.174}% 49
+\BOOKMARK [2][]{subsection.227}{Joins}{section.174}% 50
+\BOOKMARK [2][]{subsection.236}{Hierarchies and Levels}{section.174}% 51
+\BOOKMARK [2][]{subsection.249}{User-oriented Metadata}{section.174}% 52
+\BOOKMARK [1][]{section.258}{Slicer Server}{}% 53
+\BOOKMARK [1][]{section.279}{Slicing and Dicing}{}% 54
+\BOOKMARK [2][]{subsection.280}{Browser}{section.279}% 55
+\BOOKMARK [2][]{subsection.289}{Cells and Cuts}{section.279}% 56
+\BOOKMARK [2][]{subsection.309}{Aggregate}{section.279}% 57
+\BOOKMARK [2][]{subsection.322}{Drilldown}{section.279}% 58
+\BOOKMARK [1][]{section.329}{Drill Down Tree}{}% 59
+\BOOKMARK [1][]{section.332}{OtvorenA\251 DA\031ta}{}% 60
+\BOOKMARK [1][]{section.333}{ZA\031klady dA\031tovA\251ho skladu}{}% 61
+\BOOKMARK [2][]{subsection.334}{Co je to datovy sklad?}{section.333}% 62
+\BOOKMARK [2][]{subsection.335}{Opera\304TnA systA\251m}{section.333}% 63
+\BOOKMARK [2][]{subsection.336}{AnalytickA systA\251m}{section.333}% 64
+\BOOKMARK [2][]{subsection.337}{AnalytickA\251 databA\031zy a DimenzionA\031lny navrh}{section.333}% 65
+\BOOKMARK [1][]{section.338}{NA\031vrh DA\031tovA\251ho skladu}{}% 66
+\BOOKMARK [2][]{subsection.339}{Cie\304le DA\031tovA\251ho skladu}{section.338}% 67
+\BOOKMARK [2][]{subsection.340}{H\304ladanie dA\031t}{section.338}% 68
+\BOOKMARK [1][]{section.342}{Instalation Manual}{}% 69
+\BOOKMARK [2][]{subsection.343}{Python}{section.342}% 70
+\BOOKMARK [2][]{subsection.350}{Install Packages}{section.342}% 71
+\BOOKMARK [2][]{subsection.363}{Creating Virtual Environments}{section.342}% 72
+\BOOKMARK [2][]{subsection.370}{PostgreSQL}{section.342}% 73
+\BOOKMARK [2][]{subsection.371}{Cubes}{section.342}% 74
+\BOOKMARK [2][]{subsection.402}{Flask}{section.342}% 75
+\BOOKMARK [2][]{subsection.415}{Web application}{section.342}% 76
+\BOOKMARK [1][]{section.434}{Contents of DVD}{}% 77

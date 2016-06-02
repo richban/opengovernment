@@ -1064,3 +1064,933 @@ could not connect to server: Connection refused
 	Is the server running on host "localhost" (::1) and accepting
 	TCP/IP connections on port 5432?
 
+2016-06-02 23:53:42,086 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.DataError: invalid input syntax for integer: "loan"
+LINE 3: WHERE dm_transaction_type.id = 'loan'
+                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 165, in wrapper
+    retval = f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/blueprint.py", line 349, in aggregate
+    order=g.order)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/browser.py", line 174, in aggregate
+    **options)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 335, in provide_aggregate
+    "aggregation summary")
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 281, in execute_statement
+    return self.connectable.execute(statement)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1991, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 914, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/sql/elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1010, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1146, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1341, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.DataError) invalid input syntax for integer: "loan"
+LINE 3: WHERE dm_transaction_type.id = 'loan'
+                                       ^
+ [SQL: 'SELECT sum(ft_spending_2.award_amount) AS award_sum, count(%(param_1)s) AS transaction_count, min(ft_spending_2.award_amount) AS award_min, max(ft_spending_2.award_amount) AS award_max \nFROM ft_spending_2 JOIN dm_transaction_type ON ft_spending_2.transaction_type_id = dm_transaction_type.id \nWHERE dm_transaction_type.id = %(param_2)s'] [parameters: {'param_1': 1, 'param_2': 'loan'}]
+2016-06-02 23:53:46,039 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.DataError: invalid input syntax for integer: "loan"
+LINE 3: WHERE dm_transaction_type.id = 'loan'
+                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 165, in wrapper
+    retval = f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/blueprint.py", line 349, in aggregate
+    order=g.order)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/browser.py", line 174, in aggregate
+    **options)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 335, in provide_aggregate
+    "aggregation summary")
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 281, in execute_statement
+    return self.connectable.execute(statement)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1991, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 914, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/sql/elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1010, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1146, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1341, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.DataError) invalid input syntax for integer: "loan"
+LINE 3: WHERE dm_transaction_type.id = 'loan'
+                                       ^
+ [SQL: 'SELECT sum(ft_spending_2.award_amount) AS award_sum, count(%(param_1)s) AS transaction_count, min(ft_spending_2.award_amount) AS award_min, max(ft_spending_2.award_amount) AS award_max \nFROM ft_spending_2 JOIN dm_transaction_type ON ft_spending_2.transaction_type_id = dm_transaction_type.id \nWHERE dm_transaction_type.id = %(param_2)s'] [parameters: {'param_1': 1, 'param_2': 'loan'}]
+2016-06-02 23:53:54,261 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.DataError: invalid input syntax for integer: "grant"
+LINE 3: WHERE dm_transaction_type.id = 'grant'
+                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 165, in wrapper
+    retval = f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/blueprint.py", line 349, in aggregate
+    order=g.order)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/browser.py", line 174, in aggregate
+    **options)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 335, in provide_aggregate
+    "aggregation summary")
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 281, in execute_statement
+    return self.connectable.execute(statement)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1991, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 914, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/sql/elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1010, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1146, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1341, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.DataError) invalid input syntax for integer: "grant"
+LINE 3: WHERE dm_transaction_type.id = 'grant'
+                                       ^
+ [SQL: 'SELECT sum(ft_spending_2.award_amount) AS award_sum, count(%(param_1)s) AS transaction_count, min(ft_spending_2.award_amount) AS award_min, max(ft_spending_2.award_amount) AS award_max \nFROM ft_spending_2 JOIN dm_transaction_type ON ft_spending_2.transaction_type_id = dm_transaction_type.id \nWHERE dm_transaction_type.id = %(param_2)s'] [parameters: {'param_1': 1, 'param_2': 'grant'}]
+2016-06-02 23:53:57,249 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.DataError: invalid input syntax for integer: "grants"
+LINE 3: WHERE dm_transaction_type.id = 'grants'
+                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 165, in wrapper
+    retval = f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/blueprint.py", line 349, in aggregate
+    order=g.order)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/browser.py", line 174, in aggregate
+    **options)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 335, in provide_aggregate
+    "aggregation summary")
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 281, in execute_statement
+    return self.connectable.execute(statement)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1991, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 914, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/sql/elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1010, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1146, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1341, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.DataError) invalid input syntax for integer: "grants"
+LINE 3: WHERE dm_transaction_type.id = 'grants'
+                                       ^
+ [SQL: 'SELECT sum(ft_spending_2.award_amount) AS award_sum, count(%(param_1)s) AS transaction_count, min(ft_spending_2.award_amount) AS award_min, max(ft_spending_2.award_amount) AS award_max \nFROM ft_spending_2 JOIN dm_transaction_type ON ft_spending_2.transaction_type_id = dm_transaction_type.id \nWHERE dm_transaction_type.id = %(param_2)s'] [parameters: {'param_1': 1, 'param_2': 'grants'}]
+2016-06-02 23:54:20,828 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.DataError: invalid input syntax for integer: "grants"
+LINE 3: WHERE dm_transaction_type.id = 'grants'
+                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 165, in wrapper
+    retval = f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/blueprint.py", line 349, in aggregate
+    order=g.order)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/browser.py", line 174, in aggregate
+    **options)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 335, in provide_aggregate
+    "aggregation summary")
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 281, in execute_statement
+    return self.connectable.execute(statement)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1991, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 914, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/sql/elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1010, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1146, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1341, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.DataError) invalid input syntax for integer: "grants"
+LINE 3: WHERE dm_transaction_type.id = 'grants'
+                                       ^
+ [SQL: 'SELECT sum(ft_spending_2.award_amount) AS award_sum, count(%(param_1)s) AS transaction_count, min(ft_spending_2.award_amount) AS award_min, max(ft_spending_2.award_amount) AS award_max \nFROM ft_spending_2 JOIN dm_transaction_type ON ft_spending_2.transaction_type_id = dm_transaction_type.id \nWHERE dm_transaction_type.id = %(param_2)s'] [parameters: {'param_1': 1, 'param_2': 'grants'}]
+2016-06-02 23:54:28,891 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.DataError: invalid input syntax for integer: "loan"
+LINE 3: WHERE dm_transaction_type.id = 'loan'
+                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 165, in wrapper
+    retval = f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/blueprint.py", line 349, in aggregate
+    order=g.order)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/browser.py", line 174, in aggregate
+    **options)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 335, in provide_aggregate
+    "aggregation summary")
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 281, in execute_statement
+    return self.connectable.execute(statement)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1991, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 914, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/sql/elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1010, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1146, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1341, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.DataError) invalid input syntax for integer: "loan"
+LINE 3: WHERE dm_transaction_type.id = 'loan'
+                                       ^
+ [SQL: 'SELECT sum(ft_spending_2.award_amount) AS award_sum, count(%(param_1)s) AS transaction_count, min(ft_spending_2.award_amount) AS award_min, max(ft_spending_2.award_amount) AS award_max \nFROM ft_spending_2 JOIN dm_transaction_type ON ft_spending_2.transaction_type_id = dm_transaction_type.id \nWHERE dm_transaction_type.id = %(param_2)s'] [parameters: {'param_1': 1, 'param_2': 'loan'}]
+2016-06-02 23:54:29,500 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.DataError: invalid input syntax for integer: "grants"
+LINE 3: WHERE dm_transaction_type.id = 'grants'
+                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 165, in wrapper
+    retval = f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/blueprint.py", line 349, in aggregate
+    order=g.order)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/browser.py", line 174, in aggregate
+    **options)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 335, in provide_aggregate
+    "aggregation summary")
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 281, in execute_statement
+    return self.connectable.execute(statement)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1991, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 914, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/sql/elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1010, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1146, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1341, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.DataError) invalid input syntax for integer: "grants"
+LINE 3: WHERE dm_transaction_type.id = 'grants'
+                                       ^
+ [SQL: 'SELECT sum(ft_spending_2.award_amount) AS award_sum, count(%(param_1)s) AS transaction_count, min(ft_spending_2.award_amount) AS award_min, max(ft_spending_2.award_amount) AS award_max \nFROM ft_spending_2 JOIN dm_transaction_type ON ft_spending_2.transaction_type_id = dm_transaction_type.id \nWHERE dm_transaction_type.id = %(param_2)s'] [parameters: {'param_1': 1, 'param_2': 'grants'}]
+2016-06-02 23:55:12,259 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.DataError: invalid input syntax for integer: "grants"
+LINE 3: WHERE dm_transaction_type.id = 'grants'
+                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 165, in wrapper
+    retval = f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/blueprint.py", line 349, in aggregate
+    order=g.order)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/browser.py", line 174, in aggregate
+    **options)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 335, in provide_aggregate
+    "aggregation summary")
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 281, in execute_statement
+    return self.connectable.execute(statement)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1991, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 914, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/sql/elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1010, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1146, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1341, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.DataError) invalid input syntax for integer: "grants"
+LINE 3: WHERE dm_transaction_type.id = 'grants'
+                                       ^
+ [SQL: 'SELECT sum(ft_spending_2.award_amount) AS award_sum, count(%(param_1)s) AS transaction_count, min(ft_spending_2.award_amount) AS award_min, max(ft_spending_2.award_amount) AS award_max \nFROM ft_spending_2 JOIN dm_transaction_type ON ft_spending_2.transaction_type_id = dm_transaction_type.id \nWHERE dm_transaction_type.id = %(param_2)s'] [parameters: {'param_1': 1, 'param_2': 'grants'}]
+2016-06-02 23:55:14,842 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.DataError: invalid input syntax for integer: "grants"
+LINE 3: WHERE dm_transaction_type.id = 'grants'
+                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 165, in wrapper
+    retval = f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/blueprint.py", line 349, in aggregate
+    order=g.order)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/browser.py", line 174, in aggregate
+    **options)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 335, in provide_aggregate
+    "aggregation summary")
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 281, in execute_statement
+    return self.connectable.execute(statement)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1991, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 914, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/sql/elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1010, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1146, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1341, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.DataError) invalid input syntax for integer: "grants"
+LINE 3: WHERE dm_transaction_type.id = 'grants'
+                                       ^
+ [SQL: 'SELECT sum(ft_spending_2.award_amount) AS award_sum, count(%(param_1)s) AS transaction_count, min(ft_spending_2.award_amount) AS award_min, max(ft_spending_2.award_amount) AS award_max \nFROM ft_spending_2 JOIN dm_transaction_type ON ft_spending_2.transaction_type_id = dm_transaction_type.id \nWHERE dm_transaction_type.id = %(param_2)s'] [parameters: {'param_1': 1, 'param_2': 'grants'}]
+2016-06-02 23:55:18,178 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.DataError: invalid input syntax for integer: "grants"
+LINE 3: WHERE dm_transaction_type.id = 'grants'
+                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 165, in wrapper
+    retval = f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/blueprint.py", line 349, in aggregate
+    order=g.order)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/browser.py", line 174, in aggregate
+    **options)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 335, in provide_aggregate
+    "aggregation summary")
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 281, in execute_statement
+    return self.connectable.execute(statement)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1991, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 914, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/sql/elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1010, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1146, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1341, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.DataError) invalid input syntax for integer: "grants"
+LINE 3: WHERE dm_transaction_type.id = 'grants'
+                                       ^
+ [SQL: 'SELECT sum(ft_spending_2.award_amount) AS award_sum, count(%(param_1)s) AS transaction_count, min(ft_spending_2.award_amount) AS award_min, max(ft_spending_2.award_amount) AS award_max \nFROM ft_spending_2 JOIN dm_transaction_type ON ft_spending_2.transaction_type_id = dm_transaction_type.id \nWHERE dm_transaction_type.id = %(param_2)s'] [parameters: {'param_1': 1, 'param_2': 'grants'}]
+2016-06-02 23:55:27,542 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.DataError: invalid input syntax for integer: "grants"
+LINE 3: WHERE dm_transaction_type.id = 'grants' AND dm_date.year = '...
+                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 165, in wrapper
+    retval = f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/blueprint.py", line 349, in aggregate
+    order=g.order)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/browser.py", line 174, in aggregate
+    **options)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 335, in provide_aggregate
+    "aggregation summary")
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 281, in execute_statement
+    return self.connectable.execute(statement)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1991, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 914, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/sql/elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1010, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1146, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1341, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.DataError) invalid input syntax for integer: "grants"
+LINE 3: WHERE dm_transaction_type.id = 'grants' AND dm_date.year = '...
+                                       ^
+ [SQL: 'SELECT sum(ft_spending_2.award_amount) AS award_sum, count(%(param_1)s) AS transaction_count, min(ft_spending_2.award_amount) AS award_min, max(ft_spending_2.award_amount) AS award_max \nFROM ft_spending_2 JOIN dm_date ON ft_spending_2.date_id = dm_date.id JOIN dm_transaction_type ON ft_spending_2.transaction_type_id = dm_transaction_type.id \nWHERE dm_transaction_type.id = %(param_2)s AND dm_date.year = %(param_3)s'] [parameters: {'param_1': 1, 'param_2': 'grants', 'param_3': '2015'}]
+2016-06-02 23:56:56,909 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.DataError: invalid input syntax for integer: "grant"
+LINE 3: WHERE dm_transaction_type.id = 'grant' AND dm_date.year = '2...
+                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 165, in wrapper
+    retval = f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/blueprint.py", line 349, in aggregate
+    order=g.order)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/browser.py", line 174, in aggregate
+    **options)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 335, in provide_aggregate
+    "aggregation summary")
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 281, in execute_statement
+    return self.connectable.execute(statement)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1991, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 914, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/sql/elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1010, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1146, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1341, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.DataError) invalid input syntax for integer: "grant"
+LINE 3: WHERE dm_transaction_type.id = 'grant' AND dm_date.year = '2...
+                                       ^
+ [SQL: 'SELECT sum(ft_spending_2.award_amount) AS award_sum, count(%(param_1)s) AS transaction_count, min(ft_spending_2.award_amount) AS award_min, max(ft_spending_2.award_amount) AS award_max \nFROM ft_spending_2 JOIN dm_date ON ft_spending_2.date_id = dm_date.id JOIN dm_transaction_type ON ft_spending_2.transaction_type_id = dm_transaction_type.id \nWHERE dm_transaction_type.id = %(param_2)s AND dm_date.year = %(param_3)s'] [parameters: {'param_1': 1, 'param_2': 'grant', 'param_3': '2015'}]
+2016-06-02 23:57:06,818 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.DataError: invalid input syntax for integer: "grant"
+LINE 3: WHERE dm_transaction_type.id = 'grant'
+                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 165, in wrapper
+    retval = f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/blueprint.py", line 349, in aggregate
+    order=g.order)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/browser.py", line 174, in aggregate
+    **options)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 335, in provide_aggregate
+    "aggregation summary")
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 281, in execute_statement
+    return self.connectable.execute(statement)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1991, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 914, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/sql/elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1010, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1146, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1341, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.DataError) invalid input syntax for integer: "grant"
+LINE 3: WHERE dm_transaction_type.id = 'grant'
+                                       ^
+ [SQL: 'SELECT sum(ft_spending_2.award_amount) AS award_sum, count(%(param_1)s) AS transaction_count, min(ft_spending_2.award_amount) AS award_min, max(ft_spending_2.award_amount) AS award_max \nFROM ft_spending_2 JOIN dm_transaction_type ON ft_spending_2.transaction_type_id = dm_transaction_type.id \nWHERE dm_transaction_type.id = %(param_2)s'] [parameters: {'param_1': 1, 'param_2': 'grant'}]
+2016-06-02 23:57:41,087 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.DataError: invalid input syntax for integer: "grant"
+LINE 3: WHERE dm_transaction_type.id = 'grant'
+                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 165, in wrapper
+    retval = f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/blueprint.py", line 349, in aggregate
+    order=g.order)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/browser.py", line 174, in aggregate
+    **options)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 335, in provide_aggregate
+    "aggregation summary")
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 281, in execute_statement
+    return self.connectable.execute(statement)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1991, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 914, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/sql/elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1010, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1146, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1341, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.DataError) invalid input syntax for integer: "grant"
+LINE 3: WHERE dm_transaction_type.id = 'grant'
+                                       ^
+ [SQL: 'SELECT sum(ft_spending_2.award_amount) AS award_sum, count(%(param_1)s) AS transaction_count, min(ft_spending_2.award_amount) AS award_min, max(ft_spending_2.award_amount) AS award_max \nFROM ft_spending_2 JOIN dm_transaction_type ON ft_spending_2.transaction_type_id = dm_transaction_type.id \nWHERE dm_transaction_type.id = %(param_2)s'] [parameters: {'param_1': 1, 'param_2': 'grant'}]
+2016-06-02 23:57:42,982 ERROR Exception on /cube/spending_2/aggregate [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.DataError: invalid input syntax for integer: "grant"
+LINE 3: WHERE dm_transaction_type.id = 'grant'
+                                       ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 116, in wrapper
+    return f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/decorators.py", line 165, in wrapper
+    retval = f(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/server/blueprint.py", line 349, in aggregate
+    order=g.order)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/browser.py", line 174, in aggregate
+    **options)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 335, in provide_aggregate
+    "aggregation summary")
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/cubes/backends/sql/browser.py", line 281, in execute_statement
+    return self.connectable.execute(statement)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1991, in execute
+    return connection.execute(statement, *multiparams, **params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 914, in execute
+    return meth(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/sql/elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1010, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1146, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1341, in _handle_dbapi_exception
+    exc_info
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 200, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/util/compat.py", line 183, in reraise
+    raise value.with_traceback(tb)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/base.py", line 1139, in _execute_context
+    context)
+  File "/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/sqlalchemy/engine/default.py", line 450, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.DataError: (psycopg2.DataError) invalid input syntax for integer: "grant"
+LINE 3: WHERE dm_transaction_type.id = 'grant'
+                                       ^
+ [SQL: 'SELECT sum(ft_spending_2.award_amount) AS award_sum, count(%(param_1)s) AS transaction_count, min(ft_spending_2.award_amount) AS award_min, max(ft_spending_2.award_amount) AS award_max \nFROM ft_spending_2 JOIN dm_transaction_type ON ft_spending_2.transaction_type_id = dm_transaction_type.id \nWHERE dm_transaction_type.id = %(param_2)s'] [parameters: {'param_1': 1, 'param_2': 'grant'}]

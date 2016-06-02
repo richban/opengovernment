@@ -1,24 +1,35 @@
 {% extends "template.html" %}
 {% block content %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type=text/javascript>
+  var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
 <div class="container-fluid">
 
   <script type=text/javascript>
-  $("#state").bind('select', function(){
-    console.log("OK sme tu");
-  });
-  $("#state").bind('click', function(){
-    console.log("OK sme tu");
-  });
-  console.log("OK");
-  $( "#state" ).change(function() {
-    console.log( "Handler for .select() called." );
-  });
+$("#state").change(function() {
+    var val = $(this).val();
+    var request = $.ajax({
+        type: 'GET',
+        url: $SCRIPT_ROOT + '/form',
+        data: {state: val}
+    });
+    console.log("HERE");
+    request.done(function(data){
+        var option_list = data;
+        console.log(option_list);
+        $("#city").empty();
+        for (var i = 0; i < option_list['city'].length; i++) {
+            $("#city").append(
+                $("<option></option>").attr(
+                    "value", option_list['city'][i]).text(option_list['city'][i])
+            );
+        }
+    });
+});
 
-  $(function() { console.info("ok jquery loaded.") });
 
-  $("#state").on('change', function(){
-    console.info("CHODZ UZ");
-  });
   </script>
 
     <!-- Page Heading -->
