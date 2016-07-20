@@ -12,7 +12,7 @@ While meeting the data warehouse requirements such as ensure quality, integrity 
 The key object of the data warehouse is to make it available and accessible for anyone.
 
 
-.. figure: docs/source/images/website.png
+.. figure:: docs/source/images/website.png
 
 Features
 --------
@@ -22,7 +22,7 @@ Features
   see all the federal transactions in their backyard. They can also see the transactions throughout state,
   county, as well as by federal agency and award type.
 
-.. figure: docs/source/images/filter.png
+.. figure:: docs/source/images/filter.png
 
 * **Dashboard** - On Dashboard Page we enabled users to drill down from one place to another,
   they will find information to detailed data by focusing on something. For example to drill down through
@@ -32,16 +32,16 @@ Features
   We  have enabled users to explore data, create their own reports. It enables data exploration,
   data auditory, generation of reports, chart design and simple analytics.
 
-.. figure: docs/source/images/viewer.png
+.. figure:: docs/source/images/viewer.png
 
 * **Charts** - We have also created our own charts using javascript libraries.
   On Chart pages users can drill down/roll up donut charts. Or they can look at Agencies
   Profile to see the total amount of money an agency awarded or State Summary to find out
   the total dollar amount for federal transactions for cities where the money was distributed.
 
-.. figure: docs/source/images/drilldown.png
+.. figure:: docs/source/images/drilldown.png
 
-.. figure: docs/source/images/profile.png
+.. figure:: docs/source/images/profile.png
 
 
 PostgreSQL database dump
